@@ -13,11 +13,11 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
+    createData('Transfert', "21 déc 2022", "12 $", "Eli", "Réussie"),
+    createData('Dépôt', "24 déc 2022", "9 $", "Stéphane", "Réussie"),
+    createData('Achat', "03 Jan 2023", "16.0 $", "John", "Echec"),
+    createData('Paiement', "04 Jan 2023", "200 $", "Jonathan", "En attente"),
+    createData('Transfert', "06 Jan 2023", "125 $", "Pablo escobar", "Réussite"),
 ];
 
 export default function BasicTable() {
@@ -30,11 +30,11 @@ export default function BasicTable() {
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell style={{color:"silver"}}>Dessert (100g serving)</TableCell>
-                            <TableCell align="left" style={{color:"silver"}}>Calories</TableCell>
-                            <TableCell align="left" style={{color:"silver"}}>Fat&nbsp;(g)</TableCell>
-                            <TableCell align="left" style={{color:"silver"}}>Carbs&nbsp;(g)</TableCell>
-                            <TableCell align="left" style={{color:"silver"}}>Protein&nbsp;(g)</TableCell>
+                            <TableCell style={{ color: "silver" }}>Motif</TableCell>
+                            <TableCell align="left" style={{ color: "silver" }}>Date</TableCell>
+                            <TableCell align="left" style={{ color: "silver" }}>Montant</TableCell>
+                            <TableCell align="left" style={{ color: "silver" }}>Client</TableCell>
+                            <TableCell align="left" style={{ color: "silver" }}>Status</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -43,13 +43,13 @@ export default function BasicTable() {
                                 key={row.name}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell component="th" scope="row" style={{color:"silver"}}>
+                                <TableCell component="th" scope="row" style={{ color: "silver" }}>
                                     {row.name}
                                 </TableCell>
-                                <TableCell align="left" style={{color:"silver"}}>{row.calories}</TableCell>
-                                <TableCell align="left" style={{color:"silver"}}>{row.fat}</TableCell>
-                                <TableCell align="left" style={{color:"silver"}}>{row.carbs}</TableCell>
-                                <TableCell align="left" style={{color:"silver"}}>{row.protein}</TableCell>
+                                <TableCell align="left" style={{ color: "silver" }}>{row.calories}</TableCell>
+                                <TableCell align="left" style={{ color: "silver" }}>{row.fat}</TableCell>
+                                <TableCell align="left" style={{ color: "silver" }}>{row.carbs}</TableCell>
+                                <TableCell align="left" style={{ color: "silver" }}>{row.protein}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

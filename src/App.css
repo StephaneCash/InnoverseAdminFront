@@ -7,12 +7,14 @@
   --white: #fff;
 }
 
+
 .app {
   font-family: Roboto, sans-serif;
   background-color: var(--blueFonce);
   height: 100vh;
   display: flex;
   justify-content: center;
+  color: silver;
   align-items: center;
 }
 

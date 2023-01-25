@@ -1,10 +1,11 @@
 import {
     UilEstate,
-    UilClipboardAlt,
     UilUsersAlt,
-    UilChart,
-    UilSignOutAlt,
-    UilUsdSquare
+    UilMobileAndroidAlt,
+    UilListUl,
+    UilUsdSquare,
+    UilDollarSignAlt,
+    UilSetting
 } from "@iconscout/react-unicons";
 
 import cardVisa from "../images/cardVisa.png";
@@ -16,20 +17,24 @@ export const SidebarData = [
         heading: "Dashboard"
     },
     {
-        icon: UilClipboardAlt,
-        heading: "Orders"
-    },
-    {
         icon: UilUsersAlt,
-        heading: "Customers"
+        heading: "Affiliations"
     },
     {
-        icon: UilChart,
-        heading: "Analyses"
+        icon: UilListUl,
+        heading: "Transactions"
     },
     {
-        icon: UilSignOutAlt,
-        heading: "Produits"
+        icon: UilDollarSignAlt,
+        heading: "Envoi d'argent"
+    },
+    {
+        icon: UilMobileAndroidAlt,
+        heading: "Recharge mobile"
+    },
+    {
+        icon: UilSetting,
+        heading: "Paramètres"
     },
 ];
 
