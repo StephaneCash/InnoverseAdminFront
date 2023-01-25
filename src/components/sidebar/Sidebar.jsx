@@ -89,10 +89,13 @@ const Sidebar = () => {
                                 <Link to="/compte/rechargeMobie">
                                   {item.heading}
                                 </Link> :
-                                index === 5 &&
-                                <Link to="/compte/config">
-                                  {item.heading}
-                                </Link>
+                                index === 5 ?
+                                  <Link to="/compte/verif">
+                                    {item.heading}
+                                  </Link> : index === 6 &&
+                                  <Link to="/compte/config">
+                                    {item.heading}
+                                  </Link>
                     }
                   </span>
                 </div>

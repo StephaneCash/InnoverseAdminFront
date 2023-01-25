@@ -5,7 +5,8 @@ import {
     UilListUl,
     UilUsdSquare,
     UilDollarSignAlt,
-    UilSetting
+    UilSetting,
+    UilCheckSquare
 } from "@iconscout/react-unicons";
 
 import cardVisa from "../images/cardVisa.png";
@@ -31,6 +32,10 @@ export const SidebarData = [
     {
         icon: UilMobileAndroidAlt,
         heading: "Recharge mobile"
+    },
+    {
+        icon: UilCheckSquare,
+        heading: "Vérification KYC"
     },
     {
         icon: UilSetting,

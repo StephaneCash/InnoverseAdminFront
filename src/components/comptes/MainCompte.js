@@ -6,6 +6,9 @@ import avatar from "../../images/avatar.png";
 import { uploadPicture } from '../../actions/user.actions';
 import { useEffect } from 'react';
 import { getPicture } from '../../actions/userPicture.action';
+import InfosProfil from './InfosProfil';
+import InfosPaiement from './InfosPaiement';
+import InfosPassWord from './InfosPassWord';
 
 const MainCompte = () => {
 
@@ -36,8 +39,6 @@ const MainCompte = () => {
     useEffect(() => {
         dispatch(getPicture(userReducer._id));
     }, [userReducer._id]);
-
-    console.log(picUser)
 
     return (
         <div className='mainCompte'>
@@ -78,119 +79,11 @@ const MainCompte = () => {
                 </div>
                 {
                     detailClic === 1 ?
-                        <div className='form'>
-                            <h4>Informations générales du Compte</h4>
-                            <div className='contentForm'>
-                                <label>Prénom</label>
-                                <input type="text" className="Prénom" placeholder='Prénom' />
-                            </div>
-                            <div className='contentForm'>
-                                <label>Nom de famille</label>
-                                <input type="text" placeholder="Nom de famille" />
-                            </div>
-                            <div className='contentForm'>
-                                <label>Adresse Email</label>
-                                <input type="text" className="Prénom" placeholder='Votre adresse email' />
-                            </div>
-                            <div className='contentForm'>
-                                <label>Numéro de Téléphone</label>
-                                <input type="text" className="Prénom" placeholder='Votre numéro de téléphone' />
-                            </div>
-                            <div className='contentForm'>
-                                <label>Pays</label>
-                                <input type="text" className="Prénom" placeholder='Votre pays' value={"RDC"} />
-                            </div>
-                            <div className='contentForm'>
-                                <label>Cité/Ville</label>
-                                <input type="text" className="Prénom" placeholder='Votre cité / ville' />
-                            </div>
-                            <div className='contentForm'>
-                                <label>Adresse Complète</label>
-                                <textarea type="text" className="Prénom" placeholder='Votre adresse complète' rows="4" />
-                            </div>
-                            <div className='contentForm'>
-                                <label>Code Postal/Zip Code</label>
-                                <input type="text" className="Prénom" placeholder='Code postal de votre pays' />
-                            </div>
-                            <div className='contentForm'>
-                                <label>Anniversaire</label>
-                                <input type="date" className="Prénom" />
-                            </div>
-                            <div className='contentForm'>
-                                <label>Genre (Sexe)</label>
-                                <select>
-                                    <option value="" key="">--Votre sexe--</option>
-                                    <option value="M">Homme</option>
-                                    <option value="F">Femme</option>
-                                </select>
-                            </div>
-                            <hr />
-                            <div className='button'>
-                                <button>Mettre à jour</button>
-                            </div>
-                        </div>
-                        :
+                        <InfosProfil /> :
                         detailClic === 2 ?
-                            <div className='formPaiement'>
-                                <h4>Paramètre de Paiement</h4>
-                                <div className='contentForm'> <label>Airtel Money CD</label> <input type="text"
-                                    className="Prénom" placeholder='Votre compte Airtel (Numéro de téléphone)' /></div>
-                                <div className='contentForm'> <label>M-PESA CD</label> <input
-                                    type="text" placeholder="Votre compte M-PSA (Numéro de téléphone)" /></div>
-                                <div className='contentForm'> <label>Perfect Money</label> <input type="text"
-                                    className="Prénom" placeholder='Votre compte Perfect Money' /></div>
-                                <div className='contentForm'> <label>Bitcoin</label> <input type="text"
-                                    className="Prénom" placeholder='Votre compte BitCoin ex: 1Hsy1WDazYWajUpxyFH1kGCsSPoDMDesWW' /></div>
-                                <hr />
-                                <div className='button'>
-                                    <button>Mettre à jour</button>
-                                </div>
-                            </div>
+                            <InfosPaiement />
                             : detailClic === 3 ?
-                                <div className='formSecurite'>
-                                    <div className='col1'>
-                                        <h4>Modifier le Mot de Passe</h4>
-                                        <input
-                                            type="password"
-                                            className="Prénom"
-                                            placeholder='Ancien mot de passe'
-                                        />
-                                        <input
-                                            type="password"
-                                            className="Prénom"
-                                            placeholder='Ancien mot de passe'
-                                        />
-                                        <input
-                                            type="password"
-                                            className="Prénom"
-                                            placeholder='Ancien mot de passe'
-                                        />
-                                        <div className='button'>
-                                            <button>Modifier le mot de passe</button>
-                                        </div>
-                                    </div>
-                                    <div className='col2'>
-                                        <h4>Modifier le Code Pin</h4>
-                                        <input
-                                            type="password"
-                                            className="Prénom"
-                                            placeholder='Ancien mot de passe'
-                                        />
-                                        <input
-                                            type="password"
-                                            className="Prénom"
-                                            placeholder='Ancien mot de passe'
-                                        />
-                                        <input
-                                            type="password"
-                                            className="Prénom"
-                                            placeholder='Ancien mot de passe'
-                                        />
-                                        <div className='button'>
-                                            <button>Mettre à jour</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <InfosPassWord />
                                 : ""
                 }
                 {
