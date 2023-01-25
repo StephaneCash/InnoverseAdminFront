@@ -127,6 +127,22 @@
     background-color: #13203b;
 }
 
+.compte textarea,
+.compte select {
+    flex: 1;
+    margin-right: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: .4rem;
+    border-radius: 5px;
+    padding: .65rem;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #3a4a69;
+    color: silver;
+    background-color: #13203b;
+}
+
 .compte .form .contentForm input::placeholder {
     color: rgb(121, 117, 117);
     background-color: #13203b;

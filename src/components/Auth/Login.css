@@ -46,11 +46,12 @@
 }
 
 .login .error {
-    color: red;
-    border: 1px solid red;
+    color: #e65252;
+    border: 1px solid #e65252;
     padding: 1rem;
     border-radius: 5px;
     margin-bottom: 1rem;
+    background-color: #fff;
 }
 
 .login .form-control {

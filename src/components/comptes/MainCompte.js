@@ -17,7 +17,6 @@ const MainCompte = () => {
     const [cardPassword, setCardPassword] = useState(1);
 
     const [file, setFile] = useState('');
-    const [pictureUser, setPictureUser] = useState('');
 
     const dispatch = useDispatch();
 
@@ -66,7 +65,7 @@ const MainCompte = () => {
                     <div className='userName'>
                         <span>{userReducer && userReducer.pseudo}</span>
                         <span>Cliquez sur l'image pour changer la photo de profil. Taille Max: 2MB</span>
-                        <button className='btnChangeImage' onClick={handleUploadPhotoUser}>Modifier l'image</button>
+                        <button className='btnChangeImage' onClick={handleUploadPhotoUser}>Modifier la photo de profil</button>
                     </div>
                 </div>
             </div>
@@ -81,16 +80,50 @@ const MainCompte = () => {
                     detailClic === 1 ?
                         <div className='form'>
                             <h4>Informations générales du Compte</h4>
-                            <div className='contentForm'> <label>Prénom</label> <input type="text" className="Prénom" placeholder='Prénom' /></div>
-                            <div className='contentForm'> <label>Nom de famille</label> <input type="text" placeholder="Nom de famille" /></div>
-                            <div className='contentForm'> <label>Adresse Email</label> <input type="text" className="Prénom" /></div>
-                            <div className='contentForm'> <label>Numéro de Téléphone</label> <input type="text" className="Prénom" /></div>
-                            <div className='contentForm'> <label>Pays</label> <input type="text" className="Prénom" /></div>
-                            <div className='contentForm'> <label>Cité/Ville</label> <input type="text" className="Prénom" /></div>
-                            <div className='contentForm'> <label>Adresse Complète</label> <input type="text" className="Prénom" /></div>
-                            <div className='contentForm'> <label>Code Postal/Zip Code</label> <input type="text" className="Prénom" /></div>
-                            <div className='contentForm'> <label>Anniversaire</label> <input type="date" className="Prénom" /></div>
-                            <div className='contentForm'> <label>Genre (Sexe)</label> <input type="text" className="Prénom" /></div>
+                            <div className='contentForm'>
+                                <label>Prénom</label>
+                                <input type="text" className="Prénom" placeholder='Prénom' />
+                            </div>
+                            <div className='contentForm'>
+                                <label>Nom de famille</label>
+                                <input type="text" placeholder="Nom de famille" />
+                            </div>
+                            <div className='contentForm'>
+                                <label>Adresse Email</label>
+                                <input type="text" className="Prénom" placeholder='Votre adresse email' />
+                            </div>
+                            <div className='contentForm'>
+                                <label>Numéro de Téléphone</label>
+                                <input type="text" className="Prénom" placeholder='Votre numéro de téléphone' />
+                            </div>
+                            <div className='contentForm'>
+                                <label>Pays</label>
+                                <input type="text" className="Prénom" placeholder='Votre pays' value={"RDC"} />
+                            </div>
+                            <div className='contentForm'>
+                                <label>Cité/Ville</label>
+                                <input type="text" className="Prénom" placeholder='Votre cité / ville' />
+                            </div>
+                            <div className='contentForm'>
+                                <label>Adresse Complète</label>
+                                <textarea type="text" className="Prénom" placeholder='Votre adresse complète' rows="4" />
+                            </div>
+                            <div className='contentForm'>
+                                <label>Code Postal/Zip Code</label>
+                                <input type="text" className="Prénom" placeholder='Code postal de votre pays' />
+                            </div>
+                            <div className='contentForm'>
+                                <label>Anniversaire</label>
+                                <input type="date" className="Prénom" />
+                            </div>
+                            <div className='contentForm'>
+                                <label>Genre (Sexe)</label>
+                                <select>
+                                    <option value="" key="">--Votre sexe--</option>
+                                    <option value="M">Homme</option>
+                                    <option value="F">Femme</option>
+                                </select>
+                            </div>
                             <hr />
                             <div className='button'>
                                 <button>Mettre à jour</button>
@@ -100,16 +133,14 @@ const MainCompte = () => {
                         detailClic === 2 ?
                             <div className='formPaiement'>
                                 <h4>Paramètre de Paiement</h4>
-                                <div className='contentForm'> <label>Prénom</label> <input type="text" className="Prénom" placeholder='Prénom' /></div>
-                                <div className='contentForm'> <label>Nom de famille</label> <input type="text" placeholder="Nom de famille" /></div>
-                                <div className='contentForm'> <label>Adresse Email</label> <input type="text" className="Prénom" /></div>
-                                <div className='contentForm'> <label>Numéro de Téléphone</label> <input type="text" className="Prénom" /></div>
-                                <div className='contentForm'> <label>Pays</label> <input type="text" className="Prénom" /></div>
-                                <div className='contentForm'> <label>Cité/Ville</label> <input type="text" className="Prénom" /></div>
-                                <div className='contentForm'> <label>Adresse Complète</label> <input type="text" className="Prénom" /></div>
-                                <div className='contentForm'> <label>Code Postal/Zip Code</label> <input type="text" className="Prénom" /></div>
-                                <div className='contentForm'> <label>Anniversaire</label> <input type="date" className="Prénom" /></div>
-                                <div className='contentForm'> <label>Genre (Sexe)</label> <input type="text" className="Prénom" /></div>
+                                <div className='contentForm'> <label>Airtel Money CD</label> <input type="text"
+                                    className="Prénom" placeholder='Votre compte Airtel (Numéro de téléphone)' /></div>
+                                <div className='contentForm'> <label>M-PESA CD</label> <input
+                                    type="text" placeholder="Votre compte M-PSA (Numéro de téléphone)" /></div>
+                                <div className='contentForm'> <label>Perfect Money</label> <input type="text"
+                                    className="Prénom" placeholder='Votre compte Perfect Money' /></div>
+                                <div className='contentForm'> <label>Bitcoin</label> <input type="text"
+                                    className="Prénom" placeholder='Votre compte BitCoin ex: 1Hsy1WDazYWajUpxyFH1kGCsSPoDMDesWW' /></div>
                                 <hr />
                                 <div className='button'>
                                     <button>Mettre à jour</button>
