@@ -2,6 +2,7 @@ import axios from "axios";
 import { baseUrl } from "../bases/baseUrl";
 
 export const GET_USER = "GET_USER";
+export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
 
 export const getUser = (uid) => {
     return (dispatch) => {
@@ -14,4 +15,17 @@ export const getUser = (uid) => {
                 console.log(err)
             });
     };
+};
+
+export const uploadPicture = (data) => {
+    return (dispatch) => {
+        return axios
+            .post(baseUrl + "/user/upload", data)
+            .then(resp => {
+                dispatch({ type: UPLOAD_PICTURE, payload: resp.data.data });
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 };

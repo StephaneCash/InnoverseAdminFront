@@ -24,12 +24,9 @@ const SignUp = () => {
     const handleRegister = (e) => {
         e.preventDefault();
 
-        const confirmPassError = document.querySelector('.password-confirm.error');
-
         if (password !== confirmPassword) {
-            confirmPassError.innerHTML = "Les deux mots de passe ne correspondent pas";
+            alert('Les deux mots de passe ne correspondent pas.');
         } else {
-            confirmPassError.innerHTML = '';
 
             axios.post(`${baseUrl}/users/`, { pseudo, email, password })
                 .then(resp => {
@@ -48,8 +45,8 @@ const SignUp = () => {
                     }
                 })
                 .catch(error => {
-                    console.log(error.response);
-                    setErr(error.response.data.errors ? error.response.data.errors : null)
+                    console.log(error);
+                   // setErr(error.response.data.errors ? error.response.data.errors : null)
                 });
         }
     };

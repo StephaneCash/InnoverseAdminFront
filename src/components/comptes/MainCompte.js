@@ -1,16 +1,44 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { FaUserShield, FaGoogle, FaSms, FaMailBulk } from "react-icons/fa";
 import { timestampParser } from "../../Utils"
 import avatar from "../../images/avatar.png";
+import { uploadPicture } from '../../actions/user.actions';
+import { useEffect } from 'react';
+import { getPicture } from '../../actions/userPicture.action';
 
 const MainCompte = () => {
 
     const userReducer = useSelector(state => state.userReducer);
     const compteUser = useSelector(state => state.compteUserReducer);
     const [detailClic, setDetailClic] = useState(1);
+    const picUser = useSelector(state => state.pictureUser);
 
     const [cardPassword, setCardPassword] = useState(1);
+
+    const [file, setFile] = useState('');
+    const [pictureUser, setPictureUser] = useState('');
+
+    const dispatch = useDispatch();
+
+    const handleUploadPhotoUser = () => {
+        console.log(file)
+        const dataUser = new FormData();
+        dataUser.append('userId', userReducer._id);
+        dataUser.append('image', file);
+
+        if (!file) {
+            alert('Veuillez chosir une photo svp !');
+        } else {
+            dispatch(uploadPicture(dataUser));
+        }
+    };
+
+    useEffect(() => {
+        dispatch(getPicture(userReducer._id));
+    }, [userReducer._id]);
+
+    console.log(picUser)
 
     return (
         <div className='mainCompte'>
@@ -24,10 +52,21 @@ const MainCompte = () => {
 
             <div className='profilInfo'>
                 <div className='photo'>
-                    <img src={avatar} alt="User" />
+                    <div class="personal-image">
+                        <label class="label">
+                            <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+                            <figure class="personal-figure">
+                                <img src={picUser ? "/" + picUser.url : avatar} class="personal-avatar" alt="avatar" />
+                                <figcaption class="personal-figcaption">
+                                    <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png" alt="avatar" />
+                                </figcaption>
+                            </figure>
+                        </label>
+                    </div>
                     <div className='userName'>
                         <span>{userReducer && userReducer.pseudo}</span>
                         <span>Cliquez sur l'image pour changer la photo de profil. Taille Max: 2MB</span>
+                        <button className='btnChangeImage' onClick={handleUploadPhotoUser}>Modifier l'image</button>
                     </div>
                 </div>
             </div>

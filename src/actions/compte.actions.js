@@ -8,7 +8,6 @@ export const getCompteUser = (uid) => {
         return axios
             .post(baseUrl + "/comptes/getCompteById/", {userId: uid})
             .then(resp => {
-                console.log(resp)
                 dispatch({ type: GET_COMPTE_USER, payload: resp.data });
             })
             .catch(err => {
