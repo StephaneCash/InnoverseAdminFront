@@ -40,6 +40,8 @@ function Navbar() {
 
     const userData = useSelector(state => state.userReducer);
 
+    const picUser = useSelector(state => state.pictureUser);
+
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -134,7 +136,7 @@ function Navbar() {
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar
                                     alt={userData && userData.pseudo && userData.pseudo.charAt(0)}
-                                    src="/static/images/avatar/2.jpg"
+                                    src={picUser && "/" + picUser.url}
                                 />
                             </IconButton>
                         </Tooltip>
