@@ -2,54 +2,75 @@ import React from 'react'
 import Navbar from '../navbar/Navbar';
 import Sidebar from '../sidebar/Sidebar';
 import './SoldeCompte.css';
-import epargne from "../../images/epargne.png";
-import courant from "../../images/courant.jpg"
+import { useState } from 'react';
+import { FaDollarSign, FaEuroSign } from "react-icons/fa"
 
 const SoldeCompte = () => {
+
+    const [chaneCard, setChangeCard] = useState(0);
+    const [changeDevise, setChangeDevise] = useState(0);
+    const [changeDevise2, setChangeDevise2] = useState(0);
+    const [changeDevise3, setChangeDevise3] = useState(0);
+
     return (
         <div className='mainSoldeCompte'>
             <Navbar />
             <div className='contentSoldeCompte'>
                 <Sidebar />
                 <div className='contentCompte'>
-                    <h4>Compte</h4>
+                    <h4>Configuration de votre compte</h4>
                     <div className='configSolde'>
-                        <p>Choisir le type de compte</p>
+                        <h6>Choisir le type de compte</h6>
                         <div className="cards">
-                            <div className="card">
-                                <header>
-                                    <h2>Compte courant</h2>
-                                </header>
-                                <div className='card-body'>
-                                    <img src={courant} alt="Hot air balloons" />
-
-                                    <div className="content">
-                                        Dans son acceptation la plus conventionnelle, le compte bancaire se
-                                        réfère le plus souvent au « compte courant » ou « compte de dépôt ».
-                                        Un compte courant fait référence à un compte dans lequel aucune opération n'est limitée pendant un jour ouvrable.
-                                        <br />
-                                        Ainsi, il permet de faire des transactions et opérations financières telles que le virement
-                                        du salaire et encaissement de paiements, prélèvement automatique des factures, réalisation de virements externes, les opérations bancaires par Internet, etc. Par ailleurs, un compte permet à la personne titulaire d’avoir un découvert, c’est à dire que l’on peut y retirer de
-                                        l’argent quand le compte n’est pas crédité.
-                                    </div>
-                                </div>
+                            <div className={chaneCard === 1 ? "card actived" : "card"} onClick={() => setChangeCard(1)}>
+                                <h4>Compte courant</h4>
                             </div>
 
-                            <div className="card">
-                                <header>
-                                    <h2>Compte épargne</h2>
-                                </header>
-                                <div className='card-body'>
-                                    <img src={epargne} alt="Hot air balloons" />
-                                    <div className="content">
-                                        Un compte épargne est un compte destiné aux personnes qui aiment épargner pour satisfaire à leurs besoins financiers futurs. Les comptes épargnes comportent généralement certains avantages, ce qui en fait un choix de placement idéal. Ils viennent également avec des fonctionnalités supplémentaires qui les rendent plus adaptés à certaines fins. Par exemple, pour les comptes épargnes, les banques offrent un taux d'intérêt légèrement supérieur au taux d'inflation.
-                                        <br /> Cela permet à votre argent de croître au fil du temps.
-                                    </div>
-                                </div>
-                                <footer>I have a footer!</footer>
+                            <div className={chaneCard === 2 ? "card actived" : "card"} onClick={() => setChangeCard(2)}>
+                                <h4>Compte épargne</h4>
                             </div>
                         </div>
                     </div>
+                    {
+                        chaneCard === 1 || chaneCard === 2 ?
+                            <div className='configSolde'>
+                                <h6>Choisir la (les) devise (s)</h6>
+                                <div className="devises">
+                                    <div className={changeDevise === 1 ? "devise actived" : "devise"}>
+                                        <p><FaEuroSign /> </p>
+                                        <button onClick={() => { setChangeDevise(1) }}>Choisir</button>
+                                        <button onClick={() => { setChangeDevise(0) }}>Annuler</button>
+                                    </div>
+
+                                    <div className={changeDevise2 === 1 ?
+                                        "devise actived" : "devise"}
+                                    >
+                                        <p><FaDollarSign /> </p>
+                                        <button onClick={() => { setChangeDevise2(1) }}>
+                                            Choisir
+                                        </button>
+                                        <button onClick={() => { setChangeDevise2(0) }}>
+                                            Annuler
+                                        </button>
+                                    </div>
+
+                                    <div className={changeDevise3 === 1 ?
+                                        "devise actived" : "devise"}
+                                    >
+                                        <p>CDF</p>
+                                        <button onClick={() => { setChangeDevise3(1) }}>
+                                            Choisir
+                                        </button>
+                                        <button onClick={() => { setChangeDevise3(0) }}>
+                                            Annuler
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                            : ""
+                    }
+
                 </div>
             </div>
         </div>

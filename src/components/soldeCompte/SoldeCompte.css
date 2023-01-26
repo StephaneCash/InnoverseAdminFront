@@ -26,18 +26,65 @@
 
 .configSolde .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 400px);
+    grid-template-columns: repeat(auto-fill, 500px);
     justify-content: center;
     gap: 1rem;
+    align-items: center;
+}
+
+.configSolde .devise.actived {
+    background-color: #13203b;
+    border: 1px solid #182239;
+}
+
+.configSolde .devises .devise {
+    border: 1px solid #1b2945;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 200px;
+}
+
+.configSolde h6{
+    font-size: 1.1rem;
+}
+
+.configSolde .devises .devise p {
+    font-size: 1.5rem;
+}
+
+.configSolde .devises .devise button {
+    cursor: pointer;
+    padding: .4rem;
+    margin-bottom: 2rem;
+}
+
+.configSolde .devises {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
 }
 
 .configSolde .card {
     border: 1px solid #304061;
     border-radius: 4px;
+    cursor: pointer;
+}
+
+.configSolde .card.actived {
+    background-color: #13203b;
+    border: 1px solid #182239;
 }
 
 .contentCompte h4 {
     font-size: 2rem;
+}
+
+.contentCompte .card h4 {
+    font-size: 1.2rem;
 }
 
 .configSolde .card .card-body {}

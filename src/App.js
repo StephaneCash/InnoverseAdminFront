@@ -7,7 +7,8 @@ import axios from 'axios';
 import { baseUrl } from './bases/baseUrl';
 import { useDispatch } from 'react-redux';
 import { getUser } from './actions/user.actions';
-import {getCompteUser} from "./actions/compte.actions"
+import { getCompteUser } from "./actions/compte.actions"
+import { getPicture } from './actions/userPicture.action';
 
 function App() {
   const [uid, setUid] = useState(null);
@@ -29,6 +30,7 @@ function App() {
     if (uid) {
       dispatch(getUser(uid));
       dispatch(getCompteUser(uid));
+      dispatch(getPicture(uid));
     }
   }, [uid])
 

@@ -4,8 +4,6 @@ import { FaUserShield, FaGoogle, FaSms, FaMailBulk } from "react-icons/fa";
 import { timestampParser } from "../../Utils"
 import avatar from "../../images/avatar.png";
 import { uploadPicture } from '../../actions/user.actions';
-import { useEffect } from 'react';
-import { getPicture } from '../../actions/userPicture.action';
 import InfosProfil from './InfosProfil';
 import InfosPaiement from './InfosPaiement';
 import InfosPassWord from './InfosPassWord';
@@ -24,7 +22,6 @@ const MainCompte = () => {
     const dispatch = useDispatch();
 
     const handleUploadPhotoUser = () => {
-        console.log(file)
         const dataUser = new FormData();
         dataUser.append('userId', userReducer._id);
         dataUser.append('image', file);
@@ -35,10 +32,6 @@ const MainCompte = () => {
             dispatch(uploadPicture(dataUser));
         }
     };
-
-    useEffect(() => {
-        dispatch(getPicture(userReducer._id));
-    }, [userReducer._id]);
 
     return (
         <div className='mainCompte'>
@@ -52,12 +45,12 @@ const MainCompte = () => {
 
             <div className='profilInfo'>
                 <div className='photo'>
-                    <div class="personal-image">
-                        <label class="label">
+                    <div className="personal-image">
+                        <label className="label">
                             <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-                            <figure class="personal-figure">
-                                <img src={picUser ? "/" + picUser.url : avatar} class="personal-avatar" alt="avatar" />
-                                <figcaption class="personal-figcaption">
+                            <figure className="personal-figure">
+                                <img src={picUser ? "/" + picUser.url : avatar} className="personal-avatar" alt="avatar" />
+                                <figcaption className="personal-figcaption">
                                     <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png" alt="avatar" />
                                 </figcaption>
                             </figure>
