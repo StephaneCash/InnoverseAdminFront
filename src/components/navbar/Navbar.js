@@ -14,6 +14,10 @@ import "./Navbar.css"
 import logo from "../../images/logo.png"
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import cookie from "js-cookie";
+import axios from 'axios';
+import { baseUrl } from '../../bases/baseUrl';
+import { FaSignOutAlt, FaUserCircle, FaUserCog, FaHome } from "react-icons/fa";
 
 
 const pages = ['', '', ''];
@@ -41,6 +45,23 @@ function Navbar() {
     const userData = useSelector(state => state.userReducer);
 
     const picUser = useSelector(state => state.pictureUser);
+
+    const removeCookie = (key) => {
+        if (window !== undefined) {
+            cookie.remove(key, { expires: 1 });
+        }
+    };
+
+    const handleLogout = async () => {
+        await axios.get(baseUrl + "/users/logout")
+            .then(() => {
+                removeCookie("jwt");
+                window.location = "/";
+            })
+            .catch(err => {
+                console.log(err.response);
+            })
+    };
 
     return (
         <AppBar position="static">
@@ -93,7 +114,7 @@ function Navbar() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page,i) => (
+                            {pages.map((page, i) => (
                                 <MenuItem key={i} onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">{page}</Typography>
                                 </MenuItem>
@@ -161,13 +182,30 @@ function Navbar() {
                                     <Typography textAlign="center">
                                         {
                                             i === 0 ?
-                                                <Link to="/dashboard">{setting}</Link> :
+                                                <Link
+                                                    to="/dashboard"
+                                                    style={{ color: "silver", display: "flex", gap: ".5rem", alignItems: "center" }}
+                                                >
+                                                    <FaHome /> {setting}
+                                                </Link> :
                                                 i === 1 ?
-                                                    <Link to="/user/profil">{setting}</Link>
+                                                    <Link
+                                                        style={{ color: "silver", display: "flex", gap: ".5rem", alignItems: "center" }}
+                                                        to="/user/profil">
+                                                        <FaUserCog /> {setting}
+                                                    </Link>
                                                     : i === 2 ?
-                                                        <Link to="/user/compte">{setting}</Link>
+                                                        <Link
+                                                            to="/user/compte"
+                                                            style={{ color: "silver", display: "flex", gap: ".5rem", alignItems: "center" }}
+                                                        > <FaUserCircle /> {setting}
+                                                        </Link>
                                                         : i === 3 &&
-                                                        <Link to="/">{setting}</Link>
+                                                        <div
+                                                            style={{ color: "silver", display: "flex", gap: ".5rem", alignItems: "center" }}
+                                                            onClick={handleLogout}>
+                                                            <FaSignOutAlt /> {setting}
+                                                        </div>
                                         }
                                     </Typography>
                                 </MenuItem>

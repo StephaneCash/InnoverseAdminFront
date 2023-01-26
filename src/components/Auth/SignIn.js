@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "./Login.css";
 import logo from "../../images/logo.png";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { baseUrl } from '../../bases/baseUrl';
 
@@ -11,7 +11,6 @@ const SignIn = () => {
     const [password, setPassword] = useState('');
     const [err, setErr] = useState('');
 
-    const navigate = useNavigate();
     const [btnClic, setBtnClic] = useState(false);
 
     const maxAge = 3 * 24 * 60 * 60 * 1000;
@@ -24,7 +23,7 @@ const SignIn = () => {
                 localStorage.setItem('token', resp.data.token);
                 document.cookie = `jwt=${resp.data.token}; max-age=${maxAge}`;
                 setBtnClic(false);
-                navigate("/dashboard");
+                window.location = "/dashboard"
             })
             .catch(err => {
                 console.log(err.response.data.errors);

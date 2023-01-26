@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { handleSaveInfos } from '../../actions/user.actions';
-import { getPicture } from '../../actions/userPicture.action';
 
 const InfosProfil = () => {
 
@@ -28,7 +27,7 @@ const InfosProfil = () => {
         dataUser.dateAniv = dateAniv;
         dataUser.sexe = sexe;
         dataUser.userId = userReducer._id;
-        //console.log(dataUser)
+
         dispatch(handleSaveInfos(dataUser))
     };
 

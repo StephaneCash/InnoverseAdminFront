@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { getUser } from './actions/user.actions';
 import { getCompteUser } from "./actions/compte.actions"
 import { getPicture } from './actions/userPicture.action';
+import { getUserInfos } from './actions/userInfos.action';
 
 function App() {
   const [uid, setUid] = useState(null);
@@ -28,14 +29,12 @@ function App() {
     verifUserConnected();
 
     if (uid) {
-      dispatch(getUser(uid));
       dispatch(getCompteUser(uid));
       dispatch(getPicture(uid));
+      dispatch(getUserInfos(uid));
+      dispatch(getUser(uid));
     }
-  }, [uid])
-
-
-  console.log(uid)
+  }, [uid]);
 
   return (
     <UidContext.Provider value={uid}>

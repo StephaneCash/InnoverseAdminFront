@@ -39,6 +39,7 @@ const SignUp = () => {
                         if (resp.data.errors.pseudo === "" && resp.data.errors.email === ""
                             && resp.data.errors.password === "") {
                             setFormSubmit(true);
+                            navigate('/');
                         }
                     } else {
                         navigate('/');
@@ -46,7 +47,7 @@ const SignUp = () => {
                 })
                 .catch(error => {
                     console.log(error);
-                   // setErr(error.response.data.errors ? error.response.data.errors : null)
+                    // setErr(error.response.data.errors ? error.response.data.errors : null)
                 });
         }
     };
