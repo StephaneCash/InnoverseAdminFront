@@ -17,7 +17,7 @@ import cookie from "js-cookie";
 import axios from 'axios';
 import { baseUrl } from '../../bases/baseUrl';
 import { FaSignOutAlt, FaUserCircle, FaUserCog, FaHome } from "react-icons/fa";
-
+import { UserContext } from "../../AppContext";
 
 const pages = ['', '', ''];
 const settings = ['Accueil', 'Profil', 'Compte', 'Déconnexion'];
@@ -25,6 +25,8 @@ const settings = ['Accueil', 'Profil', 'Compte', 'Déconnexion'];
 function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+    const { photoUser } = React.useContext(UserContext);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -152,7 +154,7 @@ function Navbar() {
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar
                                     alt="{userData && userData.pseudo && userData.pseudo.charAt(0)}"
-                                    src=""
+                                    src={photoUser && "/" + photoUser.url}
                                 />
                             </IconButton>
                         </Tooltip>
