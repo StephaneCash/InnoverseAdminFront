@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "./Sidebar.css";
 import { SidebarData } from "../../data/Data";
 import { UilSignOutAlt, UilBars } from "@iconscout/react-unicons";
@@ -7,8 +7,11 @@ import cookie from "js-cookie";
 import { baseUrl } from '../../bases/baseUrl';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from "../../AppContext";
 
 const Sidebar = () => {
+
+  const { userData } = useContext(UserContext);
 
   const [selected, setSelected] = useState(0);
   const [show, setShow] = useState(true);
@@ -104,7 +107,7 @@ const Sidebar = () => {
           </div>
           <div className='menuItem'>
             <Link to="/user/compte">
-              Bonjour 
+              Bonjour {userData && userData.pseudo}
             </Link>
           </div>
         </div>

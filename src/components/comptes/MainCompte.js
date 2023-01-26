@@ -5,7 +5,7 @@ import avatar from "../../images/avatar.png";
 import InfosProfil from './InfosProfil';
 import InfosPaiement from './InfosPaiement';
 import InfosPassWord from './InfosPassWord';
-import { UserContext } from "../../AppContext"
+import { UserContext } from "../../AppContext";
 import axios from 'axios';
 import { baseUrl } from '../../bases/baseUrl';
 
