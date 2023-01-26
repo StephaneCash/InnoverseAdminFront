@@ -12,7 +12,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import "./Navbar.css"
 import logo from "../../images/logo.png"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import cookie from "js-cookie";
 import axios from 'axios';
 import { baseUrl } from '../../bases/baseUrl';
@@ -23,8 +23,11 @@ const pages = ['', '', ''];
 const settings = ['Accueil', 'Profil', 'Compte', 'Déconnexion'];
 
 function Navbar() {
+
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+    const navigate = useNavigate();
 
     const { photoUser } = React.useContext(UserContext);
 
@@ -53,7 +56,7 @@ function Navbar() {
         await axios.get(baseUrl + "/users/logout")
             .then(() => {
                 removeCookie("jwt");
-                window.location = "/";
+                navigate('/');
             })
             .catch(err => {
                 console.log(err.response);
