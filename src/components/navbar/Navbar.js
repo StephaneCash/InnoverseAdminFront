@@ -12,7 +12,6 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import "./Navbar.css"
 import logo from "../../images/logo.png"
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import cookie from "js-cookie";
 import axios from 'axios';
@@ -41,10 +40,6 @@ function Navbar() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-
-    const userData = useSelector(state => state.userReducer);
-
-    const picUser = useSelector(state => state.pictureUser);
 
     const removeCookie = (key) => {
         if (window !== undefined) {
@@ -156,8 +151,8 @@ function Navbar() {
                         <Tooltip title="Ouvrir les paramètres">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar
-                                    alt={userData && userData.pseudo && userData.pseudo.charAt(0)}
-                                    src={picUser && "/" + picUser.url}
+                                    alt="{userData && userData.pseudo && userData.pseudo.charAt(0)}"
+                                    src=""
                                 />
                             </IconButton>
                         </Tooltip>

@@ -3,7 +3,6 @@ import "./Sidebar.css";
 import { SidebarData } from "../../data/Data";
 import { UilSignOutAlt, UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion"
-import { useSelector } from 'react-redux';
 import cookie from "js-cookie";
 import { baseUrl } from '../../bases/baseUrl';
 import axios from 'axios';
@@ -14,8 +13,6 @@ const Sidebar = () => {
   const [selected, setSelected] = useState(0);
   const [show, setShow] = useState(true);
   const navigate = useNavigate();
-
-  const userData = useSelector((state) => state.userReducer);
 
   const sidebarVariants = {
     true: {
@@ -107,7 +104,7 @@ const Sidebar = () => {
           </div>
           <div className='menuItem'>
             <Link to="/user/compte">
-              Bonjour {userData && userData.pseudo}
+              Bonjour 
             </Link>
           </div>
         </div>

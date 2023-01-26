@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { handleSaveInfos } from '../../actions/user.actions';
+import { useEffect } from 'react';
 
 const InfosProfil = () => {
 
@@ -13,9 +12,6 @@ const InfosProfil = () => {
     const [dateAniv, setDateAniv] = useState("");
     const [sexe, setSexe] = useState('');
 
-    const dispatch = useDispatch();
-    const userReducer = useSelector(state => state.userReducer);
-
     const handleSaveInfosSupplementairesUser = () => {
         let dataUser = {};
         dataUser.prenom = prenom;
@@ -26,10 +22,23 @@ const InfosProfil = () => {
         dataUser.codePostal = codePostal;
         dataUser.dateAniv = dateAniv;
         dataUser.sexe = sexe;
-        dataUser.userId = userReducer._id;
+        dataUser.userId = "userReducer._id;"
 
-        dispatch(handleSaveInfos(dataUser))
+       
     };
+
+  /*  useEffect(() => {
+        if (infoUser && infoUser[0]) {
+            setPrenom(infoUser && infoUser[0] && infoUser[0].prenom);
+            setNomFamille(infoUser && infoUser[0] && infoUser[0].nomFamille);
+            setNumTel(infoUser && infoUser[0] && infoUser[0].numTel);
+            setVille(infoUser && infoUser[0] && infoUser[0].ville);
+            setAdresse(infoUser && infoUser[0] && infoUser[0].adresse);
+            setCodePostal(infoUser && infoUser[0] && infoUser[0].codePostal);
+            setDateAniv(infoUser && infoUser[0] && infoUser[0].dateAniv);
+            setSexe(infoUser && infoUser[0] && infoUser[0].sexe);
+        }
+    }, [infoUser]);*/
 
     return (
         <div className='form'>
@@ -105,8 +114,16 @@ const InfosProfil = () => {
                 <label>Genre (Sexe)</label>
                 <select onChange={(e) => setSexe(e.target.value)}>
                     <option value="" key="">--Votre sexe--</option>
-                    <option value="M">Homme</option>
-                    <option value="F">Femme</option>
+                    <option
+                        value={"M"}
+                    >
+                        Homme
+                    </option>
+                    <option
+                        value={"F"}
+                    >
+                        Femme
+                    </option>
                 </select>
             </div>
             <hr />
