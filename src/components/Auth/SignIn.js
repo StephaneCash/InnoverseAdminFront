@@ -4,7 +4,7 @@ import logo from "../../images/logo.png";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { baseUrl } from '../../bases/baseUrl';
-
+import { ToastContainer, toast } from 'react-toastify';
 
 const SignIn = () => {
 
@@ -21,10 +21,14 @@ const SignIn = () => {
         setBtnClic(true);
         axios.post(`${baseUrl}/users/login`, { email, password })
             .then(resp => {
-                localStorage.setItem('token', resp.data.token);
-                document.cookie = `jwt=${resp.data.token}; max-age=${maxAge}`;
+                console.log(resp);
                 setBtnClic(false);
-                window.location = "/dashboard";
+                if (resp.status && resp.data && resp.data.token && resp.data.token) {
+                    toast.success("Vous êtes connecté avec succès");
+                    document.cookie = `jwt=${resp.data.token}; max-age=${maxAge}`;
+                    setBtnClic(false);
+                    window.location = "/dashboard";
+                }
             })
             .catch(err => {
                 console.log(err.response.data.errors);
@@ -34,55 +38,58 @@ const SignIn = () => {
     }
 
     return (
-        <div className='app'>
-            <div className='login'>
-                <div className='form'>
-                    <div className='logoInnoverce'>
-                        <img src={logo} alt='Logo' />
-                        <span>Innoverce</span>
-                    </div>
-                    <h3>Se connecter</h3>
-                    {
-                        err && err ? (
-                            <div className='error'>
-                                {err}
-                            </div>
-                        ) : ""
-                    }
-                    <label>Entrer votre adresse email</label>
-                    <input
-                        type="email"
-                        className="form-control"
-                        placeholder='Votre adresse email'
-                        onChange={(e) => setEmail(e.target.value)}
-                        value={email}
-                    />
-                    <label>Créer un mot de passe</label>
-                    <input
-                        type="password"
-                        className="form-control"
-                        placeholder='Créer un mot de passe'
-                        onChange={(e) => setPassword(e.target.value)} value={password}
-                    />
-                    <br />
-                    <button className='button' onClick={handleLogin}>
+        <>
+            <div className='app'>
+                <div className='login'>
+                    <div className='form'>
+                        <div className='logoInnoverce'>
+                            <img src={logo} alt='Logo' />
+                            <span>Innoverce</span>
+                        </div>
+                        <h3>Se connecter</h3>
                         {
-                            btnClic ? (
-                                <>
-                                    Connexion...<i className='fa fa-spinner fa-pulse'></i>
-                                </>
-                            ) :
-                                "Se connecter"
+                            err && err ? (
+                                <div className='error'>
+                                    {err}
+                                </div>
+                            ) : ""
                         }
-                    </button>
-                    <p>
-                        Vous n'avez pas de compte ?
-                        <br /><br />
-                        <Link to="/inscription">Créer un compte ici</Link>
-                    </p>
+                        <label>Entrer votre adresse email</label>
+                        <input
+                            type="email"
+                            className="form-control"
+                            placeholder='Votre adresse email'
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                        />
+                        <label>Créer un mot de passe</label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            placeholder='Créer un mot de passe'
+                            onChange={(e) => setPassword(e.target.value)} value={password}
+                        />
+                        <br />
+                        <button className='button' onClick={handleLogin}>
+                            {
+                                btnClic ? (
+                                    <>
+                                        Connexion...<i className='fa fa-spinner fa-pulse'></i>
+                                    </>
+                                ) :
+                                    "Se connecter"
+                            }
+                        </button>
+                        <p>
+                            Vous n'avez pas de compte ?
+                            <br /><br />
+                            <Link to="/inscription">Créer un compte ici</Link>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
+            <ToastContainer />
+        </>
     )
 }
 
