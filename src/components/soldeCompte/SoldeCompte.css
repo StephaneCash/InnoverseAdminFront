@@ -103,3 +103,16 @@
     padding: 1rem;
     text-align: justify;
 }
+
+.buttonValid button{
+    float: right;
+    margin-right: 5rem;
+    width: 100px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-top: 5rem;
+    background-color: #304061;
+    border: 1px solid #0e172a;
+    color: aliceblue;
+    border-radius: 4px;
+}
