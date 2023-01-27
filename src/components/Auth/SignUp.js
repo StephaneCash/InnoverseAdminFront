@@ -59,11 +59,9 @@ const SignUp = () => {
                 <div className='form'>
                     <div className='logoInnoverce'>
                         <img src={logo} alt='Logo' />
-                        <span>Innoverce</span>
                     </div>
                     <h3>S'inscrire</h3>
 
-                    <label>Entrer votre nom</label>
                     <input
                         type="text"
                         className="form-control"
@@ -74,7 +72,6 @@ const SignUp = () => {
                         <div className='pseudo error'>{errPseudo ? errPseudo : ""}</div>
                     }
 
-                    <label>Entrer votre adresse email</label>
                     <input
                         type="email"
                         className="form-control"
@@ -87,7 +84,6 @@ const SignUp = () => {
                         <div className='email error'>{emailErr ? emailErr : ""}</div>
                     }
 
-                    <label>Créer un mot de passe</label>
                     <input
                         type="password"
                         className="form-control"
@@ -99,7 +95,6 @@ const SignUp = () => {
                         <div className='password error'>{passErr ? passErr : ""}</div>
                     }
 
-                    <label>Répeter le mot de passe</label>
                     <input
                         type="password" className="form-control"
                         placeholder='Répeter le mot de passe' value={confirmPassword}

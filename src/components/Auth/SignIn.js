@@ -5,36 +5,47 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { baseUrl } from '../../bases/baseUrl';
 import { ToastContainer, toast } from 'react-toastify';
+import ReCAPTCHA from "react-google-recaptcha";
 
 const SignIn = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState('');
     const [err, setErr] = useState('');
+    const [tokenGoogle, setTokenGoogle] = useState("");
 
     const [btnClic, setBtnClic] = useState(false);
 
     const maxAge = 3 * 24 * 60 * 60 * 1000;
 
+    const onChange = (e) => {
+        setTokenGoogle(e);
+    };
+
     const handleLogin = (e) => {
         e.preventDefault();
         setBtnClic(true);
-        axios.post(`${baseUrl}/users/login`, { email, password })
-            .then(resp => {
-                console.log(resp);
-                setBtnClic(false);
-                if (resp.status && resp.data && resp.data.token && resp.data.token) {
-                    toast.success("Vous êtes connecté avec succès");
-                    document.cookie = `jwt=${resp.data.token}; max-age=${maxAge}`;
+        if (tokenGoogle) {
+            axios.post(`${baseUrl}/users/login`, { email, password })
+                .then(resp => {
+                    console.log(resp);
                     setBtnClic(false);
-                    window.location = "/dashboard";
-                }
-            })
-            .catch(err => {
-                console.log(err.response.data.errors);
-                setBtnClic(false);
-                setErr(err.response.data.errors ? err.response.data.errors : null);
-            });
+                    if (resp.status && resp.data && resp.data.token && resp.data.token) {
+                        toast.success("Vous êtes connecté avec succès");
+                        document.cookie = `jwt=${resp.data.token}; max-age=${maxAge}`;
+                        setBtnClic(false);
+                        window.location = "/dashboard";
+                    }
+                })
+                .catch(err => {
+                    console.log(err.response.data.errors);
+                    setBtnClic(false);
+                    setErr(err.response.data.errors ? err.response.data.errors : null);
+                });
+        } else {
+            toast.error('Veuillez cochez la case du reCAPTCHA');
+            setBtnClic(false);
+        }
     };
 
     return (
@@ -42,49 +53,55 @@ const SignIn = () => {
             <div className='app'>
                 <div className='login'>
                     <div className='form'>
-                        <div className='logoInnoverce'>
-                            <img src={logo} alt='Logo' />
-                            <span>Innoverce</span>
-                        </div>
-                        <h3>Se connecter</h3>
-                        {
-                            err && err ? (
-                                <div className='error'>
-                                    {err}
-                                </div>
-                            ) : ""
-                        }
-                        <label>Entrer votre adresse email</label>
-                        <input
-                            type="email"
-                            className="form-control"
-                            placeholder='Votre adresse email'
-                            onChange={(e) => setEmail(e.target.value)}
-                            value={email}
-                        />
-                        <label>Créer un mot de passe</label>
-                        <input
-                            type="password"
-                            className="form-control"
-                            placeholder='Créer un mot de passe'
-                            onChange={(e) => setPassword(e.target.value)} value={password}
-                        />
-                        <br />
-                        <button className='button' onClick={handleLogin}>
+                        <div className='content'>
+                            <div className='logoInnoverce'>
+                                <img src={logo} alt='Logo' />
+                            </div>
+                            <h3>Se connecter</h3>
                             {
-                                btnClic ? (
-                                    <>
-                                        Connexion...<i className='fa fa-spinner fa-pulse'></i>
-                                    </>
-                                ) :
-                                    "Se connecter"
+                                err && err ? (
+                                    <div className='error'>
+                                        {err}
+                                    </div>
+                                ) : ""
                             }
-                        </button>
-                        <p>
-                            Vous n'avez pas de compte ?
-                            <br /><br />
-                            <Link to="/inscription">Créer un compte ici</Link>
-                        </p>
+                            <input
+                                type="email"
+                                className="form-control"
+                                placeholder='Votre adresse email'
+                                onChange={(e) => setEmail(e.target.value)}
+                                value={email}
+                            />
+                            <input
+                                type="password"
+                                className="form-control"
+                                placeholder='Créer un mot de passe'
+                                onChange={(e) => setPassword(e.target.value)} value={password}
+                            />
+                            <br />
+                            <div className='content'>
+                                <ReCAPTCHA
+                                    sitekey="6LfaKTAkAAAAAFTPzhWyXNNBdEu32lulv8lYi7Q6"
+                                    onChange={onChange}
+                                />
+                            </div>
+
+                            <button className='button' onClick={handleLogin}>
+                                {
+                                    btnClic ? (
+                                        <>
+                                            Connexion...<i className='fa fa-spinner fa-pulse'></i>
+                                        </>
+                                    ) :
+                                        "Se connecter"
+                                }
+                            </button>
+                            <p>
+                                Vous n'avez pas de compte ?
+                                <br /><br />
+                                <Link to="/inscription">Créer un compte ici</Link>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
