@@ -20,3 +20,23 @@
     text-decoration: none !important;
     color: silver !important;
 }
+
+.depot_retrait {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.depot_retrait button {
+    padding: .5rem 1.6rem;
+    cursor: pointer;
+    background-color: #1f3457;
+    border: 1px solid #0a182e;
+    color: aliceblue;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.depot_retrait .retrait {
+    margin-right: 2rem;
+}

@@ -152,6 +152,11 @@ function Navbar() {
                         ))}
                     </Box>
 
+                    <div className='depot_retrait'>
+                        <button>Dépôt</button>
+                        <button className='retrait'>Retrait</button>
+                    </div>
+
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Ouvrir les paramètres">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

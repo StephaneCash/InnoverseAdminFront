@@ -12,6 +12,7 @@ const AppContext = () => {
     const [userData, setUserData] = useState(null);
     const [photoUser, setPhotoUser] = useState(null);
     const [infosUser, setInfosUser] = useState(null);
+    const [InfosPaiement, setOnfosPaiement] = useState(null);
 
     const verifUserConnected = async () => {
         await axios.get(`${baseUrl}/jwtid`, { withCredentials: true })
@@ -65,6 +66,18 @@ const AppContext = () => {
             });
     };
 
+    const getInfosPaiement = () => {
+        axios
+            .patch(baseUrl + "/compte/modes-paiement", { userId: uid })
+            .then(resp => {
+                setOnfosPaiement(resp.data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
+
+
     useEffect(() => {
         verifUserConnected();
         if (uid) {
@@ -72,11 +85,12 @@ const AppContext = () => {
             getCompteUser();
             getPictureUser();
             getInfosUser();
-        }
+            getInfosPaiement();
+        };
     }, [uid]);
 
     return (
-        <UserContext.Provider value={{ compteUser, userData, photoUser, infosUser, setInfosUser }}>
+        <UserContext.Provider value={{ compteUser, userData, photoUser, infosUser, setInfosUser, InfosPaiement }}>
             <App />
         </UserContext.Provider>
     )
