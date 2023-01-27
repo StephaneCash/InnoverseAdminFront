@@ -34,8 +34,8 @@ const SignIn = () => {
                 console.log(err.response.data.errors);
                 setBtnClic(false);
                 setErr(err.response.data.errors ? err.response.data.errors : null);
-            })
-    }
+            });
+    };
 
     return (
         <>
