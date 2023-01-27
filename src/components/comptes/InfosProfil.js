@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useEffect } from 'react';
+import { addInfosSupplementairesUser } from "../../api/InfosUserAPI"
+import { UserContext } from "../../AppContext";
+
 
 const InfosProfil = () => {
+
+    const { userData, infosUser } = useContext(UserContext);
 
     const [prenom, setPrenom] = useState('');
     const [nomFamille, setNomFamille] = useState('');
@@ -22,23 +27,24 @@ const InfosProfil = () => {
         dataUser.codePostal = codePostal;
         dataUser.dateAniv = dateAniv;
         dataUser.sexe = sexe;
-        dataUser.userId = "userReducer._id;"
+        dataUser.userId = userData._id;
+        dataUser.id = infosUser && infosUser[0] && infosUser[0]._id
 
-       
+        addInfosSupplementairesUser(dataUser);
     };
 
-  /*  useEffect(() => {
-        if (infoUser && infoUser[0]) {
-            setPrenom(infoUser && infoUser[0] && infoUser[0].prenom);
-            setNomFamille(infoUser && infoUser[0] && infoUser[0].nomFamille);
-            setNumTel(infoUser && infoUser[0] && infoUser[0].numTel);
-            setVille(infoUser && infoUser[0] && infoUser[0].ville);
-            setAdresse(infoUser && infoUser[0] && infoUser[0].adresse);
-            setCodePostal(infoUser && infoUser[0] && infoUser[0].codePostal);
-            setDateAniv(infoUser && infoUser[0] && infoUser[0].dateAniv);
-            setSexe(infoUser && infoUser[0] && infoUser[0].sexe);
+    useEffect(() => {
+        if (infosUser && infosUser[0]) {
+            setPrenom(infosUser && infosUser[0] && infosUser[0].prenom);
+            setNomFamille(infosUser && infosUser[0] && infosUser[0].nomFamille);
+            setNumTel(infosUser && infosUser[0] && infosUser[0].numTel);
+            setVille(infosUser && infosUser[0] && infosUser[0].ville);
+            setAdresse(infosUser && infosUser[0] && infosUser[0].adresse);
+            setCodePostal(infosUser && infosUser[0] && infosUser[0].codePostal);
+            setDateAniv(infosUser && infosUser[0] && infosUser[0].dateAniv);
+            setSexe(infosUser && infosUser[0] && infosUser[0].sexe);
         }
-    }, [infoUser]);*/
+    }, [infosUser]);
 
     return (
         <div className='form'>

@@ -11,7 +11,9 @@ import { baseUrl } from '../../bases/baseUrl';
 
 const MainCompte = () => {
 
-    const { compteUser, userData, photoUser } = useContext(UserContext);
+    const { compteUser, userData, photoUser, infosUser } = useContext(UserContext);
+
+    console.log(infosUser)
 
     const [detailClic, setDetailClic] = useState(1);
     const [cardPassword, setCardPassword] = useState(1);

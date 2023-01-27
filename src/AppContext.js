@@ -54,17 +54,29 @@ const AppContext = () => {
             });
     };
 
+    const getInfosUser = () => {
+        axios
+            .patch(baseUrl + "/user/infos", { userId: uid })
+            .then(resp => {
+                setInfosUser(resp.data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
+
     useEffect(() => {
         verifUserConnected();
         if (uid) {
             getUser();
             getCompteUser();
             getPictureUser();
+            getInfosUser();
         }
     }, [uid]);
 
     return (
-        <UserContext.Provider value={{ compteUser, userData, photoUser }}>
+        <UserContext.Provider value={{ compteUser, userData, photoUser, infosUser, setInfosUser }}>
             <App />
         </UserContext.Provider>
     )
