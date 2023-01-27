@@ -19,13 +19,32 @@ const SoldeCompte = () => {
             toast.error('Veuillez chosir un type de compte !')
         } else {
             if (chaneCard === 1) {
-                data.type = 'Compte courant'
+                data.type = 'Compte courant';
+                if (changeDevise === 1) {
+                    data.devise = ["Euro"]
+                }
+                if (changeDevise2 === 1) {
+                    data.devise.push("Dollar")
+                }
+                if (changeDevise3 === 1) {
+                    data.devise.push("CDF")
+                }
             }
             if (chaneCard === 2) {
-                data.type = 'Compte épargne'
+                data.type = 'Compte épargne';
+                if (changeDevise === 1) {
+                    data.devise = ["Euro"]
+                }
+                if (changeDevise2 === 1) {
+                    data.devise.push("Dollar")
+                }
+                if (changeDevise3 === 1) {
+                    data.devise.push("CDF")
+                }
             }
         }
-    }
+        console.log(data)
+    };
 
     return (
         <>
