@@ -12,8 +12,6 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const [err, setErr] = useState('');
-
     const navigate = useNavigate();
 
     const [errPseudo, setErrPseudo] = useState('');
