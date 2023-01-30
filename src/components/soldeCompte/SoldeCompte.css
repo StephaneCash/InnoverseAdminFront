@@ -44,7 +44,7 @@
     width: 200px;
 }
 
-.configSolde h6{
+.configSolde h6 {
     font-size: 1.1rem;
 }
 
@@ -87,8 +87,6 @@
     font-size: 1.2rem;
 }
 
-.configSolde .card .card-body {}
-
 .configSolde .card img {
     width: 100%;
     height: 50vh;
@@ -104,7 +102,7 @@
     text-align: justify;
 }
 
-.buttonValid button{
+.buttonValid button {
     float: right;
     margin-right: 5rem;
     width: 100px;
@@ -115,4 +113,43 @@
     border: 1px solid #0e172a;
     color: aliceblue;
     border-radius: 4px;
+}
+
+.grilleEpargne {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 500px);
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.grilleEpargne .card {
+    border: 1px solid #182239;
+    padding: 1rem;
+}
+
+.grilleEpargne .card.actived {
+    background-color: #13203b;
+}
+
+.grilleEpargne .card .list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+    text-align: left;
+}
+
+.grilleEpargne .card .list div {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grilleEpargne .card button {
+    cursor: pointer;
+    padding: .4rem;
+    margin-bottom: 2rem;
 }
