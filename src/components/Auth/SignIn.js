@@ -28,11 +28,10 @@ const SignIn = () => {
         if (tokenGoogle) {
             axios.post(`${baseUrl}/users/login`, { email, password })
                 .then(resp => {
-                    console.log(resp);
                     setBtnClic(false);
+                    document.cookie = `jwt=${resp.data.token}; max-age=${maxAge}`;
                     if (resp.status && resp.data && resp.data.token && resp.data.token) {
                         toast.success("Vous êtes connecté avec succès");
-                        document.cookie = `jwt=${resp.data.token}; max-age=${maxAge}`;
                         setBtnClic(false);
                         window.location = "/dashboard";
                     }
