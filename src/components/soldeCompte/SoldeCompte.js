@@ -8,6 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { UserContext } from '../../AppContext';
 import axios from 'axios';
 import { baseUrl } from '../../bases/baseUrl';
+import Compte from './Compte';
 
 const SoldeCompte = () => {
 
@@ -75,9 +76,9 @@ const SoldeCompte = () => {
         })
             .then(resp => {
                 toast.success('Compte configuré avec succès.');
-                setTimeout(()=>{
+                setTimeout(() => {
                     window.location.reload('');
-                }, [3000])
+                }, [6000]);
             })
             .catch(err => {
                 console.log(err)
@@ -193,13 +194,17 @@ const SoldeCompte = () => {
 
                                 </>
                             ) : compteUser && compteUser.isValid === true && (
-                                <div>Compte bien configuré</div>
+                                <Compte />
                             )
                         }
 
-                        <div className='buttonValid'>
-                            <button onClick={onSubmit} type="button" id="btnValid">Valider</button>
-                        </div>
+                        {
+                            compteUser && compteUser.isValid === false &&
+                            <div className='buttonValid'>
+                                <button onClick={onSubmit} type="button" id="btnValid">Valider</button>
+                            </div>
+                        }
+
 
                     </div>
                 </div>

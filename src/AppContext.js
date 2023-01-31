@@ -13,6 +13,7 @@ const AppContext = () => {
     const [photoUser, setPhotoUser] = useState(null);
     const [infosUser, setInfosUser] = useState(null);
     const [InfosPaiement, setOnfosPaiement] = useState(null);
+    const [deviseCompte, setDeviseCompte] = useState(null);
 
     const verifUserConnected = async () => {
         await axios.get(`${baseUrl}/jwtid`, { withCredentials: true })
@@ -77,7 +78,6 @@ const AppContext = () => {
             });
     };
 
-
     useEffect(() => {
         verifUserConnected();
         if (uid) {
@@ -89,8 +89,26 @@ const AppContext = () => {
         };
     }, [uid]);
 
+    const getDeviseByCompteId = () => {
+        axios.post(baseUrl + "/devises/findDevisesByCompteId", { compteId: compteUser && compteUser._id && compteUser._id })
+            .then(resp => {
+                setDeviseCompte(resp.data);
+            })
+            .catch(err => {
+                console.log(err)
+            });
+    }
+
+    useEffect(() => {
+        if (compteUser && compteUser._id && compteUser._id) {
+            getDeviseByCompteId();
+        };
+    }, [compteUser]);
+
     return (
-        <UserContext.Provider value={{ compteUser, userData, photoUser, infosUser, setInfosUser, InfosPaiement }}>
+        <UserContext.Provider
+            value={{ compteUser, userData, photoUser, infosUser, setInfosUser, InfosPaiement, deviseCompte }}
+        >
             <App />
         </UserContext.Provider>
     )
