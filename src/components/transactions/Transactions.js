@@ -25,7 +25,9 @@ const Transactions = () => {
                             <div className='bloc1'>
                                 <h6>(0) Transactions</h6>
                                 <div className='transfert'>
-                                    <button className='transfertBtn' type='button'>Transférer de l'argent</button>
+                                    <Link to="/compte/transactions/transfert-argent">
+                                        <button className='transfertBtn' type='button'>Transférer de l'argent</button>
+                                    </Link>
                                 </div>
                             </div>
 

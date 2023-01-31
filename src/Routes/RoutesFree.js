@@ -9,6 +9,7 @@ import SoldeCompte from '../components/soldeCompte/SoldeCompte';
 import RoutesPrivate from './RoutesPrivate';
 import Parametres from '../components/config/Parametres';
 import Transactions from '../components/transactions/Transactions';
+import CreateTransaction from '../components/transactions/CreateTransaction';
 
 const RoutesFree = () => {
     return (
@@ -23,6 +24,7 @@ const RoutesFree = () => {
                     <Route path='/compte/config/compte-user' element={<SoldeCompte />} />
                     <Route path='/compte/config' element={<Parametres />} />
                     <Route path='/compte/transactions' element={<Transactions />} />
+                    <Route path='/compte/transactions/transfert-argent' element={<CreateTransaction />} />
                 </Route>
             </Routes>
         </BrowserRouter>

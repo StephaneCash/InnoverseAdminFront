@@ -14,6 +14,8 @@ const AppContext = () => {
     const [infosUser, setInfosUser] = useState(null);
     const [InfosPaiement, setOnfosPaiement] = useState(null);
     const [deviseCompte, setDeviseCompte] = useState(null);
+    const [activeStep, setActiveStep] = useState(0);
+    const [dataTransfert, setDataTransfert] = useState(null);
 
     const verifUserConnected = async () => {
         await axios.get(`${baseUrl}/jwtid`, { withCredentials: true })
@@ -107,7 +109,11 @@ const AppContext = () => {
 
     return (
         <UserContext.Provider
-            value={{ compteUser, userData, photoUser, infosUser, setInfosUser, InfosPaiement, deviseCompte, uid }}
+            value={{
+                compteUser, userData, photoUser, activeStep,
+                infosUser, setInfosUser, InfosPaiement, deviseCompte, uid,
+                setActiveStep, setDataTransfert, dataTransfert
+            }}
         >
             <App />
         </UserContext.Provider>
