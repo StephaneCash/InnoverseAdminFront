@@ -13,7 +13,7 @@ import Form4 from './Forms/Form4';
 
 const steps = ['', '', ''];
 
-const labels = ["First", "Second", "Confirmation"];
+const labels = ["", "", ""];
 
 const handleSteps = (step) => {
     switch (step) {

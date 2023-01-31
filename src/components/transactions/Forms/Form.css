@@ -19,6 +19,17 @@
     background-color: #0f1a32;
 }
 
+.form1 p.actived {
+    background-color: #0f1a32;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.form1 p.actived .content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
 .form1 button {
     border-radius: 5px;
     padding: .65rem;
@@ -33,7 +44,41 @@
     cursor: pointer;
 }
 
-.form1 .btns{
+.form1 .btns {
     display: flex;
     gap: 1rem;
+}
+
+.form1 .formData {
+    border: 1px solid #3a4a69;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+}
+
+.form1 .formData .contentForm {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-bottom: 1rem;
+}
+
+.form1 .formData .contentForm label{
+    width: 200px;
+}
+
+.form1 .formData .contentForm input {
+    width: 100%;
+    border-radius: 5px;
+    padding: .65rem;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #3a4a69;
+    color: silver;
+    background-color: #13203b;
+}
+
+
+.form1 .formText2{
+    height: 100px;
 }
