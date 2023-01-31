@@ -80,8 +80,8 @@ const Form2 = () => {
                     : ''
             }
             <div className='btns'>
-                <button>Retour</button>
-                <button>Suivant</button>
+                <button onClick={() => setActiveStep(activeStep - 1)}>Retour</button>
+                <button onClick={() => setActiveStep(activeStep + 1)}>Suivant</button>
             </div>
         </div>
     )
