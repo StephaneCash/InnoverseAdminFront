@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import cookie from "js-cookie";
 import { baseUrl } from '../../bases/baseUrl';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from "../../AppContext";
 
 const Sidebar = () => {
@@ -62,7 +62,7 @@ const Sidebar = () => {
             SidebarData && SidebarData.map((item, index) => {
               return (
                 <div
-                  className={selected === index ? 'menuItem active' : 'menuItem'}
+                  className={selected === index ? 'menuItem' : 'menuItem'}
                   key={index}
                   onClick={() => setSelected(index)}
                 >
@@ -70,32 +70,32 @@ const Sidebar = () => {
                   <span>
                     {
                       index === 0 ?
-                        <Link to="/dashboard">
+                        <NavLink to="/dashboard">
                           {item.heading}
-                        </Link> :
+                        </NavLink> :
                         index === 1 ?
-                          <Link to="/compte/affiliation">
+                          <NavLink to="/compte/affiliation">
                             {item.heading}
-                          </Link> :
+                          </NavLink> :
                           index === 2 ?
-                            <Link to="/compte/transactions">
+                            <NavLink to="/compte/transactions">
                               {item.heading}
-                            </Link> :
+                            </NavLink> :
                             index === 3 ?
-                              <Link to="/compte/sendMoney">
+                              <NavLink to="/compte/sendMoney">
                                 {item.heading}
-                              </Link> :
+                              </NavLink> :
                               index === 4 ?
-                                <Link to="/compte/rechargeMobie">
+                                <NavLink to="/compte/rechargeMobie">
                                   {item.heading}
-                                </Link> :
+                                </NavLink> :
                                 index === 5 ?
-                                  <Link to="/compte/verif">
+                                  <NavLink to="/compte/verif">
                                     {item.heading}
-                                  </Link> : index === 6 &&
-                                  <Link to="/compte/config">
+                                  </NavLink> : index === 6 &&
+                                  <NavLink to="/compte/config">
                                     {item.heading}
-                                  </Link>
+                                  </NavLink>
                     }
                   </span>
                 </div>
@@ -106,9 +106,9 @@ const Sidebar = () => {
             <UilSignOutAlt onClick={logutFunction} style={{ cursor: "pointer" }} />
           </div>
           <div className='menuItem'>
-            <Link to="/user/compte">
+            <NavLink to="/user/compte">
               Bonjour {userData && userData.pseudo}
-            </Link>
+            </NavLink>
           </div>
         </div>
       </motion.div>

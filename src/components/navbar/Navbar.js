@@ -196,12 +196,12 @@ function Navbar() {
                                                 i === 1 ?
                                                     <Link
                                                         style={{ color: "silver", display: "flex", gap: ".5rem", alignItems: "center" }}
-                                                        to="/user/profil">
+                                                        to="/compte/config/profil">
                                                         <FaUserCog /> {setting}
                                                     </Link>
                                                     : i === 2 ?
                                                         <Link
-                                                            to="/user/compte"
+                                                            to="/compte/config/compte-user"
                                                             style={{ color: "silver", display: "flex", gap: ".5rem", alignItems: "center" }}
                                                         > <FaUserCircle /> {setting}
                                                         </Link>

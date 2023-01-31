@@ -6,15 +6,22 @@ import SignUp from "../components/Auth/SignUp"
 import Compte from '../components/comptes/Compte';
 import SoldeCompte from '../components/soldeCompte/SoldeCompte';
 
+import RoutesPrivate from './RoutesPrivate';
+import Parametres from '../components/config/Parametres';
+
 const RoutesFree = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<SignIn />} />
                 <Route path='/inscription' element={<SignUp />} />
-                <Route path='/dashboard' element={<Main />} />
-                <Route path='/user/profil' element={<Compte />} />
-                <Route path='/user/compte' element={<SoldeCompte />} />
+
+                <Route element={<RoutesPrivate />}>
+                    <Route path='/dashboard' element={<Main />} />
+                    <Route path='/compte/config/profil' element={<Compte />} />
+                    <Route path='/compte/config/compte-user' element={<SoldeCompte />} />
+                    <Route path='/compte/config' element={<Parametres />} />
+                </Route>
             </Routes>
         </BrowserRouter>
     )

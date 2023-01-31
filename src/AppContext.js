@@ -22,8 +22,8 @@ const AppContext = () => {
             })
             .catch(err => {
                 console.log(err.response)
-            })
-    }
+            });
+    };
 
     const getUser = () => {
         axios.get(baseUrl + "/users/" + uid)
@@ -107,7 +107,7 @@ const AppContext = () => {
 
     return (
         <UserContext.Provider
-            value={{ compteUser, userData, photoUser, infosUser, setInfosUser, InfosPaiement, deviseCompte }}
+            value={{ compteUser, userData, photoUser, infosUser, setInfosUser, InfosPaiement, deviseCompte, uid }}
         >
             <App />
         </UserContext.Provider>

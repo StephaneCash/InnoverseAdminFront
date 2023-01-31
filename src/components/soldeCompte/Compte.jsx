@@ -47,7 +47,11 @@ const Compte = () => {
                                 deviseCompte && deviseCompte[0].intitule === "Euro" ? <FaEuroSign /> :
                                     deviseCompte && deviseCompte[0].intitule === "CDF" && "CDF"
                         }
-                        {deviseCompte && deviseCompte[0].typeCompteEpargnes && deviseCompte[0].typeCompteEpargnes[0].montant}
+                        {
+                            deviseCompte && deviseCompte[0].nom === "epargne" ?
+                                deviseCompte && deviseCompte[0].typeCompteEpargnes && deviseCompte[0].typeCompteEpargnes[0].montant
+                                : deviseCompte && deviseCompte[0].montant
+                        }
                     </h4>
                 </div>
 

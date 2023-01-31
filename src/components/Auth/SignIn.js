@@ -44,7 +44,7 @@ const SignIn = () => {
         } else {
             toast.error('Veuillez cochez la case du reCAPTCHA');
             setBtnClic(false);
-        }
+        };
     };
 
     return (
