@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { UserContext } from "../../AppContext";
 import "./TypeCompte.css";
-import { FaChartLine, FaHistory, FaDollarSign, FaEuroSign, FaUserCog } from "react-icons/fa"
+import { FaChartLine, FaDollarSign, FaEuroSign, FaUserCog } from "react-icons/fa"
 import BasicTable from './Table';
 
 const Compte = () => {
@@ -58,7 +58,7 @@ const Compte = () => {
             </div>
 
             <div className='historique'>
-                <BasicTable FaHistory={FaHistory} />
+                <BasicTable />
             </div>
         </div>
     )

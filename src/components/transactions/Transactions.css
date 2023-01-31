@@ -1,0 +1,89 @@
+.transactions {
+    padding: 1rem 2rem;
+}
+
+.transactions .retour {
+    display: flex;
+    align-items: center;
+    color: aliceblue;
+    gap: 1rem;
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+.transactions .text {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.transactions .bloc1 {
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.alertContent{
+    border: 1px solid #1d2a45;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0rem 2rem;
+}
+
+.alertContent h6 {
+    font-size: 1.2rem;
+}
+
+.alertContent .search {
+    display: flex;
+    justify-content: center;
+    align-items: center !important;
+    margin-bottom: 2rem;
+}
+
+.transfert{
+    flex: 1;
+}
+
+.transactions .alertContent input {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: .65rem;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #3a4a69;
+    color: silver;
+    background-color: #13203b;
+    width: 100%;
+}
+
+.transfertBtn {
+    padding: .65rem;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #3a4a69;
+    color: silver;
+    background-color: #0f1a32;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+.alertContent .search button {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: .65rem;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #3a4a69;
+    color: silver;
+    background-color: #0f1a32;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
