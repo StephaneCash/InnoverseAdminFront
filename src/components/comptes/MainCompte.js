@@ -1,35 +1,28 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { FaUserShield, FaGoogle, FaSms, FaMailBulk } from "react-icons/fa";
 import { timestampParser } from "../../Utils"
 import avatar from "../../images/avatar.png";
-import { uploadPicture } from '../../actions/user.actions';
 import InfosProfil from './InfosProfil';
 import InfosPaiement from './InfosPaiement';
 import InfosPassWord from './InfosPassWord';
 
 const MainCompte = () => {
 
-    const userReducer = useSelector(state => state.userReducer);
-    const compteUser = useSelector(state => state.compteUserReducer);
     const [detailClic, setDetailClic] = useState(1);
-    const picUser = useSelector(state => state.pictureUser);
 
     const [cardPassword, setCardPassword] = useState(1);
 
     const [file, setFile] = useState('');
 
-    const dispatch = useDispatch();
 
     const handleUploadPhotoUser = () => {
         const dataUser = new FormData();
-        dataUser.append('userId', userReducer._id);
+        dataUser.append('userId', "userReducer._id");
         dataUser.append('image', file);
 
         if (!file) {
             alert('Veuillez chosir une photo svp !');
         } else {
-            dispatch(uploadPicture(dataUser));
         }
     };
 
@@ -38,8 +31,8 @@ const MainCompte = () => {
             <div className='toolbar'>
                 <div className='icon'><FaUserShield size={30} /></div>
                 <div className='textCompteIdAndDate'>
-                    <span>Votre numéro de compte : {compteUser && compteUser.numero}</span>
-                    <span>Utilisateur depuis {timestampParser(compteUser && compteUser.createdAt)}</span>
+                    <span>Votre numéro de compte : {"compteUser && compteUser.numero"}</span>
+                    <span>Utilisateur depuis {timestampParser("compteUser && compteUser.createdAt")}</span>
                 </div>
             </div>
 
@@ -49,7 +42,7 @@ const MainCompte = () => {
                         <label className="label">
                             <input type="file" onChange={(e) => setFile(e.target.files[0])} />
                             <figure className="personal-figure">
-                                <img src={picUser ? "/" + picUser.url : avatar} className="personal-avatar" alt="avatar" />
+                                <img src="" className="personal-avatar" alt="avatar" />
                                 <figcaption className="personal-figcaption">
                                     <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png" alt="avatar" />
                                 </figcaption>
@@ -57,7 +50,7 @@ const MainCompte = () => {
                         </label>
                     </div>
                     <div className='userName'>
-                        <span>{userReducer && userReducer.pseudo}</span>
+                        <span>PSEUDO</span>
                         <span>Cliquez sur l'image pour changer la photo de profil. Taille Max: 2MB</span>
                         <button className='btnChangeImage' onClick={handleUploadPhotoUser}>Modifier la photo de profil</button>
                     </div>

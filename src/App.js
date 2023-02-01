@@ -5,15 +5,9 @@ import { UidContext } from './AppContext';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { baseUrl } from './bases/baseUrl';
-import { useDispatch } from 'react-redux';
-import { getUser } from './actions/user.actions';
-import { getCompteUser } from "./actions/compte.actions"
-import { getPicture } from './actions/userPicture.action';
-import { getUserInfos } from './actions/userInfos.action';
 
 function App() {
   const [uid, setUid] = useState(null);
-  const dispatch = useDispatch();
 
   const verifUserConnected = async () => {
     await axios.get(`${baseUrl}/jwtid`, { withCredentials: true })
@@ -27,13 +21,6 @@ function App() {
 
   useEffect(() => {
     verifUserConnected();
-
-    if (uid) {
-      dispatch(getCompteUser(uid));
-      dispatch(getPicture(uid));
-      dispatch(getUserInfos(uid));
-      dispatch(getUser(uid));
-    }
   }, [uid]);
 
   return (
