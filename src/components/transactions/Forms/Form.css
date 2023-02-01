@@ -11,7 +11,7 @@
     cursor: pointer;
 }
 
-.form1{
+.form1 {
     height: auto;
 }
 
@@ -67,7 +67,7 @@
     margin-bottom: 1rem;
 }
 
-.form1 .formData .contentForm label{
+.form1 .formData .contentForm label {
     width: 200px;
 }
 
@@ -83,25 +83,26 @@
 }
 
 
-.form1 .formText2{
+.form1 .formText2 {
     height: 100px;
 }
 
-.form1 .main{
+.form1 .main {
     display: grid;
     grid-template-columns: repeat(auto-fill, 350px);
     gap: 1rem;
     justify-content: center;
 }
 
-.form1 .main .card .head{
+.form1 .main .card .head {
     background-color: #0f1a32;
     padding: 1rem;
     border-radius: 5px;
 
 }
-.form1 .main .card{
-    border: 1px  solid #293858;
+
+.form1 .main .card {
+    border: 1px solid #293858;
     width: 300px;
     border-radius: 5px;
     background-color: #20345e;
@@ -110,6 +111,16 @@
     gap: 1rem;
 }
 
-.form1 .main .card .body{
+.form1 .main .card .body {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form1 .main .footer {
+    border-top: 1px solid #111d36;
+    text-align: center;
     padding: 1rem;
 }

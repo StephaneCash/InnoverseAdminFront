@@ -4,6 +4,8 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css"
 import { UilTimes } from "@iconscout/react-unicons"
 import Chart from 'react-apexcharts';
+import { FaDollarSign, FaEuroSign } from 'react-icons/fa';
+import { UserContext } from '../../AppContext';
 
 const Card = (props) => {
 
@@ -24,7 +26,11 @@ const Card = (props) => {
 //CompactCard
 
 function CompactCard({ param, setExpanded }) {
+
     const Png = param.png;
+
+    const { deviseCompte,
+        dataTransfert } = React.useContext(UserContext);
     return (
         <motion.div className='compactCard'
             style={{
@@ -43,7 +49,11 @@ function CompactCard({ param, setExpanded }) {
             </div>
             <div className='detail'>
                 <Png />
-                <span>${param.value}</span>
+                <span>
+                    {dataTransfert && dataTransfert.montant} {deviseCompte && deviseCompte[0].intitule === "Dollar" ? <FaDollarSign /> :
+                        deviseCompte && deviseCompte[0].intitule === "Euro" ? <FaEuroSign /> :
+                            deviseCompte && deviseCompte[0].intitule === "CDF" && "CDF"}
+                    {param.value}</span>
                 <span>Last 24 heures</span>
             </div>
         </motion.div>

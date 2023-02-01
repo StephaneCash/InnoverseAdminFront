@@ -7,10 +7,13 @@ import { ToastContainer, toast } from "react-toastify"
 
 const Form2 = () => {
 
-    const { activeStep, setActiveStep, deviseCompte, setDataTransfert, dataTransfert } = React.useContext(UserContext);
+    const {
+        activeStep, setActiveStep, setDataTransfert,
+        dataTransfert, setUserDataCompte
+    } = React.useContext(UserContext);
 
     const [compte, setCompte] = useState(0);
-    const [numeroCompte, setNumeroCompte] = useState(null);
+    const [numeroCompte, setNumeroCompte] = useState("");
 
     const [valueCompte, setValueCompte] = useState(null);
     const [etat, setEtat] = useState(false);
@@ -22,6 +25,7 @@ const Form2 = () => {
                 if (resp.status === 200) {
                     setValueCompte(resp.data);
                     setEtat(true);
+                    setUserDataCompte(resp.data);
                     setDataTransfert({ ...dataTransfert, 'pseudo': resp.data.user && resp.data.user.pseudo })
                 } else {
                     setEtat(false);
@@ -38,32 +42,39 @@ const Form2 = () => {
     useEffect(() => {
         if (numeroCompte) {
             getCompteUser();
-            setDataTransfert({ ...dataTransfert, 'numeroCompteDest': numeroCompte })
         };
+
+        if (numeroCompte !== "") {
+            setDataTransfert({ ...dataTransfert, 'numCompteDest': numeroCompte })
+        }
     }, [numeroCompte]);
 
-    console.log(montant)
+    console.log(dataTransfert)
 
     useEffect(() => {
         if (montant) {
-            setDataTransfert({ ...dataTransfert, 'montant': montant })
+            setDataTransfert({ ...dataTransfert, 'montant': parseInt(montant) })
         };
     }, [montant]);
 
-    
+
     useEffect(() => {
         if (compte === 1) {
             setDataTransfert({ ...dataTransfert, 'compte': "Innoverce" })
         }
     }, [compte]);
 
-    console.log(dataTransfert)
-
     const handleNextStep = () => {
-        if (montant && valueCompte && valueCompte.user && valueCompte.user.pseudo && dataTransfert && dataTransfert.motif) {
-            setActiveStep(activeStep + 1);
+        if (
+            montant && valueCompte && valueCompte.user && valueCompte.user.pseudo
+            && dataTransfert && dataTransfert.motif
+        ) {
+            if (numeroCompte) {
+                setDataTransfert({ ...dataTransfert, 'numCompteDest': numeroCompte })
+                setActiveStep(activeStep + 1);
+            }
         } else {
-            toast.warning('Veuillez remplir tous les champs svp')
+            toast.warning('Veuillez remplir tous les champs svp');
         }
     }
 
@@ -93,7 +104,9 @@ const Form2 = () => {
                                             type="text"
                                             className="formText"
                                             placeholder='Numéro de compte du bénéficiaire'
-                                            onChange={(e) => setNumeroCompte(e.target.value)}
+                                            onChange={(e) => {
+                                                setNumeroCompte(e.target.value);
+                                            }}
                                         />
                                     </div>
 
