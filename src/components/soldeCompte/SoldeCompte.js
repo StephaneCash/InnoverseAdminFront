@@ -120,10 +120,10 @@ const SoldeCompte = () => {
                                                         Opter pour Objectif, une solution d'épargne avec une horizon inférieure à 12 mois.
                                                         <div className='list'>
                                                             <div>
-                                                                <FaRegCheckSquare /> <div>0.40 % intérêt de base</div>
+                                                                <FaRegCheckSquare /> <div>4 % intérêt de base</div>
                                                             </div>
                                                             <div >
-                                                                <FaRegCheckSquare /> <div>0.20 %  prime de fidelité</div>
+                                                                <FaRegCheckSquare /> <div>2 %  prime de fidelité</div>
                                                             </div>
                                                         </div>
 
@@ -136,13 +136,16 @@ const SoldeCompte = () => {
                                                         Objectif <FaPlusCircle />
                                                     </h4>
                                                     <p>
-                                                        Bénéficier d'une prime rédoutable avec Objectif plus.
+                                                        Vous envisagez de laisser votre argent sur votre compte d'épargne pendant
+                                                        au moins 12 mois.
+                                                        <br />
+                                                        Bénéficier avec le compte Objectif
                                                         <div className='list'>
                                                             <div>
-                                                                <FaRegCheckSquare /> <div>0.40 % intérêt de base</div>
+                                                                <FaRegCheckSquare /> <div>5 % intérêt de base</div>
                                                             </div>
                                                             <div >
-                                                                <FaRegCheckSquare /> <div>0.20 %  prime de fidelité</div>
+                                                                <FaRegCheckSquare /> <div>2 %  prime de fidelité</div>
                                                             </div>
                                                         </div>
                                                         <button onClick={() => setTypeEpargne(2)}>Choisir</button>

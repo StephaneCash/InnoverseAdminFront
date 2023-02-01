@@ -50,9 +50,7 @@ function CompactCard({ param, setExpanded }) {
             <div className='detail'>
                 <Png />
                 <span>
-                    {dataTransfert && dataTransfert.montant} {deviseCompte && deviseCompte[0].intitule === "Dollar" ? <FaDollarSign /> :
-                        deviseCompte && deviseCompte[0].intitule === "Euro" ? <FaEuroSign /> :
-                            deviseCompte && deviseCompte[0].intitule === "CDF" && "CDF"}
+                   $
                     {param.value}</span>
                 <span>Last 24 heures</span>
             </div>

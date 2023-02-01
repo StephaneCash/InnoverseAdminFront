@@ -20,9 +20,9 @@ const Cards = () => {
                                 barValue={card.barValue}
                                 value=
                                 {
-                                    deviseCompte && deviseCompte[0].nom === "epargne" ?
-                                    deviseCompte && deviseCompte[0].typeCompteEpargnes && deviseCompte[0].typeCompteEpargnes[0].montant
-                                    : deviseCompte && deviseCompte[0].montant
+                                    deviseCompte && deviseCompte[0] && deviseCompte[0].nom === "epargne" ?
+                                    deviseCompte && deviseCompte[0].typeCompteEpargnes && deviseCompte[0].typeCompteEpargnes[0] && deviseCompte[0].typeCompteEpargnes[0].montant
+                                    : deviseCompte && deviseCompte[0] && deviseCompte[0].montant
                                 }
                                 png={card.png}
                                 series={card.series}

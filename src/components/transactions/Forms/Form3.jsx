@@ -10,10 +10,13 @@ const Form3 = () => {
   const { activeStep, setActiveStep, deviseCompte, setDataTransfert,
     dataTransfert, compteUser, userDataCompte } = React.useContext(UserContext);
 
+  console.log(userDataCompte)
+
   const handleSubmit = () => {
     if (deviseCompte && deviseCompte[0].nom === "epargne") {
       if (deviseCompte && deviseCompte[0].typeCompteEpargnes &&
         deviseCompte[0].typeCompteEpargnes[0].montant > dataTransfert.montant) {
+
         axios.post(baseUrl + '/transactions', {
           type: deviseCompte && deviseCompte[0].nom === "epargne" ?
             "epargne"
@@ -24,6 +27,8 @@ const Form3 = () => {
           montant: dataTransfert.montant,
           deviseTypeId: deviseCompte && deviseCompte[0].nom === "epargne" &&
             deviseCompte && deviseCompte[0].typeCompteEpargnes && deviseCompte[0].typeCompteEpargnes[0]._id,
+          deviseIdDest: userDataCompte.compte._id,
+          montantDest: userDataCompte.compte.montant + dataTransfert.montant
         })
           .then(resp => {
             console.log(resp)
@@ -34,11 +39,13 @@ const Form3 = () => {
           .catch(err => {
             console.log(err)
           })
+
       } else {
         toast.error('Solde insuffisant')
       }
     } else {
       if (deviseCompte && deviseCompte[0].montant > dataTransfert.montant) {
+
         axios.post(baseUrl + '/transactions', {
           type: deviseCompte && deviseCompte[0].nom === "epargne" ?
             deviseCompte && deviseCompte[0].typeCompteEpargnes && deviseCompte[0].typeCompteEpargnes[0].nom
@@ -49,6 +56,8 @@ const Form3 = () => {
           montant: dataTransfert.montant,
           deviseTypeId: deviseCompte && deviseCompte[0].nom === "epargne" &&
             deviseCompte && deviseCompte[0].typeCompteEpargnes && deviseCompte[0].typeCompteEpargnes[0]._id,
+          montantDest: userDataCompte.compte.montant + dataTransfert.montant,
+          deviseIdDest: userDataCompte.compte._id,
         })
           .then(resp => {
             if (resp.status === 200) {
@@ -59,6 +68,7 @@ const Form3 = () => {
           .catch(err => {
             console.log(err)
           })
+
       } else {
         toast.error('Solde insuffisant')
       }
