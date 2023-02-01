@@ -8,6 +8,7 @@ import InfosPassWord from './InfosPassWord';
 import { UserContext } from "../../AppContext";
 import axios from 'axios';
 import { baseUrl } from '../../bases/baseUrl';
+import { toast, ToastContainer } from 'react-toastify';
 
 const MainCompte = () => {
 
@@ -30,7 +31,10 @@ const MainCompte = () => {
                 .post(baseUrl + "/user/upload", dataUser)
                 .then(resp => {
                     if (resp.status === 201) {
-                        console.log(resp)
+                        toast.success("Photo de profil modifiée avec succès")
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 6000)
                     }
                 })
                 .catch(err => {
@@ -122,6 +126,8 @@ const MainCompte = () => {
 
                 </div>
             </div>
+
+            <ToastContainer />
         </>
     )
 }
