@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { UserContext } from '../../../AppContext';
-import { FaCheckCircle, FaChevronLeft, FaChevronRight } from "react-icons/fa"
+import { FaCheckCircle, FaChevronLeft, FaChevronRight, FaWindowClose } from "react-icons/fa"
 import axios from 'axios';
 import { baseUrl } from '../../../bases/baseUrl';
 import { ToastContainer, toast } from "react-toastify"
@@ -15,17 +15,42 @@ const Form2 = () => {
     const [compte, setCompte] = useState(0);
     const [numeroCompte, setNumeroCompte] = useState("");
 
+    const [numbBank, setNumBank] = useState([]);
+
     const [valueCompte, setValueCompte] = useState(null);
     const [etat, setEtat] = useState(false);
     const [montant, setMontant] = useState(0);
 
-    const [nombreDeTransfert, setNombreDeTransfert] = useState(0);
+    const [dataChange, setDataChange] = useState([]);
+
+    const handleChange = (e, i) => {
+        const inputValue = [...dataChange];
+        inputValue[i] = e.target.value;
+        setDataChange(inputValue);
+
+        let arr = []
+        inputValue.map((val, i) => {
+            arr.push(val)
+            setNumBank([[numbBank], val])
+            //   console.log('ed')
+        });
+
+        //  console.log(arr)
+    }
+
+    console.log(numbBank)
+
+
+    const handleDeleteInput = (i) => {
+        const valDelete = [...dataChange];
+        valDelete.splice(i, 1)
+        setDataChange(valDelete);
+    }
 
     const handleValidNumberTransfert = () => {
-        if (nombreDeTransfert !== 0) {
-            
-        }
-    }
+        const arr = [...dataChange, []]
+        setDataChange(arr)
+    };
 
     const getCompteUser = () => {
         axios.post(baseUrl + "/comptes/getCompteByNum", { numCompte: numeroCompte })
@@ -57,7 +82,6 @@ const Form2 = () => {
         }
     }, [numeroCompte]);
 
-    console.log(dataTransfert)
 
     useEffect(() => {
         if (montant) {
@@ -73,18 +97,21 @@ const Form2 = () => {
     }, [compte]);
 
     const handleNextStep = () => {
-        if (
-            montant && valueCompte && valueCompte.user && valueCompte.user.pseudo
-            && dataTransfert && dataTransfert.motif
-        ) {
-            if (numeroCompte) {
-                setDataTransfert({ ...dataTransfert, 'numCompteDest': numeroCompte })
-                setActiveStep(activeStep + 1);
+        if (dataTransfert && dataTransfert.typeTransfert && parseInt(dataTransfert.typeTransfert) === 1) {
+            if (
+                montant && valueCompte && valueCompte.user && valueCompte.user.pseudo
+                && dataTransfert && dataTransfert.motif
+            ) {
+                if (numeroCompte) {
+                    setDataTransfert({ ...dataTransfert, 'numCompteDest': numeroCompte })
+                    setActiveStep(activeStep + 1);
+                }
+            } else {
+                toast.warning('Veuillez remplir tous les champs svp');
             }
-        } else {
-            toast.warning('Veuillez remplir tous les champs svp');
+        } else if (dataTransfert && dataTransfert.typeTransfert && parseInt(dataTransfert.typeTransfert) === 2) {
+            toast.warning('Veuillez suivre tous les processus');
         }
-
     }
 
     return (
@@ -181,12 +208,22 @@ const Form2 = () => {
                         dataTransfert && dataTransfert.typeTransfert && parseInt(dataTransfert.typeTransfert) === 2 && (
                             <div className='multiTransfert'>
                                 <div className='search'>
-                                    <input
-                                        type="number"
-                                        placeholder='Entrer le nombre de personnes'
-                                        onChange={(e) => setNombreDeTransfert(e.target.value)}
-                                    />
-                                    <button onClick={handleValidNumberTransfert}>Valider</button>
+                                    <button onClick={handleValidNumberTransfert}>Ajouter des champs</button>
+                                </div>
+
+                                <div className='dataMultipleInput'>
+                                    {
+                                        dataChange && dataChange.map((val, i) => {
+                                            return (
+                                                <div style={{ display: "flex", alignItems: "center" }} key={i}>
+                                                    <input value={val} type="text" onChange={e => handleChange(e, i)} />
+                                                    <button onClick={() => handleDeleteInput(i)}>
+                                                        <FaWindowClose />
+                                                    </button>
+                                                </div>
+                                            )
+                                        })
+                                    }
                                 </div>
                             </div>
                         ) : ""

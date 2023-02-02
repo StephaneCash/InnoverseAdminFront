@@ -166,6 +166,11 @@
     align-items: center !important;
 }
 
+.form1 .multiTransfert .search button {
+    border-radius: 5px;
+}
+
+
 .form1 .multiTransfert input {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -193,4 +198,24 @@
     align-items: center;
     gap: 1rem;
     cursor: pointer;
+}
+
+.dataMultipleInput {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 230px);
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 2rem;
+}
+
+.dataMultipleInput input {
+    border-radius: 5px !important;
+    padding: .65rem;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #3a4a69;
+    color: silver;
+    width: 230px !important;
+    background-color: #13203b;
 }
