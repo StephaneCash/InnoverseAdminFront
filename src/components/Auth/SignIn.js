@@ -28,13 +28,15 @@ const SignIn = () => {
         if (tokenGoogle) {
             axios.post(`${baseUrl}/users/login`, { email, password })
                 .then(resp => {
-                    setBtnClic(false);
                     document.cookie = `jwt=${resp.data.token}; max-age=${maxAge}`;
-                    if (resp.status && resp.data && resp.data.token && resp.data.token) {
-                        toast.success("Vous êtes connecté avec succès");
-                        setBtnClic(false);
-                        window.location = "/dashboard";
-                    }
+                    toast.success("Vous êtes connecté avec succès");
+                    setTimeout(() => {
+                        if (resp.status && resp.data && resp.data.token && resp.data.token) {
+                            setBtnClic(false);
+                            setBtnClic(false);
+                            window.location = "/dashboard";
+                        }
+                    }, 3000);
                 })
                 .catch(err => {
                     console.log(err.response.data.errors);

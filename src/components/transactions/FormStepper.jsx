@@ -3,25 +3,25 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Form1 from './Forms/Form1';
 import Form2 from './Forms/Form2';
 import Form3 from './Forms/Form3';
-import { UserContext } from '../../AppContext';
 import Form4 from './Forms/Form4';
+import { UserContext } from '../../AppContext';
 
-const steps = ['', '', ''];
 
-const labels = ["", "", ""];
+const labels = ["", "", "", ''];
 
 const handleSteps = (step) => {
     switch (step) {
         case 0:
-            return <Form1 />
+            return <Form4 />
         case 1:
-            return <Form2 />
+            return <Form1 />
         case 2:
+            return <Form2 />
+        case 3:
             return <Form3 />
         default:
             throw new Error("Etape non connue")
@@ -30,8 +30,8 @@ const handleSteps = (step) => {
 
 export default function FormStepper() {
 
-    const { activeStep, setActiveStep } = React.useContext(UserContext);
-    
+    const { activeStep } = React.useContext(UserContext);
+
     return (
         <>
             {

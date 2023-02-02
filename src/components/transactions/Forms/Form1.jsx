@@ -1,18 +1,19 @@
 import React from 'react'
 import { UserContext } from '../../../AppContext';
-import { FaDollarSign, FaEuroSign } from "react-icons/fa"
+import { FaDollarSign, FaEuroSign, FaChevronLeft } from "react-icons/fa"
 import "./Form.css";
 
 const Form1 = () => {
-    const { setActiveStep, deviseCompte, compteUser } = React.useContext(UserContext);
+    const { setActiveStep, deviseCompte, compteUser, activeStep } = React.useContext(UserContext);
 
     return (
         <div className='form1'>
             <h4 style={{ textAlign: "center" }}>Veuillez choisir le compte</h4>
 
-            <p onClick={() => setActiveStep(1)} >
-                <span>Compte : {compteUser && compteUser.numero}</span>
+            <p onClick={() => setActiveStep(activeStep + 1)} >
+                <span>Votre compte : {compteUser && compteUser.numero}</span>
                 <span style={{ display: "flex", alignItems: "center" }}>
+                    Solde : 
                     {
                         deviseCompte && deviseCompte[0].intitule === "Dollar" ? <FaDollarSign /> :
                             deviseCompte && deviseCompte[0].intitule === "Euro" ? <FaEuroSign /> :
@@ -25,6 +26,13 @@ const Form1 = () => {
                     }
                 </span>
             </p>
+
+            <button
+                onClick={() => { setActiveStep(activeStep - 1) }}
+                style={{ display: "flex", alignItems: "center", gap: ".3rem" }}
+            >
+                <FaChevronLeft /> Retour
+            </button>
         </div>
     )
 }

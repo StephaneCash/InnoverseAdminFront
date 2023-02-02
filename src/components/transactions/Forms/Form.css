@@ -124,3 +124,73 @@
     text-align: center;
     padding: 1rem;
 }
+
+.form1 .form4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form4 select {
+    width: 50%;
+}
+
+.form4 select option {
+    background-color: #0f1a32 !important;
+    height: 50px;
+}
+
+.form4 select option:hover {
+    background-color: #0f1a32;
+}
+
+.form4 h5 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+}
+
+.form1 .multiTransfert {
+    border: 1px solid #20345e;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+    width: auto;
+}
+
+.form1 .multiTransfert .search {
+    display: flex;
+    justify-content: center;
+    align-items: center !important;
+}
+
+.form1 .multiTransfert input {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: .65rem;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #3a4a69;
+    color: silver;
+    background-color: #13203b;
+    width: 40%;
+}
+
+.form1 .multiTransfert button {
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    padding: .65rem;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #3a4a69;
+    color: silver;
+    background-color: #0f1a32;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}

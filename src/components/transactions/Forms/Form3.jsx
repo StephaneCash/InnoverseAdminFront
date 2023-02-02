@@ -10,8 +10,6 @@ const Form3 = () => {
   const { activeStep, setActiveStep, deviseCompte, setDataTransfert,
     dataTransfert, compteUser, userDataCompte } = React.useContext(UserContext);
 
-  console.log(userDataCompte)
-
   const handleSubmit = () => {
     if (deviseCompte && deviseCompte[0].nom === "epargne") {
       if (deviseCompte && deviseCompte[0].typeCompteEpargnes &&

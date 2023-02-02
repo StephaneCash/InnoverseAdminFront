@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { UserContext } from '../../../AppContext';
-import { FaCheckCircle } from "react-icons/fa"
+import { FaCheckCircle, FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import axios from 'axios';
 import { baseUrl } from '../../../bases/baseUrl';
 import { ToastContainer, toast } from "react-toastify"
@@ -18,6 +18,14 @@ const Form2 = () => {
     const [valueCompte, setValueCompte] = useState(null);
     const [etat, setEtat] = useState(false);
     const [montant, setMontant] = useState(0);
+
+    const [nombreDeTransfert, setNombreDeTransfert] = useState(0);
+
+    const handleValidNumberTransfert = () => {
+        if (nombreDeTransfert !== 0) {
+            
+        }
+    }
 
     const getCompteUser = () => {
         axios.post(baseUrl + "/comptes/getCompteByNum", { numCompte: numeroCompte })
@@ -76,6 +84,7 @@ const Form2 = () => {
         } else {
             toast.warning('Veuillez remplir tous les champs svp');
         }
+
     }
 
     return (
@@ -95,6 +104,7 @@ const Form2 = () => {
 
                 {
                     compte === 1 || compte === 2 || compte === 3 ?
+                        dataTransfert && dataTransfert.typeTransfert && parseInt(dataTransfert.typeTransfert) === 1 &&
                         (
                             <>
                                 <div className='formData'>
@@ -165,9 +175,38 @@ const Form2 = () => {
 
                         : ''
                 }
+
+                {
+                    compte === 1 || compte === 2 || compte === 3 ?
+                        dataTransfert && dataTransfert.typeTransfert && parseInt(dataTransfert.typeTransfert) === 2 && (
+                            <div className='multiTransfert'>
+                                <div className='search'>
+                                    <input
+                                        type="number"
+                                        placeholder='Entrer le nombre de personnes'
+                                        onChange={(e) => setNombreDeTransfert(e.target.value)}
+                                    />
+                                    <button onClick={handleValidNumberTransfert}>Valider</button>
+                                </div>
+                            </div>
+                        ) : ""
+                }
+
                 <div className='btns'>
-                    <button onClick={() => setActiveStep(activeStep - 1)}>Retour</button>
-                    <button onClick={handleNextStep}>Suivant</button>
+                    <button
+                        style={{ display: "flex", alignItems: "center", gap: ".4rem" }}
+                        onClick={() => setActiveStep(activeStep - 1)}
+                    >
+                        <FaChevronLeft />
+                        Retour
+                    </button>
+                    <button
+                        style={{ display: "flex", alignItems: "center", gap: ".4rem" }}
+                        onClick={handleNextStep}
+                    >
+                        Suivant
+                        <FaChevronRight />
+                    </button>
                 </div>
             </div>
             <ToastContainer />
