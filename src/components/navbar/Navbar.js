@@ -94,7 +94,7 @@ function Navbar() {
                             onClick={handleOpenNavMenu}
                             color="inherit"
                         >
-                            Innoverce
+                            Aveniria
                         </IconButton>
                         <Menu
                             id="menu-appbar"
@@ -121,7 +121,7 @@ function Navbar() {
                             ))}
                         </Menu>
                     </Box>
-                    Innoverce
+                    Aveniria
                     <Typography
                         variant="h5"
                         noWrap
