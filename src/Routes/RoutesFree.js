@@ -12,6 +12,7 @@ import Transactions from '../components/transactions/Transactions';
 import CreateTransaction from '../components/transactions/CreateTransaction';
 import Recharge from '../components/rechargeMobile/Recharge';
 import Pret from '../components/pret/Pret';
+import Mains from "../components/pret/Main"
 
 const RoutesFree = () => {
     return (
@@ -28,7 +29,8 @@ const RoutesFree = () => {
                     <Route path='/compte/transactions' element={<Transactions />} />
                     <Route path='/compte/transactions/transfert-argent' element={<CreateTransaction />} />
                     <Route path="/compte/rechargeMobie" element={<Recharge />} />
-                    <Route path="/pret" element={<Pret />} />
+                    <Route path="/pret" element={<Mains />} />
+                    <Route path="/pret/demande" element={<Pret />} />
                 </Route>
             </Routes>
         </BrowserRouter>

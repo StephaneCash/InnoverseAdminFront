@@ -21,6 +21,7 @@ const Form2 = () => {
       <div className='bloc22'>
         <div>
           <select name="" id="">
+            <option value="">--Situation de logement--</option>
             <option value="">Locataire</option>
             <option value="">Propriétaire avec prêt en cours </option>
             <option value="">Logé par l'employeur</option>
@@ -28,10 +29,10 @@ const Form2 = () => {
           </select>
         </div>
         <div>
-          <input type="text" />
+          <input type="text" placeholder='Téléphone portable' />
         </div>
         <div>
-          <input type="text" />
+          <input type="text" placeholder='Téléphone professionnel' />
         </div>
       </div>
 
