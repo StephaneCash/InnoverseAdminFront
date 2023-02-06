@@ -92,10 +92,14 @@ const Sidebar = () => {
                                 index === 5 ?
                                   <NavLink to="/compte/verif">
                                     {item.heading}
-                                  </NavLink> : index === 6 &&
-                                  <NavLink to="/compte/config">
-                                    {item.heading}
-                                  </NavLink>
+                                  </NavLink> : index === 6 ?
+                                    <NavLink to="/pret">
+                                      {item.heading}
+                                    </NavLink> :
+                                    index === 7 &&
+                                    <NavLink to="/compte/config">
+                                      {item.heading}
+                                    </NavLink>
                     }
                   </span>
                 </div>

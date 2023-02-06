@@ -23,12 +23,12 @@
     gap: 2rem;
 }
 
-.alertContent{
-    border: 1px solid #1d2a45;
+.alertContent {
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0rem 2rem;
+    background-color: #13203b;
 }
 
 .alertContent h6 {
@@ -42,7 +42,7 @@
     margin-bottom: 2rem;
 }
 
-.transfert{
+.transfert {
     flex: 1;
 }
 

@@ -6,9 +6,12 @@ import {
     UilUsdSquare,
     UilDollarSignAlt,
     UilSetting,
-    UilCheckSquare
+    UilCheckSquare,
+    UilBitcoinAlt
 } from "@iconscout/react-unicons";
 
+import {FaHandHolding} from 'react-icons/fa'
+ 
 import cardVisa from "../images/cardVisa.png";
 import cardMaster from "../images/cardMaster.png";
 
@@ -36,6 +39,10 @@ export const SidebarData = [
     {
         icon: UilCheckSquare,
         heading: "Vérification KYC"
+    },
+    {
+        icon: UilBitcoinAlt,
+        heading: "Prêt"
     },
     {
         icon: UilSetting,

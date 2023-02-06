@@ -1,0 +1,82 @@
+.pret {
+    padding: 1rem 2rem;
+    overflow: auto;
+}
+
+.pret h3 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.pret .textU1 {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 100 !important;
+}
+
+.pret .conditions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    align-items: center;
+    padding: 2rem;
+    gap: 4rem;
+    background-color: #13203b;
+    border-radius: 5px;
+}
+
+.pret .formulaire {
+    background-color: #13203b;
+    border-radius: 5px;
+    padding: 2rem;
+}
+
+.pret .pretPersonnel h1 {
+    font-weight: 300;
+}
+
+.pret .pretPersonnel h5 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.pret .pretPersonnel div div {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.pret .pretPersonnel p {
+    font-size: 15px;
+    line-height: 1.5rem;
+}
+
+.pret .conditions img {
+    border-radius: 10px;
+    width: 500px;
+}
+
+.pret .formulaire .btns {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.pret .formulaire h1 {
+    font-weight: 100;
+}
+
+.pret .formulaire div button {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: .3rem 1rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.pret .acc {
+    background-color: #13203b;
+    padding: 2rem 0;
+    border-radius: 5px;
+}

@@ -1,0 +1,77 @@
+.formulaire1 .bloc1,
+.bloc2 {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+}
+
+.formulaire1 .bloc1 div,
+.bloc2 div, .formulaire2 .bloc1 div,
+.formulaire2 .bloc22 div {
+    width: 33.333%;
+    margin-bottom: 1rem;
+}
+
+.formulaire1 .bloc1 select,
+.bloc2 select, .formulaire2 .bloc22 select {
+    margin-right: 2rem;
+    width: 100% !important;
+    margin-bottom: .4rem;
+    border-radius: 5px;
+    padding: .65rem;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #3a4a69;
+    color: silver;
+    background-color: #13203b;
+}
+
+.formulaire1 .bloc1 input,
+.bloc2 input,
+.formulaire2 .bloc1 input {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: .4rem;
+    border-radius: 5px;
+    padding: .65rem;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #3a4a69;
+    color: silver;
+    background-color: #13203b;
+}
+
+.formulaire1 .btnSuivant {
+    margin: 0px !important;
+}
+
+.formulaire2 .bloc1,
+.formulaire2 .bloc22 {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+}
+
+.formulaire2 .bloc1 input,
+.formulaire2 .bloc22 input {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: .4rem;
+    border-radius: 5px;
+    padding: .65rem;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #3a4a69;
+    color: silver;
+    background-color: #13203b;
+}
+
+.formulaire2 .groupButtons{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.formulaire2 .groupButtons button{
+    margin: 0 !important;
+}
