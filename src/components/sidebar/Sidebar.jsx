@@ -82,7 +82,7 @@ const Sidebar = () => {
                               {item.heading}
                             </NavLink> :
                             index === 3 ?
-                              <NavLink to="/compte/sendMoney">
+                              <NavLink to="/compte/cards">
                                 {item.heading}
                               </NavLink> :
                               index === 4 ?

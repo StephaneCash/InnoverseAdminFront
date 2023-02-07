@@ -5,7 +5,6 @@ import SignIn from "../components/Auth/SignIn"
 import SignUp from "../components/Auth/SignUp"
 import Compte from '../components/comptes/Compte';
 import SoldeCompte from '../components/soldeCompte/SoldeCompte';
-
 import RoutesPrivate from './RoutesPrivate';
 import Parametres from '../components/config/Parametres';
 import Transactions from '../components/transactions/Transactions';
@@ -13,6 +12,7 @@ import CreateTransaction from '../components/transactions/CreateTransaction';
 import Recharge from '../components/rechargeMobile/Recharge';
 import Pret from '../components/pret/Pret';
 import Mains from "../components/pret/Main"
+import CardsVirtuelles from '../components/cardsVirtuelles/CardsVirtuelles';
 
 const RoutesFree = () => {
     return (
@@ -31,6 +31,7 @@ const RoutesFree = () => {
                     <Route path="/compte/rechargeMobie" element={<Recharge />} />
                     <Route path="/pret" element={<Mains />} />
                     <Route path="/pret/demande" element={<Pret />} />
+                    <Route path="/compte/cards" element={<CardsVirtuelles />} />
                 </Route>
             </Routes>
         </BrowserRouter>

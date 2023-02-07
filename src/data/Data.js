@@ -4,13 +4,11 @@ import {
     UilMobileAndroidAlt,
     UilListUl,
     UilUsdSquare,
-    UilDollarSignAlt,
     UilSetting,
     UilCheckSquare,
-    UilBitcoinAlt
+    UilBitcoinAlt,
+    UilCreditCard
 } from "@iconscout/react-unicons";
-
-import {FaHandHolding} from 'react-icons/fa'
  
 import cardVisa from "../images/cardVisa.png";
 import cardMaster from "../images/cardMaster.png";
@@ -29,8 +27,8 @@ export const SidebarData = [
         heading: "Transactions"
     },
     {
-        icon: UilDollarSignAlt,
-        heading: "Envoi d'argent"
+        icon: UilCreditCard,
+        heading: "Cartes virtuelles"
     },
     {
         icon: UilMobileAndroidAlt,
