@@ -1,5 +1,6 @@
 .transactions {
     padding: 1rem 2rem;
+    overflow: auto;
 }
 
 .transactions .retour {

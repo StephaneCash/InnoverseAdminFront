@@ -12,8 +12,7 @@ const InfosPaiement = () => {
     const [bitcoin, setBitCoin] = useState('');
 
     const { userData, InfosPaiement } = useContext(UserContext);
-
-
+    
     const onSubmit = () => {
         const data = {};
         data.airtel = airtel;

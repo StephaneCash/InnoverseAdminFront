@@ -1,6 +1,6 @@
 import { Box, Step, StepLabel, Stepper, Typography } from '@mui/material';
 import React from 'react'
-import { FaHandshake, FaPhoneAlt, FaRegBookmark, FaUserAlt } from 'react-icons/fa';
+import { FaCheckCircle, FaHandshake, FaPhoneAlt, FaRegBookmark, FaUserAlt, FaUserSecret } from 'react-icons/fa';
 import { UserContext } from '../../../AppContext';
 import Form1 from './Form1';
 import Form2 from './Form2';
@@ -60,8 +60,20 @@ const Main = () => {
                                                         </div>
                                                     )
                                                     :
-                                                    stepCurrent === 3 ? "4. Informations supplémentaires" :
-                                                        stepCurrent === 4 ? "Signature" : ""
+                                                    stepCurrent === 3 ?
+                                                        <div
+                                                            style={{ display: "flex", alignItems: "center", gap: "1rem", justifyContent: "center" }}
+                                                        >
+                                                            <FaHandshake /> <span>Signature du contrat</span>
+                                                        </div>
+                                                        :
+                                                        stepCurrent === 4 ? (
+                                                            <div
+                                                                style={{ display: "flex", alignItems: "center", gap: "1rem", justifyContent: "center" }}
+                                                            >
+                                                                <FaCheckCircle /> <span>Validation</span>
+                                                            </div>
+                                                        ) : ""
                                     }
                                 </Typography>
                             </Box>

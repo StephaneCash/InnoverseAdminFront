@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,300&display=swap');
+
 :root {
   --blueClair: #0e172a;
   --blueFonce: #13203b;
@@ -9,12 +11,12 @@
 
 
 .app {
-  font-family: Roboto, sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: var(--blueFonce);
   height: 100vh;
   display: flex;
   justify-content: center;
-  color: silver;
+  color: #fff;
   align-items: center;
 }
 
