@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaArrowLeft, FaSearch } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Navbar from '../navbar/Navbar'
 import Sidebar from '../sidebar/Sidebar'
-import BasicTable from '../transactions/Table'
+import BasicTable from './Table'
 
 const Main = () => {
+
+    const [taillePrets, setTaillePret] = useState(0);
+
     return (
         <div className='compteCustom'>
             <Navbar />
@@ -22,7 +25,7 @@ const Main = () => {
                     <div className='contentTable'>
                         <div className='alertContent'>
                             <div className='bloc1'>
-                                <h6>(0) Prêts</h6>
+                                <h6>({taillePrets}) Prêts</h6>
                                 <div className='transfert'>
                                     <Link to="/pret/demande">
                                         <button className='transfertBtn' type='button'>Demander un prêt</button>
@@ -34,7 +37,7 @@ const Main = () => {
                                 <input type="search" /> <button type='button'>Rechercher <FaSearch /></button>
                             </div>
                         </div>
-                        <BasicTable />
+                        <BasicTable setTaillePret={setTaillePret} />
                     </div>
                 </div>
             </div>

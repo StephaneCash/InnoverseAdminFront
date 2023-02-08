@@ -1,3 +1,38 @@
 .cartes {
     padding: 1rem 2rem;
+    overflow: auto;
+    background-color: #13203b;
+}
+
+.cartes .cartesFull {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, 500px);
+    justify-content: center;
+}
+
+.cartes .cartesFull img {
+    width: 100%;
+}
+
+.cartes .MuiPaper-root.MuiPaper-elevation {
+    background-color: #0e172a;
+    color: silver;
+}
+
+.cartes .MuiTypography-root.MuiTypography-body2 {
+    color: silver;
+}
+
+.cartes .detailCard {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: .6rem;
+}
+
+.cartes .detailCard div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }

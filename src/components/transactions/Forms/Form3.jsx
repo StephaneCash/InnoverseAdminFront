@@ -10,6 +10,8 @@ const Form3 = () => {
   const { activeStep, setActiveStep, deviseCompte, setDataTransfert,
     dataTransfert, compteUser, userDataCompte } = React.useContext(UserContext);
 
+  console.log(userDataCompte)
+
   const handleSubmit = () => {
     if (deviseCompte && deviseCompte[0].nom === "epargne") {
       if (deviseCompte && deviseCompte[0].typeCompteEpargnes &&
@@ -21,17 +23,25 @@ const Form3 = () => {
             : deviseCompte && deviseCompte[0].nom === "courant" &&
             "",
           compteId: compteUser._id,
-          userId: compteUser._id,
+          userId: compteUser.userId,
           montant: dataTransfert.montant,
           deviseTypeId: deviseCompte && deviseCompte[0].nom === "epargne" &&
             deviseCompte && deviseCompte[0].typeCompteEpargnes && deviseCompte[0].typeCompteEpargnes[0]._id,
           deviseIdDest: userDataCompte.compte._id,
-          montantDest: userDataCompte.compte.montant + dataTransfert.montant
+          montantDest: userDataCompte.compte.montant + dataTransfert.montant,
+          nomUserTransfere: dataTransfert && dataTransfert.pseudo,
+          motif: dataTransfert && dataTransfert.motif,
+          devise: deviseCompte && deviseCompte[0].intitule === "Dollar" ? "Dollar" :
+            deviseCompte && deviseCompte[0].intitule === "Euro" ? "Euro" :
+              deviseCompte && deviseCompte[0].intitule === "CDF" && "CDF"
         })
           .then(resp => {
             console.log(resp)
             if (resp.status === 200) {
               toast.success('Transaction effectuée avec succès')
+              setTimeout(() => {
+                window.location = "/compte/transactions"
+              }, 4000);
             }
           })
           .catch(err => {
@@ -50,7 +60,7 @@ const Form3 = () => {
             : deviseCompte && deviseCompte[0].nom === "courant" &&
             "",
           compteId: compteUser._id,
-          userId: compteUser._id,
+          userId: compteUser.userId,
           montant: dataTransfert.montant,
           deviseTypeId: deviseCompte && deviseCompte[0].nom === "epargne" &&
             deviseCompte && deviseCompte[0].typeCompteEpargnes && deviseCompte[0].typeCompteEpargnes[0]._id,

@@ -17,6 +17,7 @@ const AppContext = () => {
     const [activeStep, setActiveStep] = useState(0);
     const [dataTransfert, setDataTransfert] = useState(null);
     const [userDataCompte, setUserDataCompte] = useState(null);
+    const [pretData, setPretData] = useState({});
 
     const [stepCurrent, setstepCurrent] = useState(0);
 
@@ -115,8 +116,8 @@ const AppContext = () => {
             value={{
                 compteUser, userData, photoUser, activeStep,
                 infosUser, setInfosUser, InfosPaiement, deviseCompte, uid,
-                setActiveStep, setDataTransfert, dataTransfert,setUserDataCompte,userDataCompte,
-                stepCurrent, setstepCurrent
+                setActiveStep, setDataTransfert, dataTransfert, setUserDataCompte, userDataCompte,
+                stepCurrent, setstepCurrent, setPretData, pretData
             }}
         >
             <App />

@@ -4,7 +4,6 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css"
 import { UilTimes } from "@iconscout/react-unicons"
 import Chart from 'react-apexcharts';
-import { FaDollarSign, FaEuroSign } from 'react-icons/fa';
 import { UserContext } from '../../AppContext';
 
 const Card = (props) => {

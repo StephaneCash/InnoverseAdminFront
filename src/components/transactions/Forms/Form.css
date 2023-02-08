@@ -87,8 +87,7 @@
 }
 
 .form1 .main {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 350px);
+    display: flex;
     gap: 1rem;
     justify-content: center;
 }
