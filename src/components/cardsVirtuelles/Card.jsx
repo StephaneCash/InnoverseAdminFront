@@ -6,11 +6,12 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { FaCheckCircle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export default function MediaCard(props) {
     return (
         <>
-            <Card sx={{ maxWidth: 500 }}>
+            <Card sx={{ maxWidth: 450 }}>
                 <CardMedia
                     sx={{ height: 300 }}
                     image={props.img1}
@@ -32,11 +33,15 @@ export default function MediaCard(props) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">Créer cette carte</Button>
+                    <Button size="small">
+                        <Link to="create">
+                            Créer cette carte
+                        </Link>
+                    </Button>
                 </CardActions>
             </Card>
 
-            <Card sx={{ maxWidth: 500 }}>
+            <Card sx={{ maxWidth: 450 }}>
                 <CardMedia
                     sx={{ height: 300 }}
                     image={props.img2}
@@ -59,7 +64,11 @@ export default function MediaCard(props) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">Créer cette carte</Button>
+                    <Button size="small">
+                        <Link to="create">
+                            Créer cette carte
+                        </Link>
+                    </Button>
                 </CardActions>
             </Card>
         </>

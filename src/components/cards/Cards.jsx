@@ -4,9 +4,11 @@ import { CardsData } from "../../data/Data"
 import Card from "../card/Card";
 import { UserContext } from '../../AppContext';
 
-const Cards = () => {
+const Cards = (props) => {
 
-    const { compteUser, userData, deviseCompte } = useContext(UserContext);
+    const { deviseCompte } = useContext(UserContext);
+
+    const transactions = props.transactions;
 
     return (
         <div className='cards'>
@@ -20,9 +22,12 @@ const Cards = () => {
                                 barValue={card.barValue}
                                 value=
                                 {
-                                    deviseCompte && deviseCompte[0] && deviseCompte[0].nom === "epargne" ?
-                                    deviseCompte && deviseCompte[0].typeCompteEpargnes && deviseCompte[0].typeCompteEpargnes[0] && deviseCompte[0].typeCompteEpargnes[0].montant
-                                    : deviseCompte && deviseCompte[0] && deviseCompte[0].montant
+                                    card.title === "Solde" ?
+                                        deviseCompte && deviseCompte[0] && deviseCompte[0].nom === "epargne" ?
+                                            deviseCompte && deviseCompte[0].typeCompteEpargnes && deviseCompte[0].typeCompteEpargnes[0] && deviseCompte[0].typeCompteEpargnes[0].montant
+                                            : deviseCompte && deviseCompte[0] && deviseCompte[0].montant
+                                        : card.title === "Transactions" ? transactions && transactions.taille && transactions.taille
+                                            : card.title === "Cartes" && <span style={{ fontSize: "12px" }}>Aucune carte disponible</span>
                                 }
                                 png={card.png}
                                 series={card.series}

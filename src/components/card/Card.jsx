@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion, AnimateSharedLayout } from 'framer-motion';
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css"
 import { UilTimes } from "@iconscout/react-unicons"
 import Chart from 'react-apexcharts';
-import { UserContext } from '../../AppContext';
+import { baseUrl } from '../../bases/baseUrl';
+import axios from 'axios';
+import { timestampParser } from '../../Utils';
 
 const Card = (props) => {
 
@@ -22,14 +24,10 @@ const Card = (props) => {
     )
 }
 
-//CompactCard
-
 function CompactCard({ param, setExpanded }) {
 
     const Png = param.png;
 
-    const { deviseCompte,
-        dataTransfert } = React.useContext(UserContext);
     return (
         <motion.div className='compactCard'
             style={{
@@ -49,9 +47,9 @@ function CompactCard({ param, setExpanded }) {
             <div className='detail'>
                 <Png />
                 <span>
-                   $
-                    {param.value}</span>
-                <span>Last 24 heures</span>
+                    {param.title === "Solde" ? "$" + param.value : param.value}
+                </span>
+                <span>24 heures Passées</span>
             </div>
         </motion.div>
     )
@@ -60,6 +58,22 @@ function CompactCard({ param, setExpanded }) {
 // Expandend Card 
 
 function ExpandedCard({ param, setExpanded }) {
+
+    const [transactions, setTransactions] = useState([]);
+
+    const getAllTransactions = () => {
+        axios.get(baseUrl + "/transactions")
+            .then(res => {
+                setTransactions(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    };
+
+    useEffect(() => {
+        getAllTransactions();
+    }, []);
 
     const data = {
         options: {
@@ -96,10 +110,14 @@ function ExpandedCard({ param, setExpanded }) {
                 show: true
             },
             xaxis: {
-                categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+                categories: transactions && transactions.data && transactions.data.map(res => {
+                    return timestampParser(res.createdAt)
+                })
             }
         }
     }
+
+    console.log(transactions)
 
     return (
         <motion.div className="ExpandedCard"
@@ -114,7 +132,13 @@ function ExpandedCard({ param, setExpanded }) {
             </div>
             <span>{param.title}</span>
             <div className='chartContainer'>
-                <Chart series={param.series} type="area" options={data.options} />
+                <Chart series={
+                    param.title === "Transactions" ?
+                        transactions && transactions.taille > 0 && transactions.data.map((res, i) => {
+                            return i + 1
+                        })
+                        : param.series
+                } type="area" options={data.options} />
             </div>
             <span>Last 24 heures</span>
         </motion.div>

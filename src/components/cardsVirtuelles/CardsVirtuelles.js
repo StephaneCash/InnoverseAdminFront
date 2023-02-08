@@ -12,7 +12,6 @@ const CardsVirtuelles = () => {
             <Navbar />
             <div className='compte'>
                 <Sidebar />
-
                 <div className='cartes'>
                     <div className='cartesFull'>
                         <MediaCard img1={visa} img2={master} />

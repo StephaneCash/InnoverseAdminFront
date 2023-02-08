@@ -13,6 +13,7 @@ export default function BasicTable(props) {
 
     const data = props.data;
     const compteUser = props.compteUser;
+    const valueSearch = props.valueSearch.toLowerCase();
 
     const [userId, setUserId] = React.useState('');
 
@@ -39,33 +40,39 @@ export default function BasicTable(props) {
                     </TableHead>
                     <TableBody>
                         {
-                            data && data.data ? data.data.map((row, i) => {
-                                if (row.userId === userId) {
-                                    return (
-                                        <TableRow
-                                            key={i}
-                                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                        >
-                                            <TableCell align="left" style={{ color: "silver" }}>{i + 1} </TableCell>
-                                            <TableCell align="left" style={{ color: "silver" }}>{row.motif} </TableCell>
-                                            <TableCell align="left" style={{ color: "silver", display: "flex", alignItems: "center", gap: ".3rem" }}>
-                                                {row.deviseId === "Dollar" ? <FaDollarSign /> :
-                                                    row.deviseId === "Euro" ? <FaEuroSign /> : row.deviseId === "CDF" ? "CDF" : ""}
-                                                {row.montant}
-                                            </TableCell>
-                                            <TableCell align="left" style={{ color: "silver" }}>{row.nomClient}</TableCell>
-                                            <TableCell align="left" style={{ color: "silver" }}>
-                                                {timestampParser(row.createdAt)}
-                                            </TableCell>
-                                            <TableCell align="left" style={{ color: "silver" }}>{row.status === true ?
-                                                <i style={{ background: "silver", color: "green", borderRadius: "10px", padding: "5px" }}>
-                                                    Réussie</i> : "Echec"}
-                                            </TableCell>
-                                        </TableRow>
-                                    )
+                            data && data.data ? data.data.filter(value => {
+                                const motif = value.motif.toLowerCase();
+                                const client = value.nomClient.toLowerCase();
+
+                                return motif.includes(valueSearch) || client.includes(valueSearch);
+                            })
+                                .map((row, i) => {
+                                    if (row.userId === userId) {
+                                        return (
+                                            <TableRow
+                                                key={i}
+                                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                            >
+                                                <TableCell align="left" style={{ color: "silver" }}>{i + 1} </TableCell>
+                                                <TableCell align="left" style={{ color: "silver" }}>{row.motif} </TableCell>
+                                                <TableCell align="left" style={{ color: "silver", display: "flex", alignItems: "center", gap: ".3rem" }}>
+                                                    {row.deviseId === "Dollar" ? <FaDollarSign /> :
+                                                        row.deviseId === "Euro" ? <FaEuroSign /> : row.deviseId === "CDF" ? "CDF" : ""}
+                                                    {row.montant}
+                                                </TableCell>
+                                                <TableCell align="left" style={{ color: "silver" }}>{row.nomClient}</TableCell>
+                                                <TableCell align="left" style={{ color: "silver" }}>
+                                                    {timestampParser(row.createdAt)}
+                                                </TableCell>
+                                                <TableCell align="left" style={{ color: "silver" }}>{row.status === true ?
+                                                    <i style={{ background: "silver", color: "green", borderRadius: "10px", padding: "5px" }}>
+                                                        Réussie</i> : "Echec"}
+                                                </TableCell>
+                                            </TableRow>
+                                        )
+                                    }
                                 }
-                            }
-                            ) :
+                                ) :
 
                                 <TableCell align="left" style={{ color: "silver", textAlign: "center" }} colSpan="5px">
                                     <i className='fa fa-spinner fa-pulse fa-2x'></i> Chargement...

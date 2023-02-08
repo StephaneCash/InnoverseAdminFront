@@ -7,11 +7,15 @@ import {
     UilSetting,
     UilCheckSquare,
     UilBitcoinAlt,
-    UilCreditCard
+    UilCreditCard,
+    UilListUiAlt,
 } from "@iconscout/react-unicons";
- 
+
 import cardVisa from "../images/cardVisa.png";
 import cardMaster from "../images/cardMaster.png";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { baseUrl } from "../bases/baseUrl";
 
 export const SidebarData = [
     {
@@ -55,25 +59,25 @@ export const CardsData = [
             backGround: "#13203b",
             boxShadow: "1px 1px 5px #0e172a"
         },
-        barValue: 75,
+        barValue: 100,
         value: "25,769",
-        png: UilUsdSquare,
+        png: UilListUiAlt,
         series: [
             {
                 name: "Transactions",
-                data: [31, 40, 23, 11, 187, 156]
+                data: [1, 2, 3, 4]
             }
         ]
     },
     {
-        title: "Cards",
+        title: "Cartes",
         color: {
             backGround: "#13203b",
             boxShadow: "1px 1px 5px #0e172a"
         },
         barValue: 75,
         value: "25,769",
-        png: UilUsdSquare,
+        png: UilCreditCard,
         series: [
             {
                 name: "Cards",
@@ -87,7 +91,7 @@ export const CardsData = [
             backGround: "#13203b",
             boxShadow: "1px 1px 5px #0e172a"
         },
-        barValue: 75,
+        barValue: 45,
         value: "25,769",
         png: UilUsdSquare,
         series: [

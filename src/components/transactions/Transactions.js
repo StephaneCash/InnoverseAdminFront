@@ -15,6 +15,9 @@ const Transactions = () => {
 
     const { compteUser, deviseCompte } = React.useContext(UserContext);
 
+    const [valueSearch, setValueSearch] = useState('');
+    const [btnClic, setBtnClic] = useState(false);
+
     const getAllTransactions = () => {
         axios.get(baseUrl + "/transactions")
             .then(res => {
@@ -28,6 +31,14 @@ const Transactions = () => {
     useEffect(() => {
         getAllTransactions();
     }, []);
+
+    const handleChange = (e) => {
+        setValueSearch(e.target.value);
+    };
+
+    const searchTransaction = () => {
+        setBtnClic(true);
+    };
 
     return (
         <div className='compteCustom'>
@@ -54,13 +65,24 @@ const Transactions = () => {
                             </div>
 
                             <div className='search'>
-                                <input type="search" /> <button type='button'>Rechercher <FaSearch /></button>
+                                <input
+                                    placeholder='Rechercher par motif, nom du client'
+                                    type="search"
+                                    onChange={handleChange}
+                                />
+                                <button
+                                    type='button'
+                                    onClick={searchTransaction}
+                                >
+                                    Rechercher <FaSearch />
+                                </button>
                             </div>
                         </div>
                         <BasicTable
                             data={transactions}
                             compteUser={compteUser}
                             deviseCompte={deviseCompte}
+                            valueSearch={valueSearch}
                         />
                     </div>
                 </div>
