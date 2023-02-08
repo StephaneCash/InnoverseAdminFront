@@ -17,8 +17,9 @@ const Compte = () => {
             </div>
 
             <div className='typeCompte'>
+
                 <div className='card'>
-                    <FaUserCog size={30} />
+
                     <h4>Compte : {deviseCompte && deviseCompte[0].nom}</h4>
                     <h4>
                         Type compte :

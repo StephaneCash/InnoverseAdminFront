@@ -5,7 +5,9 @@
 .typeCompte {
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fill, 230px);
+    grid-template-columns: repeat(auto-fill, 500px);
+    justify-content: center;
+    align-items: center;
 }
 
 .typeCompte .card {
@@ -13,7 +15,7 @@
     border: 1px solid #1d2a45;
     position: relative;
     text-align: left;
-    width: 200px;
+    width: 450px;
     border-radius: 5px;
     background-color: #101d3a;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

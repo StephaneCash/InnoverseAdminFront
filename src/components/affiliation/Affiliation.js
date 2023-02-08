@@ -6,6 +6,7 @@ import { baseUrl } from '../../bases/baseUrl';
 import Navbar from '../navbar/Navbar'
 import Sidebar from '../sidebar/Sidebar'
 import "./Affiliation.css";
+import BasicTable from './Table';
 
 const Affiliation = () => {
 
@@ -19,9 +20,7 @@ const Affiliation = () => {
             Math.floor(Math.random() * 1000);
         const linkGenere = baseUrl + "/users?ref=" + data;
 
-        console.log(linkGenere)
-
-        navigator.clipboard.writeText("Salut cach")
+        navigator.clipboard.writeText(linkGenere)
     };
 
     return (
@@ -40,6 +39,8 @@ const Affiliation = () => {
                             Copier le lien <FaRegCopy size={20} />
                         </button>
                     </div>
+
+                    <BasicTable />
                 </div>
             </div>
 
