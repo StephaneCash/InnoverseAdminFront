@@ -110,7 +110,8 @@
     margin-bottom: 1rem;
 }
 
-.form4 .bloc1 {
+.form4 .bloc1,
+.form5 {
     display: flex;
     justify-content: center;
 }
