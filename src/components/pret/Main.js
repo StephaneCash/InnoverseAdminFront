@@ -34,7 +34,7 @@ const Main = () => {
                             </div>
 
                             <div className='search'>
-                                <input type="search" /> <button type='button'>Rechercher <FaSearch /></button>
+                                <input type="search" placeholder='Rechercher...' /> <button type='button'>Rechercher <FaSearch /></button>
                             </div>
                         </div>
                         <BasicTable setTaillePret={setTaillePret} />

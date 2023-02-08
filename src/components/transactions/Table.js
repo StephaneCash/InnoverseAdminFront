@@ -13,7 +13,7 @@ export default function BasicTable(props) {
 
     const data = props.data;
     const compteUser = props.compteUser;
-    const valueSearch = props.valueSearch.toLowerCase();
+    const valueSearch = props.valueSearch && props.valueSearch.toLowerCase();
 
     const [userId, setUserId] = React.useState('');
 
@@ -65,7 +65,11 @@ export default function BasicTable(props) {
                                                     {timestampParser(row.createdAt)}
                                                 </TableCell>
                                                 <TableCell align="left" style={{ color: "silver" }}>{row.status === true ?
-                                                    <i style={{ background: "silver", color: "green", borderRadius: "10px", padding: "5px" }}>
+                                                    <i
+                                                        style={{
+                                                            background: "silver", color: "green",
+                                                            borderRadius: "10px", padding: "5px", fontWeight: "bold"
+                                                        }}>
                                                         Réussie</i> : "Echec"}
                                                 </TableCell>
                                             </TableRow>

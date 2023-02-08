@@ -30,10 +30,12 @@ const Transactions = () => {
 
     useEffect(() => {
         getAllTransactions();
+        setBtnClic(true);
     }, []);
 
     const handleChange = (e) => {
         setValueSearch(e.target.value);
+        setBtnClic(false);
     };
 
     const searchTransaction = () => {
@@ -82,7 +84,7 @@ const Transactions = () => {
                             data={transactions}
                             compteUser={compteUser}
                             deviseCompte={deviseCompte}
-                            valueSearch={valueSearch}
+                            valueSearch={btnClic && valueSearch}
                         />
                     </div>
                 </div>

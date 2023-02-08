@@ -14,6 +14,7 @@ import Pret from '../components/pret/Pret';
 import Mains from "../components/pret/Main"
 import CardsVirtuelles from '../components/cardsVirtuelles/CardsVirtuelles';
 import CreateCard from '../components/cardsVirtuelles/CreateCard';
+import Affiliation from '../components/affiliation/Affiliation';
 
 const RoutesFree = () => {
     return (
@@ -34,6 +35,7 @@ const RoutesFree = () => {
                     <Route path="/pret/demande" element={<Pret />} />
                     <Route path="/compte/cards" element={<CardsVirtuelles />} />
                     <Route path="/compte/cards/create" element={<CreateCard />} />
+                    <Route path="/compte/affiliation" element={<Affiliation />} />
                 </Route>
             </Routes>
         </BrowserRouter>
