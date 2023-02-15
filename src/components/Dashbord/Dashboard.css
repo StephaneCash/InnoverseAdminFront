@@ -1,0 +1,48 @@
+.appDash {
+    font-family: Roboto, sans-serif;
+    background-color: var(--blueFonce);
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start !important;
+    flex-direction: column;
+    color: silver;
+}
+
+.dashbaordMain {
+    background-color: #0e172a;
+    display: grid;
+    border-radius: 5px;
+    gap: 1.5rem;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    grid-template-columns: 12rem auto 20rem;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.dashboard h1 {
+    color: #fff;
+    margin-left: 2rem;
+}
+
+.noti {
+    color: whitesmoke;
+}
+
+@media screen and (max-width: 1200px) {
+    .dashboard {
+        justify-content: flex-start !important;
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard {
+        align-items: center;
+    }
+}
