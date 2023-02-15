@@ -1,12 +1,16 @@
 .compteTypeDevise {
     padding: 1rem;
+<<<<<<< HEAD
     font-family: "Roboto";
     overflow-y: auto;
+=======
+>>>>>>> e6a3c04dc6b11ed358ae4147ad4cdbac72f45edc
 }
 
 .typeCompte {
     display: grid;
     gap: 1rem;
+<<<<<<< HEAD
     grid-template-columns: repeat(auto-fill, 300px);
     align-items: center;
 }
@@ -16,6 +20,37 @@
     border: 1px solid #1d2a45;
     position: relative;
     text-align: left;
+=======
+    grid-template-columns: repeat(auto-fill, 500px);
+    justify-content: center;
+    align-items: center;
+}
+
+.typeCompte .card {
+    padding: 1rem;
+    border: 1px solid #1d2a45;
+    position: relative;
+    text-align: left;
+    width: 450px;
+    border-radius: 5px;
+    background-color: #101d3a;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 200px;
+
+}
+
+.typeCompte .cardd {
+    padding: 1rem;
+    border: 1px solid #1d2a45;
+    position: relative;
+    text-align: left;
+    width: 500px;
+>>>>>>> e6a3c04dc6b11ed358ae4147ad4cdbac72f45edc
     border-radius: 5px;
     background-color: #101d3a;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -27,7 +62,11 @@
 }
 
 .alert {
+<<<<<<< HEAD
     background-color: #111f3f;
+=======
+    border: 1px solid #213359;
+>>>>>>> e6a3c04dc6b11ed358ae4147ad4cdbac72f45edc
     padding: 1rem;
     display: flex;
     justify-content: center;
@@ -40,6 +79,7 @@
     font-size: 18px;
     margin-bottom: 1rem;
     text-align: left;
+<<<<<<< HEAD
 }
 
 .typeCompte .deviseType {
@@ -52,4 +92,6 @@
 .typeCompte .deviseType .montant {
     font-weight: bold;
     font-size: 18px;
+=======
+>>>>>>> e6a3c04dc6b11ed358ae4147ad4cdbac72f45edc
 }

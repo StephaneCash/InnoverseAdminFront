@@ -2,7 +2,6 @@ import React from 'react'
 import { UserContext } from '../../../AppContext';
 import "./Form.css";
 
-
 const Form1 = () => {
 
   const { stepCurrent, setstepCurrent, setPretData, pretData } = React.useContext(UserContext);

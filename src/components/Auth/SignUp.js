@@ -29,7 +29,6 @@ const SignUp = () => {
                     console.log(resp.data.errors);
                     if (resp.data && resp.data.errors && resp.data.errors) {
 
-
                         if (resp.data.errors.pseudo === "" && resp.data.errors.email === ""
                             && resp.data.errors.password === "") {
                             setFormSubmit(true);

@@ -7,7 +7,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { timestampParser } from "../../Utils"
-import { FaDollarSign, FaEuroSign } from 'react-icons/fa';
 
 export default function BasicTable(props) {
 

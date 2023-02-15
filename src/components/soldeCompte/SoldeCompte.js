@@ -13,20 +13,30 @@ import Compte from './Compte';
 const SoldeCompte = () => {
 
     const [chaneCard, setChangeCard] = useState(0);
+<<<<<<< HEAD
     const [dollar, setDollar] = useState(0);
     const [euro, setEuro] = useState(0);
     const [cdf, setCDF] = useState(0);
+=======
+    const [changeDevise, setChangeDevise] = useState(0);
+
+>>>>>>> e6a3c04dc6b11ed358ae4147ad4cdbac72f45edc
     const [typeEpargne, setTypeEpargne] = useState(0);
 
     const { compteUser } = useContext(UserContext);
 
     const onSubmit = () => {
+<<<<<<< HEAD
         const data = {}
         const devises = [];
+=======
+        const data = {};
+>>>>>>> e6a3c04dc6b11ed358ae4147ad4cdbac72f45edc
         if (chaneCard === 0) {
             toast.error('Veuillez chosir un type de compte !');
         } else {
             if (chaneCard === 1) {
+<<<<<<< HEAD
                 data.type = "Courant";
 
                 if (dollar === 1) {
@@ -63,11 +73,51 @@ const SoldeCompte = () => {
                         devises.push("CDF");
                     }
                 }
+=======
+                data.nom = 'courant';
+                if (changeDevise === 1) {
+                    data.devise = "Euro"
+                }
+                if (changeDevise === 2) {
+                    data.devise = "Dollar"
+                }
+                if (changeDevise === 3) {
+                    data.devise = "CDF"
+                }
+            }
+            if (chaneCard === 2) {
+                data.nom = "epargne"
+                if (typeEpargne === 1) {
+                    data.type = "Objectif";
+                    if (changeDevise === 1) {
+                        data.devise = "Euro"
+                    }
+                    if (changeDevise === 2) {
+                        data.devise = "Dollar"
+                    }
+                    if (changeDevise === 3) {
+                        data.devise = "CDF"
+                    }
+                } else if (typeEpargne === 2) {
+                    data.type = "Objectif +";
+                    if (changeDevise === 1) {
+                        data.devise = "Euro";
+                    }
+                    if (changeDevise === 2) {
+                        data.devise = "Dollar";
+                    }
+                    if (changeDevise === 3) {
+                        data.devise = "CDF";
+                    }
+                }
+
+>>>>>>> e6a3c04dc6b11ed358ae4147ad4cdbac72f45edc
             }
         }
         let btn = document.getElementById('btnValid')
         btn.innerHTML = "Validation...";
 
+<<<<<<< HEAD
         axios.post(baseUrl + "/comptes/config", {
             compteId: compteUser && compteUser._id,
             nom: data.nom,
@@ -84,6 +134,23 @@ const SoldeCompte = () => {
             .catch(err => {
                 console.log(err);
                 btn.innerHTML = "Valider"
+=======
+        axios.post(baseUrl + "/devises", {
+            nom: data.nom,
+            compteId: compteUser && compteUser._id,
+            type: data.type,
+            intitule: data.devise,
+            montant: 0
+        })
+            .then(resp => {
+                toast.success('Compte configuré avec succès.');
+                setTimeout(() => {
+                    window.location.reload('');
+                }, [6000]);
+            })
+            .catch(err => {
+                console.log(err)
+>>>>>>> e6a3c04dc6b11ed358ae4147ad4cdbac72f45edc
             })
     };
 
@@ -163,6 +230,7 @@ const SoldeCompte = () => {
                                             <div className='configSolde'>
                                                 <h6>Choisir la (les) devise (s)</h6>
                                                 <div className="devises">
+<<<<<<< HEAD
                                                     <div className={euro === 1 ? "devise actived" : "devise"}>
                                                         <p><FaEuroSign /> </p>
                                                         <button onClick={() => { setEuro(1) }}>Choisir</button>
@@ -177,10 +245,27 @@ const SoldeCompte = () => {
                                                             Choisir
                                                         </button>
                                                         <button onClick={() => { setDollar(0) }}>
+=======
+                                                    <div className={changeDevise === 1 ? "devise actived" : "devise"}>
+                                                        <p><FaEuroSign /> </p>
+                                                        <button onClick={() => { setChangeDevise(1) }}>Choisir</button>
+                                                        <button onClick={() => { setChangeDevise(0) }}>Annuler</button>
+                                                    </div>
+
+                                                    <div className={changeDevise === 2 ?
+                                                        "devise actived" : "devise"}
+                                                    >
+                                                        <p><FaDollarSign /> </p>
+                                                        <button onClick={() => { setChangeDevise(2) }}>
+                                                            Choisir
+                                                        </button>
+                                                        <button onClick={() => { setChangeDevise(0) }}>
+>>>>>>> e6a3c04dc6b11ed358ae4147ad4cdbac72f45edc
                                                             Annuler
                                                         </button>
                                                     </div>
 
+<<<<<<< HEAD
                                                     <div className={cdf === 1 ?
                                                         "devise actived" : "devise"}
                                                     >
@@ -189,6 +274,16 @@ const SoldeCompte = () => {
                                                             Choisir
                                                         </button>
                                                         <button onClick={() => { setCDF(0) }}>
+=======
+                                                    <div className={changeDevise === 3 ?
+                                                        "devise actived" : "devise"}
+                                                    >
+                                                        <p>CDF</p>
+                                                        <button onClick={() => { setChangeDevise(3) }}>
+                                                            Choisir
+                                                        </button>
+                                                        <button onClick={() => { setChangeDevise(0) }}>
+>>>>>>> e6a3c04dc6b11ed358ae4147ad4cdbac72f45edc
                                                             Annuler
                                                         </button>
                                                     </div>
@@ -199,16 +294,29 @@ const SoldeCompte = () => {
 
                                 </>
                             ) : compteUser && compteUser.isValid === true && (
+<<<<<<< HEAD
                                 <Compte compteUser={compteUser} />
+=======
+                                <Compte />
+>>>>>>> e6a3c04dc6b11ed358ae4147ad4cdbac72f45edc
                             )
                         }
 
                         {
                             compteUser && compteUser.isValid === false &&
+<<<<<<< HEAD
                             <div className='buttonValid' style={{marginBottom:"1rem"}}>
                                 <button onClick={onSubmit} type="button" id="btnValid">Valider</button>
                             </div>
                         }
+=======
+                            <div className='buttonValid'>
+                                <button onClick={onSubmit} type="button" id="btnValid">Valider</button>
+                            </div>
+                        }
+
+
+>>>>>>> e6a3c04dc6b11ed358ae4147ad4cdbac72f45edc
                     </div>
                 </div>
             </div>

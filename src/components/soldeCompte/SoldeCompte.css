@@ -1,12 +1,19 @@
 .mainSoldeCompte {
+<<<<<<< HEAD
     font-family: "Roboto", sans-serif;
+=======
+    font-family: Roboto, sans-serif;
+>>>>>>> e6a3c04dc6b11ed358ae4147ad4cdbac72f45edc
     background-color: var(--blueFonce);
     height: 100vh;
     display: flex;
     justify-content: flex-start !important;
     flex-direction: column;
     color: silver;
+<<<<<<< HEAD
     overflow-y: auto;
+=======
+>>>>>>> e6a3c04dc6b11ed358ae4147ad4cdbac72f45edc
 }
 
 .contentSoldeCompte {
@@ -153,4 +160,8 @@
     cursor: pointer;
     padding: .4rem;
     margin-bottom: 2rem;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e6a3c04dc6b11ed358ae4147ad4cdbac72f45edc

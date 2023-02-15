@@ -57,7 +57,6 @@ const SignIn = () => {
                                 <img src={logo} alt='Logo' />
                             </div>
                             <h3>Se connecter</h3>
-
                             <input
                                 type="email"
                                 className="form-control"
