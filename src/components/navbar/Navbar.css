@@ -10,6 +10,7 @@
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation4 a {
     text-decoration: none;
     color: silver;
+    font-family: 'Roboto';
 }
 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiPaper-root.MuiMenu-paper {
@@ -19,4 +20,24 @@
 .MuiList-root.MuiList-padding.MuiMenu-list a {
     text-decoration: none !important;
     color: silver !important;
+}
+
+.depot_retrait {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.depot_retrait button {
+    padding: .5rem 1.6rem;
+    cursor: pointer;
+    background-color: #1f3457;
+    border: 1px solid #0a182e;
+    color: aliceblue;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.depot_retrait .retrait {
+    margin-right: 2rem;
 }

@@ -12,19 +12,28 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import "./Navbar.css"
 import logo from "../../images/logo.png"
+<<<<<<< HEAD
 import { Link } from 'react-router-dom';
+=======
+import { Link, useNavigate } from 'react-router-dom';
+>>>>>>> 526f875483c4c2d9a27d34d63d2671ee400afd87
 import cookie from "js-cookie";
 import axios from 'axios';
 import { baseUrl } from '../../bases/baseUrl';
 import { FaSignOutAlt, FaUserCircle, FaUserCog, FaHome } from "react-icons/fa";
-
+import { UserContext } from "../../AppContext";
 
 const pages = ['', '', ''];
 const settings = ['Accueil', 'Profil', 'Compte', 'Déconnexion'];
 
 function Navbar() {
+
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+    const navigate = useNavigate();
+
+    const { photoUser } = React.useContext(UserContext);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -51,7 +60,7 @@ function Navbar() {
         await axios.get(baseUrl + "/users/logout")
             .then(() => {
                 removeCookie("jwt");
-                window.location = "/";
+                navigate('/');
             })
             .catch(err => {
                 console.log(err.response);
@@ -89,7 +98,7 @@ function Navbar() {
                             onClick={handleOpenNavMenu}
                             color="inherit"
                         >
-                            Innoverce
+                            Aveniria
                         </IconButton>
                         <Menu
                             id="menu-appbar"
@@ -116,7 +125,7 @@ function Navbar() {
                             ))}
                         </Menu>
                     </Box>
-                    Innoverce
+                    Aveniria
                     <Typography
                         variant="h5"
                         noWrap
@@ -147,12 +156,29 @@ function Navbar() {
                         ))}
                     </Box>
 
+                    <div className='depot_retrait'>
+                        <button>
+                            <Link to='/compte/depot'>
+                                Effecteur un dépôt
+                            </Link>
+                        </button>
+                        <button className='retrait'>
+                            <Link to='/compte/retrait'>
+                                Effecteur un retrait
+                            </Link>
+                        </button>
+                    </div>
+
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Ouvrir les paramètres">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar
                                     alt="{userData && userData.pseudo && userData.pseudo.charAt(0)}"
+<<<<<<< HEAD
                                     src=""
+=======
+                                    src={photoUser && "/" + photoUser.url}
+>>>>>>> 526f875483c4c2d9a27d34d63d2671ee400afd87
                                 />
                             </IconButton>
                         </Tooltip>
@@ -186,12 +212,12 @@ function Navbar() {
                                                 i === 1 ?
                                                     <Link
                                                         style={{ color: "silver", display: "flex", gap: ".5rem", alignItems: "center" }}
-                                                        to="/user/profil">
+                                                        to="/compte/config/profil">
                                                         <FaUserCog /> {setting}
                                                     </Link>
                                                     : i === 2 ?
                                                         <Link
-                                                            to="/user/compte"
+                                                            to="/compte/config/compte-user"
                                                             style={{ color: "silver", display: "flex", gap: ".5rem", alignItems: "center" }}
                                                         > <FaUserCircle /> {setting}
                                                         </Link>

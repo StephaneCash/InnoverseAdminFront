@@ -6,7 +6,6 @@ import MainCompte from './MainCompte';
 
 const Compte = () => {
     return (
-
         <div className='compteCustom'>
             <Navbar />
             <div className='compte'>
