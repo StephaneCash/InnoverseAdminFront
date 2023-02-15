@@ -9,14 +9,10 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+import {MenuItem} from '@mui/material';
 import "./Navbar.css"
 import logo from "../../images/logo.png"
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-=======
 import { Link, useNavigate } from 'react-router-dom';
->>>>>>> 526f875483c4c2d9a27d34d63d2671ee400afd87
 import cookie from "js-cookie";
 import axios from 'axios';
 import { baseUrl } from '../../bases/baseUrl';
@@ -174,11 +170,7 @@ function Navbar() {
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar
                                     alt="{userData && userData.pseudo && userData.pseudo.charAt(0)}"
-<<<<<<< HEAD
-                                    src=""
-=======
                                     src={photoUser && "/" + photoUser.url}
->>>>>>> 526f875483c4c2d9a27d34d63d2671ee400afd87
                                 />
                             </IconButton>
                         </Tooltip>

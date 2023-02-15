@@ -114,15 +114,9 @@ const Sidebar = () => {
             <UilSignOutAlt onClick={logutFunction} style={{ cursor: "pointer" }} />
           </div>
           <div className='menuItem'>
-<<<<<<< HEAD
-            <Link to="/user/compte">
-              Bonjour 
-            </Link>
-=======
             <NavLink to="/user/compte">
               Bonjour {userData && userData.pseudo}
             </NavLink>
->>>>>>> 526f875483c4c2d9a27d34d63d2671ee400afd87
           </div>
         </div>
       </motion.div>

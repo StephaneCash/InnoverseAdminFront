@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useState } from 'react'
-=======
 import React, { useState, useContext } from 'react'
->>>>>>> 526f875483c4c2d9a27d34d63d2671ee400afd87
 import { FaUserShield, FaGoogle, FaSms, FaMailBulk } from "react-icons/fa";
 import { timestampParser } from "../../Utils"
 import avatar from "../../images/avatar.png";
@@ -17,36 +13,21 @@ import camera from "../../images/camera.png"
 
 const MainCompte = () => {
 
-<<<<<<< HEAD
-    const [detailClic, setDetailClic] = useState(1);
-
-=======
     const { compteUser, userData, photoUser } = useContext(UserContext);
 
     const [detailClic, setDetailClic] = useState(1);
->>>>>>> 526f875483c4c2d9a27d34d63d2671ee400afd87
     const [cardPassword, setCardPassword] = useState(1);
     const [file, setFile] = useState('');
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 526f875483c4c2d9a27d34d63d2671ee400afd87
     const handleUploadPhotoUser = () => {
 
         const dataUser = new FormData();
-<<<<<<< HEAD
-        dataUser.append('userId', "userReducer._id");
-=======
         dataUser.append('userId', userData._id);
->>>>>>> 526f875483c4c2d9a27d34d63d2671ee400afd87
         dataUser.append('image', file);
 
         if (!file) {
             alert('Veuillez chosir une photo svp !');
         } else {
-<<<<<<< HEAD
-=======
             axios
                 .post(baseUrl + "/user/upload", dataUser)
                 .then(resp => {
@@ -60,39 +41,10 @@ const MainCompte = () => {
                 .catch(err => {
                     console.log(err);
                 })
->>>>>>> 526f875483c4c2d9a27d34d63d2671ee400afd87
         }
     };
 
     return (
-<<<<<<< HEAD
-        <div className='mainCompte'>
-            <div className='toolbar'>
-                <div className='icon'><FaUserShield size={30} /></div>
-                <div className='textCompteIdAndDate'>
-                    <span>Votre numéro de compte : {"compteUser && compteUser.numero"}</span>
-                    <span>Utilisateur depuis {timestampParser("compteUser && compteUser.createdAt")}</span>
-                </div>
-            </div>
-
-            <div className='profilInfo'>
-                <div className='photo'>
-                    <div className="personal-image">
-                        <label className="label">
-                            <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-                            <figure className="personal-figure">
-                                <img src="" className="personal-avatar" alt="avatar" />
-                                <figcaption className="personal-figcaption">
-                                    <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png" alt="avatar" />
-                                </figcaption>
-                            </figure>
-                        </label>
-                    </div>
-                    <div className='userName'>
-                        <span>PSEUDO</span>
-                        <span>Cliquez sur l'image pour changer la photo de profil. Taille Max: 2MB</span>
-                        <button className='btnChangeImage' onClick={handleUploadPhotoUser}>Modifier la photo de profil</button>
-=======
         <>
             <div className='mainCompte'>
                 <div className='toolbar'>
@@ -100,7 +52,6 @@ const MainCompte = () => {
                     <div className='textCompteIdAndDate'>
                         <span>Votre numéro de compte : {compteUser && compteUser.numero}</span>
                         <span>Utilisateur depuis {timestampParser(compteUser && compteUser.createdAt)}</span>
->>>>>>> 526f875483c4c2d9a27d34d63d2671ee400afd87
                     </div>
                 </div>
 
