@@ -23,12 +23,22 @@ const MainCompte = () => {
     const handleUploadPhotoUser = () => {
 
         const dataUser = new FormData();
-        dataUser.append('userId', "userReducer._id");
+        dataUser.append('userId', userData._id);
         dataUser.append('image', file);
 
         if (!file) {
-            alert('Veuillez chosir une photo svp !');
+            toast.error('Veuillez chosir une photo svp !')
         } else {
+            axios.post(`${baseUrl}/user/upload`, dataUser)
+                .then(() => {
+                    toast.success('Photo mise à jour avec succès.')
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 5000);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         }
     };
 
@@ -49,38 +59,17 @@ const MainCompte = () => {
                         <label className="label">
                             <input type="file" onChange={(e) => setFile(e.target.files[0])} />
                             <figure className="personal-figure">
-                                <img src="" className="personal-avatar" alt="avatar" />
+                                <img src={photoUser ? "/" + photoUser.url : avatar} className="personal-avatar" alt="avatar" />
                                 <figcaption className="personal-figcaption">
-                                    <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png" alt="avatar" />
+                                    <img src={camera} alt="avatar" />
                                 </figcaption>
                             </figure>
                         </label>
                     </div>
                     <div className='userName'>
-                        <span>PSEUDO</span>
+                        <span>{userData && userData.pseudo}</span>
                         <span>Cliquez sur l'image pour changer la photo de profil. Taille Max: 2MB</span>
                         <button className='btnChangeImage' onClick={handleUploadPhotoUser}>Modifier la photo de profil</button>
-                    </div>
-                </div>
-
-                <div className='profilInfo'>
-                    <div className='photo'>
-                        <div className="personal-image">
-                            <label className="label">
-                                <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-                                <figure className="personal-figure">
-                                    <img src={photoUser ? "/" + photoUser.url : avatar} className="personal-avatar" alt="avatar" />
-                                    <figcaption className="personal-figcaption">
-                                        <img src={camera} alt="avatar" />
-                                    </figcaption>
-                                </figure>
-                            </label>
-                        </div>
-                        <div className='userName'>
-                            <span>{userData && userData.pseudo}</span>
-                            <span>Cliquez sur l'image pour changer la photo de profil. Taille Max: 2MB</span>
-                            <button className='btnChangeImage' onClick={handleUploadPhotoUser}>Modifier la photo de profil</button>
-                        </div>
                     </div>
                 </div>
 

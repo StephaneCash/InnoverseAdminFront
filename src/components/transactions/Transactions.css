@@ -39,9 +39,6 @@
 }
 
 .alertContent .search {
-    display: flex;
-    justify-content: center;
-    align-items: center !important;
     margin-bottom: 2rem;
 }
 

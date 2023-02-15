@@ -80,12 +80,6 @@ const Transactions = () => {
                                     type="search"
                                     onChange={handleChange}
                                 />
-                                <button
-                                    type='button'
-                                    onClick={searchTransaction}
-                                >
-                                    Rechercher <FaSearch />
-                                </button>
                             </div>
                         </div>
                         <BasicTable

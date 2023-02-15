@@ -22,7 +22,7 @@
 .mainCompte {
     color: silver;
     border: 1px solid #253650;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 .mainCompte .toolbar {
@@ -110,9 +110,9 @@
     width: 25%;
 }
 
-.compte .form .contentForm input,
-.compte .formPaiement input,
-.formSecurite input {
+.compte  input,
+.compte  input,
+input {
     flex: 1;
     margin-right: 2rem;
     width: 100%;

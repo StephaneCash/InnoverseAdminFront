@@ -30,7 +30,7 @@ const Recharge = () => {
 
                     <div className='content'>
                         <div className='search'>
-                            <input type="search" /> <button type='button'>Rechercher <FaSearch /></button>
+                            <input type="search" placeholder='Rechercher...' /> 
                         </div>
                         <div className='main'>
                             <div className='card'>
