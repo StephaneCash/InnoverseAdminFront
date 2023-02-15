@@ -1,9 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useEffect } from 'react';
-import { addInfosSupplementairesUser } from "../../api/InfosUserAPI"
-import { UserContext } from "../../AppContext";
-import { ToastContainer } from 'react-toastify';
-
+import { UserContext } from '../../AppContext';
 
 const InfosProfil = () => {
 
@@ -28,27 +24,24 @@ const InfosProfil = () => {
         dataUser.codePostal = codePostal;
         dataUser.dateAniv = dateAniv;
         dataUser.sexe = sexe;
-        dataUser.userId = userData._id;
-        dataUser.id = infosUser && infosUser && infosUser._id
-
-        addInfosSupplementairesUser(dataUser);
+        dataUser.userId = "userReducer._id;"
     };
 
-    useEffect(() => {
-        if (infosUser && infosUser) {
-            setPrenom(infosUser && infosUser && infosUser.prenom);
-            setNomFamille(infosUser && infosUser && infosUser.nomFamille);
-            setNumTel(infosUser && infosUser && infosUser.numTel);
-            setVille(infosUser && infosUser && infosUser.ville);
-            setAdresse(infosUser && infosUser && infosUser.adresse);
-            setCodePostal(infosUser && infosUser && infosUser.codePostal);
-            setDateAniv(infosUser && infosUser && infosUser.dateAniv);
-            setSexe(infosUser && infosUser && infosUser.sexe);
-        }
-    }, [infosUser]);
+    /*  useEffect(() => {
+          if (infoUser && infoUser[0]) {
+              setPrenom(infoUser && infoUser[0] && infoUser[0].prenom);
+              setNomFamille(infoUser && infoUser[0] && infoUser[0].nomFamille);
+              setNumTel(infoUser && infoUser[0] && infoUser[0].numTel);
+              setVille(infoUser && infoUser[0] && infoUser[0].ville);
+              setAdresse(infoUser && infoUser[0] && infoUser[0].adresse);
+              setCodePostal(infoUser && infoUser[0] && infoUser[0].codePostal);
+              setDateAniv(infoUser && infoUser[0] && infoUser[0].dateAniv);
+              setSexe(infoUser && infoUser[0] && infoUser[0].sexe);
+          }
+      }, [infoUser]);*/
 
     return (
-        <>
+        <div>
             <div className='form'>
                 <h4>Informations générales du Compte</h4>
                 <div className='contentForm'>
@@ -144,8 +137,92 @@ const InfosProfil = () => {
                     </button>
                 </div>
             </div>
-            <ToastContainer />
-        </>
+            <div className='contentForm'>
+                <label>Nom de famille</label>
+                <input
+                    type="text" placeholder="Nom de famille"
+                    value={nomFamille}
+                    onChange={(e) => setNomFamille(e.target.value)}
+                />
+            </div>
+            <div className='contentForm'>
+                <label>Numéro de Téléphone</label>
+                <input
+                    type="text"
+                    className="Prénom"
+                    placeholder='Votre numéro de téléphone'
+                    value={numTel} onChange={(e) => setNumTel(e.target.value)}
+                />
+            </div>
+            <div className='contentForm'>
+                <label>Pays</label>
+                <input
+                    type="text"
+                    className="Prénom"
+                    placeholder='Votre pays'
+                    defaultValue="RDC"
+                />
+            </div>
+            <div className='contentForm'>
+                <label>Cité/Ville</label>
+                <input
+                    type="text"
+                    className="Prénom"
+                    placeholder='Votre cité / ville'
+                    value={ville} onChange={(e) => setVille(e.target.value)}
+                />
+            </div>
+            <div className='contentForm'>
+                <label>Adresse Complète</label>
+                <textarea
+                    type="text"
+                    className="Prénom"
+                    placeholder='Votre adresse complète'
+                    rows="4"
+                    value={adresse} onChange={(e) => setAdresse(e.target.value)}
+                />
+            </div>
+            <div className='contentForm'>
+                <label>Code Postal/Zip Code</label>
+                <input
+                    type="text"
+                    className="Prénom"
+                    placeholder='Code postal de votre pays'
+                    value={codePostal} onChange={(e) => setCodePostal(e.target.value)}
+                />
+            </div>
+            <div className='contentForm'>
+                <label>Anniversaire</label>
+                <input type="date" className="Prénom"
+                    value={dateAniv} onChange={(e) => setDateAniv(e.target.value)}
+                />
+            </div>
+            <div className='contentForm'>
+                <label>Genre (Sexe)</label>
+                <select onChange={(e) => setSexe(e.target.value)}>
+                    <option value="" key="">--Votre sexe--</option>
+                    <option
+                        value={"M"}
+                    >
+                        Homme
+                    </option>
+                    <option
+                        value={"F"}
+                    >
+                        Femme
+                    </option>
+                </select>
+            </div>
+            <hr />
+            <div className='button'>
+                <button
+                    onClick={handleSaveInfosSupplementairesUser}
+                    disabled={prenom && sexe && dateAniv && codePostal && adresse && ville && numTel && nomFamille ? false : true}
+                >
+                    Mettre à jour
+                </button>
+            </div>
+        </div>
     )
 }
 

@@ -13,75 +13,77 @@ import Compte from './Compte';
 const SoldeCompte = () => {
 
     const [chaneCard, setChangeCard] = useState(0);
-    const [changeDevise, setChangeDevise] = useState(0);
-
+    const [dollar, setDollar] = useState(0);
+    const [euro, setEuro] = useState(0);
+    const [cdf, setCDF] = useState(0);
     const [typeEpargne, setTypeEpargne] = useState(0);
 
     const { compteUser } = useContext(UserContext);
 
     const onSubmit = () => {
-        const data = {};
+        const data = {}
+        const devises = [];
         if (chaneCard === 0) {
             toast.error('Veuillez chosir un type de compte !');
         } else {
             if (chaneCard === 1) {
-                data.nom = 'courant';
-                if (changeDevise === 1) {
-                    data.devise = "Euro"
+                data.type = "Courant";
+
+                if (dollar === 1) {
+                    devises.push("Dollar");
                 }
-                if (changeDevise === 2) {
-                    data.devise = "Dollar"
+                if (euro === 1) {
+                    devises.push("Euro");
                 }
-                if (changeDevise === 3) {
-                    data.devise = "CDF"
+                if (cdf === 1) {
+                    devises.push("CDF");
                 }
-            }
-            if (chaneCard === 2) {
-                data.nom = "epargne"
+            } else if (chaneCard === 2) {
+                data.type = "Epargne";
                 if (typeEpargne === 1) {
-                    data.type = "Objectif";
-                    if (changeDevise === 1) {
-                        data.devise = "Euro"
+                    data.nom = "Objectif";
+                    if (dollar === 1) {
+                        devises.push("Dollar");
                     }
-                    if (changeDevise === 2) {
-                        data.devise = "Dollar"
+                    if (euro === 1) {
+                        devises.push("Euro");
                     }
-                    if (changeDevise === 3) {
-                        data.devise = "CDF"
+                    if (cdf === 1) {
+                        devises.push("CDF");
                     }
                 } else if (typeEpargne === 2) {
-                    data.type = "Objectif +";
-                    if (changeDevise === 1) {
-                        data.devise = "Euro";
+                    data.nom = "Objectif+";
+                    if (dollar === 1) {
+                        devises.push("Dollar");
                     }
-                    if (changeDevise === 2) {
-                        data.devise = "Dollar";
+                    if (euro === 1) {
+                        devises.push("Euro");
                     }
-                    if (changeDevise === 3) {
-                        data.devise = "CDF";
+                    if (cdf === 1) {
+                        devises.push("CDF");
                     }
                 }
-
             }
         }
         let btn = document.getElementById('btnValid')
         btn.innerHTML = "Validation...";
 
-        axios.post(baseUrl + "/devises", {
-            nom: data.nom,
+        axios.post(baseUrl + "/comptes/config", {
             compteId: compteUser && compteUser._id,
-            type: data.type,
-            intitule: data.devise,
-            montant: 0
+            nom: data.nom,
+            devise: devises,
+            type: data.type
         })
             .then(resp => {
+                console.log(resp)
                 toast.success('Compte configuré avec succès.');
                 setTimeout(() => {
                     window.location.reload('');
-                }, [6000]);
+                }, [5000]);
             })
             .catch(err => {
-                console.log(err)
+                console.log(err);
+                btn.innerHTML = "Valider"
             })
     };
 
@@ -161,32 +163,32 @@ const SoldeCompte = () => {
                                             <div className='configSolde'>
                                                 <h6>Choisir la (les) devise (s)</h6>
                                                 <div className="devises">
-                                                    <div className={changeDevise === 1 ? "devise actived" : "devise"}>
+                                                    <div className={euro === 1 ? "devise actived" : "devise"}>
                                                         <p><FaEuroSign /> </p>
-                                                        <button onClick={() => { setChangeDevise(1) }}>Choisir</button>
-                                                        <button onClick={() => { setChangeDevise(0) }}>Annuler</button>
+                                                        <button onClick={() => { setEuro(1) }}>Choisir</button>
+                                                        <button onClick={() => { setEuro(0) }}>Annuler</button>
                                                     </div>
 
-                                                    <div className={changeDevise === 2 ?
+                                                    <div className={dollar === 1 ?
                                                         "devise actived" : "devise"}
                                                     >
                                                         <p><FaDollarSign /> </p>
-                                                        <button onClick={() => { setChangeDevise(2) }}>
+                                                        <button onClick={() => { setDollar(1) }}>
                                                             Choisir
                                                         </button>
-                                                        <button onClick={() => { setChangeDevise(0) }}>
+                                                        <button onClick={() => { setDollar(0) }}>
                                                             Annuler
                                                         </button>
                                                     </div>
 
-                                                    <div className={changeDevise === 3 ?
+                                                    <div className={cdf === 1 ?
                                                         "devise actived" : "devise"}
                                                     >
                                                         <p>CDF</p>
-                                                        <button onClick={() => { setChangeDevise(3) }}>
+                                                        <button onClick={() => { setCDF(1) }}>
                                                             Choisir
                                                         </button>
-                                                        <button onClick={() => { setChangeDevise(0) }}>
+                                                        <button onClick={() => { setCDF(0) }}>
                                                             Annuler
                                                         </button>
                                                     </div>
@@ -197,18 +199,16 @@ const SoldeCompte = () => {
 
                                 </>
                             ) : compteUser && compteUser.isValid === true && (
-                                <Compte />
+                                <Compte compteUser={compteUser} />
                             )
                         }
 
                         {
                             compteUser && compteUser.isValid === false &&
-                            <div className='buttonValid'>
+                            <div className='buttonValid' style={{marginBottom:"1rem"}}>
                                 <button onClick={onSubmit} type="button" id="btnValid">Valider</button>
                             </div>
                         }
-
-
                     </div>
                 </div>
             </div>

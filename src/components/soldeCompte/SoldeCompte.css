@@ -1,11 +1,12 @@
 .mainSoldeCompte {
-    font-family: Roboto, sans-serif;
+    font-family: "Roboto", sans-serif;
     background-color: var(--blueFonce);
     height: 100vh;
     display: flex;
     justify-content: flex-start !important;
     flex-direction: column;
     color: silver;
+    overflow-y: auto;
 }
 
 .contentSoldeCompte {
