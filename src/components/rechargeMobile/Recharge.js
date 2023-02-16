@@ -7,7 +7,7 @@ import orange from "../../images/orange.png"
 import vod from "../../images/vod.png"
 import airtel from "../../images/airtel.png"
 import africell from "../../images/africell.png"
-import { FaArrowLeft, FaSearch } from 'react-icons/fa'
+import { FaArrowLeft } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
 

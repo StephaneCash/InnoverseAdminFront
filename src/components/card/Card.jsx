@@ -1,148 +1,102 @@
 import React, { useEffect, useState } from 'react'
-import { motion, AnimateSharedLayout } from 'framer-motion';
-import { CircularProgressbar } from "react-circular-progressbar";
+import {
+    CircularProgressbar,
+    CircularProgressbarWithChildren,
+} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css"
-import { UilTimes } from "@iconscout/react-unicons"
 import Chart from 'react-apexcharts';
 import { baseUrl } from '../../bases/baseUrl';
 import axios from 'axios';
 import { timestampParser } from '../../Utils';
+import "./Card.css"
+import { useRef } from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../../AppContext';
+import ReactApexChart from 'react-apexcharts';
 
-const Card = (props) => {
 
-    const [expanded, setExpanded] = useState(false);
+function Card() {
 
-    return (
-        <AnimateSharedLayout>
-            {
-                expanded ? (
-                    <ExpandedCard param={props} setExpanded={() => setExpanded(false)} />
-                ) :
-                    <CompactCard param={props} setExpanded={() => setExpanded(true)} />
-            }
-        </AnimateSharedLayout>
-    )
-}
+    const { compteUser } = useContext(UserContext);
 
-function CompactCard({ param, setExpanded }) {
 
-    const Png = param.png;
 
-    return (
-        <motion.div className='compactCard'
-            style={{
-                background: param.color.backGround,
-                boxShadow: param.color.boxShadow
-            }}
-            onClick={setExpanded}
-            layoutId="expandableCard"
-        >
-            <div className='radialBar'>
-                <CircularProgressbar
-                    value={param.barValue}
-                    text={`${param.barValue}`}
-                />
-                <span>{param.title}</span>
-            </div>
-            <div className='detail'>
-                <Png />
-                <span>
-                    {param.title === "Solde" ? "$" + param.value : param.value}
-                </span>
-                <span>24 heures Passées</span>
-            </div>
-        </motion.div>
-    )
-}
 
-// Expandend Card 
 
-function ExpandedCard({ param, setExpanded }) {
-
-    const [transactions, setTransactions] = useState([]);
-
-    const getAllTransactions = () => {
-        axios.get(baseUrl + "/transactions")
-            .then(res => {
-                setTransactions(res.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    };
+    const [progress, setProgress] = useState(0);
+    let interval = useRef(null);
 
     useEffect(() => {
-        getAllTransactions();
+        interval.current = setInterval(() => {
+            setProgress((old) => old + 50);
+        }, 1000);
+        return () => {
+            clearInterval(interval.current);
+        };
     }, []);
 
-    const data = {
+    useEffect(() => {
+        if (progress < 100) return;
+        clearInterval(interval.current);
+    }, [progress]);
+
+    const state = {
         options: {
             chart: {
-                type: "area",
-                height: "auto"
-            },
-            dropShadow: {
-                enabled: false,
-                enabledOnSeries: undefined,
-                top: 0,
-                left: 3,
-                blur: 3,
-                color: "red",
-                opacity: 0.35
-            },
-            fill: {
-                color: ['#fff'],
-                type: "gradient"
-            },
-            dataLabels: {
-                enabled: false,
-            },
-            stroke: {
-                curve: "smooth",
-                colors: ["silver"]
-            },
-            tooltip: {
-                x: {
-                    format: "dd/MM/yy HH:mm"
-                }
-            },
-            grid: {
-                show: true
+                id: 'apexchart-example'
             },
             xaxis: {
-                categories: transactions && transactions.data && transactions.data.map(res => {
-                    return timestampParser(res.createdAt)
-                })
+                categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
             }
-        }
+        },
+        series: [{
+            name: 'series-1',
+            data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
+        }]
     }
 
-    console.log(transactions)
-
     return (
-        <motion.div className="ExpandedCard"
-            style={{
-                background: param.color.backGround,
-                boxShadow: param.color.boxShadow
-            }}
-            layoutId="expandableCard"
-        >
-            <div style={{ alignSelf: "flex-end", cursor: "pointer", color: "silver" }}>
-                <UilTimes onClick={setExpanded} />
-            </div>
-            <span>{param.title}</span>
-            <div className='chartContainer'>
-                <Chart series={
-                    param.title === "Transactions" ?
-                        transactions && transactions.taille > 0 && transactions.data.map((res, i) => {
-                            return i + 1
+        <div className='cards'>
+
+            <div className='card' style={{ width: 320 }}>
+                <div>Solde</div>
+                <div className='cardChilds'>
+                    {
+                        compteUser && compteUser.devises.map((devise, i) => {
+                            return (
+                                <div className='cardMin' key={devise._id}>
+                                    {
+                                        devise.devise === "Dollar" ?
+                                            "$ " : devise.devise === "Euro" ?
+                                                "€ " : devise.devise === "CDF" ? "CDF " : ""
+                                    }
+                                    <span>{devise.montant}</span>
+
+                                </div>
+                            )
                         })
-                        : param.series
-                } type="area" options={data.options} />
+                    }
+                </div>
+
+                <div className='circular'>
+                    <div className='cardLastChild'>
+                        <span style={{margin:"1rem"}}>Transferts gratuits </span>
+                    </div>
+                    <CircularProgressbarWithChildren value={66}>
+                        <div style={{ fontSize: 12, marginTop: -5 }}>
+                            <strong>66%</strong>
+                        </div>
+                    </CircularProgressbarWithChildren>
+                </div>
             </div>
-            <span>Last 24 heures</span>
-        </motion.div>
+
+            <div className='card'>
+                <span>Vos activités</span>
+                <Chart options={state.options} series={state.series} type="bar" width={500} height={320} />
+            </div>
+        </div >
     )
 }
+
 
 export default Card

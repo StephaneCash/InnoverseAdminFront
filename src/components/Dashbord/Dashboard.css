@@ -34,6 +34,10 @@
     color: whitesmoke;
 }
 
+.dashboard .cards{
+    display: flex;
+}
+
 @media screen and (max-width: 1200px) {
     .dashboard {
         justify-content: flex-start !important;
