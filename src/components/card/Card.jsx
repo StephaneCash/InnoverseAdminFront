@@ -11,6 +11,7 @@ import "./Card.css"
 import { useRef } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../../AppContext';
+import { FaCcMastercard, FaCcVisa, FaList } from 'react-icons/fa';
 
 
 function Card() {
@@ -59,24 +60,54 @@ function Card() {
         }
     }, [userId]);
 
-
     const state = {
+        series:[
+            {
+                name:"Activités transactionnelles",
+                data: transactions && transactions.data && transactions.data.map(value => {
+                    return value.montant
+                })
+            }
+        ],
         options: {
             chart: {
-                id: 'apexchart-example'
+                type: "area",
+                height: "auto"
+            },
+            dropShadow: {
+                enabled: false,
+                enabledOnSeries: undefined,
+                top: 0,
+                left: 3,
+                blur: 3,
+                color: "red",
+                opacity: 0.35
+            },
+            fill: {
+                color: ['#fff'],
+                type: "gradient"
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            stroke: {
+                curve: "smooth",
+                colors: ["silver"]
+            },
+            tooltip: {
+                x: {
+                    format: "dd/MM/yy HH:mm"
+                }
+            },
+            grid: {
+                show: true
             },
             xaxis: {
                 categories: transactions && transactions.data && transactions.data.map(value => {
                     return timestampParser(value.createdAt).substring(0, 19)
                 })
             }
-        },
-        series: [{
-            name: 'series-1',
-            data: transactions && transactions.data && transactions.data.map(value => {
-                return value.montant
-            })
-        }]
+        }
     }
 
     return (
@@ -103,14 +134,38 @@ function Card() {
                 </div>
 
                 <div className='circular'>
-                    <div className='cardLastChild'>
-                        <span style={{ margin: "1rem" }}>Transferts gratuits </span>
-                    </div>
-                    <CircularProgressbarWithChildren value={66}>
-                        <div style={{ fontSize: 12, marginTop: -5 }}>
-                            <strong>66%</strong>
+                    <div className='cardCircular'>
+                        <div className='cardLastChild'>
+                            <span style={{ margin: "1rem" }}> <FaList size={33} /> Transferts gratuits </span>
                         </div>
-                    </CircularProgressbarWithChildren>
+                        <CircularProgressbarWithChildren value={66}>
+                            <div style={{ fontSize: 12, marginTop: -5 }}>
+                                <strong>66%</strong>
+                            </div>
+                        </CircularProgressbarWithChildren>
+                    </div>
+
+                    <div className='cardCircular'>
+                        <div className='cardLastChild'>
+                            <span style={{ margin: "1rem" }}> <FaCcVisa size={50} /> (Usage)</span>
+                        </div>
+                        <CircularProgressbarWithChildren value={100}>
+                            <div style={{ fontSize: 12, marginTop: -5 }}>
+                                <strong>100%</strong>
+                            </div>
+                        </CircularProgressbarWithChildren>
+                    </div>
+
+                    <div className='cardCircular'>
+                        <div className='cardLastChild'>
+                            <span style={{ margin: "1rem" }}> <FaCcMastercard size={50} /> (Usage)</span>
+                        </div>
+                        <CircularProgressbarWithChildren value={100}>
+                            <div style={{ fontSize: 12, marginTop: -5 }}>
+                                <strong>100%</strong>
+                            </div>
+                        </CircularProgressbarWithChildren>
+                    </div>
                 </div>
             </div>
 

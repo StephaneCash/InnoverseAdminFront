@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FaArrowLeft, FaSearch } from 'react-icons/fa'
+import { FaArrowLeft, FaHandHoldingUsd, FaSearch } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Navbar from '../navbar/Navbar'
 import Sidebar from '../sidebar/Sidebar'
@@ -28,13 +28,13 @@ const Main = () => {
                                 <h6>({taillePrets}) Prêts</h6>
                                 <div className='transfert'>
                                     <Link to="/pret/demande">
-                                        <button className='transfertBtn' type='button'>Demander un prêt</button>
+                                        <button className='transfertBtn' type='button'>Demander un prêt <FaHandHoldingUsd size={20}/> </button>
                                     </Link>
                                 </div>
                             </div>
 
                             <div className='search'>
-                                <input type="search" placeholder='Rechercher...' /> <button type='button'>Rechercher <FaSearch /></button>
+                                <input type="search" placeholder='Rechercher...' /> 
                             </div>
                         </div>
                         <BasicTable setTaillePret={setTaillePret} />

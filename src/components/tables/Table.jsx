@@ -51,9 +51,8 @@ export default function BasicTable(props) {
                                             <TableCell align="left" style={{ color: "silver" }}>{i + 1} </TableCell>
                                             <TableCell align="left" style={{ color: "silver" }}>{row.motif} </TableCell>
                                             <TableCell align="left" style={{ color: "silver", display: "flex", alignItems: "center", gap: ".3rem" }}>
-                                                {row.deviseId === "Dollar" ? <FaDollarSign /> :
-                                                    row.deviseId === "Euro" ? <FaEuroSign /> : row.deviseId === "CDF" ? "CDF" : ""}
-                                                {row.montant}
+                                                {row.montant}  {row.devise === "Dollar" ? ' $' :
+                                                    row.devise === "Euro" ? " €" : row.devise === "CDF" ? " CDF" : ""}
                                             </TableCell>
                                             <TableCell align="left" style={{ color: "silver" }}>{row.nomClient}</TableCell>
                                             <TableCell align="left" style={{ color: "silver" }}>
