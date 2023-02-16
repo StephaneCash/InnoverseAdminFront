@@ -15,7 +15,7 @@ const MainCompte = () => {
 
     const [detailClic, setDetailClic] = useState(1);
 
-    const { photoUser, userData } = useContext(UserContext);
+    const { photoUser, userData, compteUser } = useContext(UserContext);
 
     const [cardPassword, setCardPassword] = useState(1);
     const [file, setFile] = useState('');
@@ -48,8 +48,8 @@ const MainCompte = () => {
             <div className='toolbar'>
                 <div className='icon'><FaUserShield size={30} /></div>
                 <div className='textCompteIdAndDate'>
-                    <span>Votre numéro de compte : {"compteUser && compteUser.numero"}</span>
-                    <span>Utilisateur depuis {timestampParser("compteUser && compteUser.createdAt")}</span>
+                    <span>Votre numéro de compte : {compteUser && compteUser.numero}</span>
+                    <span>Utilisateur depuis {timestampParser(compteUser && compteUser.createdAt)}</span>
                 </div>
             </div>
 
