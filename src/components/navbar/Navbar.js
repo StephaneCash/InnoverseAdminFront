@@ -16,7 +16,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import cookie from "js-cookie";
 import axios from 'axios';
 import { baseUrl } from '../../bases/baseUrl';
-import { FaSignOutAlt, FaUserCircle, FaUserCog, FaHome } from "react-icons/fa";
+import { FaSignOutAlt, FaUserCircle, FaUserCog, FaHome, FaDollarSign } from "react-icons/fa";
 import { UserContext } from "../../AppContext";
 
 const pages = ['', '', ''];
@@ -155,12 +155,12 @@ function Navbar() {
                     <div className='depot_retrait'>
                         <button>
                             <Link to='/compte/depot'>
-                                Effecteur un dépôt
+                                Effecteur un dépôt <FaDollarSign />
                             </Link>
                         </button>
                         <button className='retrait'>
                             <Link to='/compte/retrait'>
-                                Effecteur un retrait
+                                Effecteur un retrait <FaDollarSign />
                             </Link>
                         </button>
                     </div>

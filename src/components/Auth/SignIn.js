@@ -57,6 +57,7 @@ const SignIn = () => {
                                 <img src={logo} alt='Logo' />
                             </div>
                             <h3>Se connecter</h3>
+
                             <input
                                 type="email"
                                 className="form-control"
@@ -64,6 +65,7 @@ const SignIn = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                                 value={email}
                             />
+
                             <input
                                 type="password"
                                 className="form-control"
@@ -88,7 +90,7 @@ const SignIn = () => {
                                         "Se connecter"
                                 }
                             </button>
-                            <p>
+                            <p className='createCompteLink'>
                                 Vous n'avez pas de compte ?
                                 <br /><br />
                                 <Link to="/inscription">Créer un compte ici</Link>

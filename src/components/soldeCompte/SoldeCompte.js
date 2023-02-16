@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import Navbar from '../navbar/Navbar';
 import Sidebar from '../sidebar/Sidebar';
 import './SoldeCompte.css';
@@ -9,6 +9,8 @@ import { UserContext } from '../../AppContext';
 import axios from 'axios';
 import { baseUrl } from '../../bases/baseUrl';
 import Compte from './Compte';
+import courant from "../../images/courant.jpg";
+import epargne from "../../images/epargne.jpg"
 
 const SoldeCompte = () => {
 
@@ -100,14 +102,16 @@ const SoldeCompte = () => {
                                     <h4 style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "1rem" }}>
                                         Configuration de votre compte <FaCogs /> </h4>
                                     <div className='configSolde'>
-                                        <h6>Choisir le type de compte</h6>
+                                        <h6>Choisir le type de compte en cliquant sur une image</h6>
                                         <div className="cards">
                                             <div className={chaneCard === 1 ? "card actived" : "card"} onClick={() => setChangeCard(1)}>
                                                 <h4>Compte courant</h4>
+                                                <img src={courant} alt="Compte-Courant" />
                                             </div>
 
                                             <div className={chaneCard === 2 ? "card actived" : "card"} onClick={() => setChangeCard(2)}>
                                                 <h4>Compte épargne</h4>
+                                                <img src={epargne} alt="Compte-Epargne" />
                                             </div>
                                         </div>
                                     </div>
@@ -205,7 +209,7 @@ const SoldeCompte = () => {
 
                         {
                             compteUser && compteUser.isValid === false &&
-                            <div className='buttonValid' style={{marginBottom:"1rem"}}>
+                            <div className='buttonValid'>
                                 <button onClick={onSubmit} type="button" id="btnValid">Valider</button>
                             </div>
                         }

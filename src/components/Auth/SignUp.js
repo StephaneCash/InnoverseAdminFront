@@ -21,7 +21,7 @@ const SignUp = () => {
         e.preventDefault();
 
         if (password !== confirmPassword) {
-            alert('Les deux mots de passe ne correspondent pas.');
+            toast.error('Les deux mots de passe ne correspondent pas.')
         } else {
 
             axios.post(`${baseUrl}/users/`, { pseudo, email, password })
@@ -80,7 +80,6 @@ const SignUp = () => {
                             placeholder='Répeter le mot de passe' value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />
-                        <br />
                         <button className='button' onClick={handleRegister}>S'inscrire</button>
 
                         <p>

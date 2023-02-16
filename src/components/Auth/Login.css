@@ -9,10 +9,10 @@
 .login .form {
     color: #fff;
     border: 1px solid #2b3b64;
-    border-radius: 5px;
+    border-radius: 6px;
     padding: 3rem;
     background-color: #0e172a;
-    width: 280px;
+    width: 310px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,15 +42,12 @@
 }
 
 .login input {
-    width: 100%;
-    margin-bottom: .4rem;
-    box-sizing: border-box;
+    margin-bottom: 1rem;
 }
 
 .login input:focus {
     outline: none;
 }
-
 
 .login .error {
     color: #e65252;
@@ -65,7 +62,7 @@
     border-radius: 5px;
     padding: .8rem;
     width: 100% !important;
-    border: 1px solid silver;
+    box-sizing: border-box;
 }
 
 .login .form .button {
@@ -86,4 +83,12 @@
 .login p a {
     color: silver;
     text-decoration: none;
+}
+
+.createCompteLink a {
+    background-color: #13203b;
+    width: 100%;
+    padding: .6rem 1rem;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 5px;
 }
