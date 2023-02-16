@@ -70,3 +70,11 @@
 .circular .cardLastChild{
     width: 100px;
 }
+
+.apexcharts-canvas{
+    border: none !important;
+}
+
+.apexcharts-legend-marker{
+    background-color: red !important;
+}

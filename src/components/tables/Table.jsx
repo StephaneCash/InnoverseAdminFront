@@ -68,7 +68,7 @@ export default function BasicTable(props) {
                             }
                             ) :
 
-                                <TableCell align="left" style={{ color: "silver", textAlign: "center" }} colSpan="5px">
+                                <TableCell align="left" style={{ color: "silver", textAlign: "center" }} colSpan="6px">
                                     <i className='fa fa-spinner fa-pulse fa-2x'></i> Chargement...
                                 </TableCell>
                         }

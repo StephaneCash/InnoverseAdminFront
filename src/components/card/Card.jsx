@@ -3,7 +3,6 @@ import {
     CircularProgressbarWithChildren,
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css"
-import Chart from 'react-apexcharts';
 import { baseUrl } from '../../bases/baseUrl';
 import axios from 'axios';
 import { timestampParser } from '../../Utils';
@@ -12,6 +11,7 @@ import { useRef } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../../AppContext';
 import { FaCcMastercard, FaCcVisa, FaList } from 'react-icons/fa';
+import Chart from "react-apexcharts";
 
 
 function Card() {
@@ -61,9 +61,9 @@ function Card() {
     }, [userId]);
 
     const state = {
-        series:[
+        series: [
             {
-                name:"Activités transactionnelles",
+                name: "Activités transactionnelles",
                 data: transactions && transactions.data && transactions.data.map(value => {
                     return value.montant
                 })
@@ -109,6 +109,30 @@ function Card() {
             }
         }
     }
+
+    const options = {
+        xaxis: {
+            categories: transactions && transactions.data && transactions.data.map(value => {
+                return timestampParser(value.createdAt).substring(0, 19)
+            })
+        }
+    };
+    const series = [
+        {
+            name: "Transactions",
+            data: transactions && transactions.data && transactions.data.map(value => {
+                return value.montant
+            })
+        },
+        {
+            name: "Prêts",
+            data: [23, 12, 54, 61, 32, 56, 81, 19]
+        },
+        {
+            name: "Activités par Cartes virtuelles",
+            data: [24, 20, 5, 75, 42, 79, 72, 35]
+        }
+    ];
 
     return (
         <div className='cards'>
@@ -171,7 +195,7 @@ function Card() {
 
             <div className='card'>
                 <span>Vos activités</span>
-                <Chart options={state.options} series={state.series} type="line" width={400} height={320} />
+                <Chart options={options} series={series} type="area" width={400} height={300} />
             </div>
         </div >
     )
