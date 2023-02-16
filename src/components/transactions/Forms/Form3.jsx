@@ -25,7 +25,8 @@ const Form3 = () => {
         deviseIdDest: userDataCompte.compte._id,
         nomUserTransfere: dataTransfert && dataTransfert.pseudo,
         motif: dataTransfert && dataTransfert.motif,
-        idDevise: dataTransfert && dataTransfert.idDevise
+        idDevise: dataTransfert && dataTransfert.idDevise,
+        compteIdDest: dataTransfert && dataTransfert.compteIdDest,
       })
         .then(resp => {
           console.log(resp)
@@ -55,7 +56,7 @@ const Form3 = () => {
           {
             dataTransfert.devise === 'Dollar' ? "$" :
               dataTransfert.devise === "Euro" ? "€" :
-                dataTransfert.devise === "CDF" ? "CDF" : ""
+                dataTransfert.devise === "CDF" ? " CDF" : ""
           }
         </div>
         <div className='main'>
@@ -68,10 +69,7 @@ const Form3 = () => {
               <br />
               <span>
                 Compte : {
-                  deviseCompte && deviseCompte[0].nom === "epargne" ?
-                    deviseCompte && deviseCompte[0].typeCompteEpargnes && deviseCompte[0].typeCompteEpargnes[0].nom
-                    : deviseCompte && deviseCompte[0].nom === "courant" &&
-                    ""
+                  compteUser && compteUser.type
                 }
               </span>
             </div>
@@ -97,6 +95,7 @@ const Form3 = () => {
             </div>
           </div>
         </div>
+
         <button
           style={{ float: "right", marginLeft: "1rem", display: "flex", gap: ".5rem", alignItems: "center" }}
           onClick={handleSubmit}>

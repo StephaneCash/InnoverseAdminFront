@@ -49,6 +49,10 @@
     display: flex;
 }
 
+.dashbaordMain .compteConf button{
+    padding: .5rem 2rem;
+    cursor: pointer;
+}
 
 .CircularProgressbar .CircularProgressbar-path {
     stroke: #204084;

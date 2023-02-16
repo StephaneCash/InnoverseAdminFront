@@ -9,7 +9,7 @@ const Form2 = () => {
 
     const {
         activeStep, setActiveStep, setDataTransfert,
-        dataTransfert, setUserDataCompte, userData, compteUser
+        dataTransfert, setUserDataCompte,
     } = React.useContext(UserContext);
 
     const [compte, setCompte] = useState(0);
@@ -34,8 +34,6 @@ const Form2 = () => {
             setNumBank([[numbBank], val])
             //   console.log('ed')
         });
-
-        //  console.log(arr)
     }
 
     const handleDeleteInput = (i) => {
@@ -56,7 +54,8 @@ const Form2 = () => {
                     setValueCompte(resp.data);
                     setEtat(true);
                     setUserDataCompte(resp.data);
-                    setDataTransfert({ ...dataTransfert, 'pseudo': resp.data.user && resp.data.user.pseudo })
+                    setDataTransfert({ ...dataTransfert, 'pseudo': resp.data.user && resp.data.user.pseudo, 
+                    "compteIdDest" : resp.data && resp.data.compte && resp.data.compte._id })
                 } else {
                     setEtat(false);
                 }

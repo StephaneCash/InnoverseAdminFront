@@ -16,13 +16,16 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
-    grid-template-columns: 12rem auto 20rem;
+    grid-template-columns: 12rem 61rem 20rem;
 }
 
 .dashboard {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    padding: 2rem 2rem;
+    position: relative;
+    height: auto;
+    overflow-y: auto;
 }
 
 .dashboard h1 {
@@ -36,6 +39,15 @@
 
 .dashboard .cards{
     display: flex;
+}
+
+.dashbaordMain .compteConf{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 @media screen and (max-width: 1200px) {

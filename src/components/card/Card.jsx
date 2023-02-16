@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import {
-    CircularProgressbar,
     CircularProgressbarWithChildren,
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css"
@@ -12,16 +11,11 @@ import "./Card.css"
 import { useRef } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../../AppContext';
-import ReactApexChart from 'react-apexcharts';
 
 
 function Card() {
 
     const { compteUser } = useContext(UserContext);
-
-
-
-
 
     const [progress, setProgress] = useState(0);
     let interval = useRef(null);
@@ -40,25 +34,55 @@ function Card() {
         clearInterval(interval.current);
     }, [progress]);
 
+    const [transactions, setTransactions] = useState([]);
+    const [userId, setUserId] = useState("");
+
+    useEffect(() => {
+        if (compteUser) {
+            setUserId(compteUser && compteUser.userId)
+        }
+    }, [compteUser]);
+
+    const getAllTransactions = () => {
+        axios.get(`${baseUrl}/transactions/getByUserId/${userId}`)
+            .then(res => {
+                setTransactions(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    };
+
+    useEffect(() => {
+        if (userId) {
+            getAllTransactions();
+        }
+    }, [userId]);
+
+
     const state = {
         options: {
             chart: {
                 id: 'apexchart-example'
             },
             xaxis: {
-                categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+                categories: transactions && transactions.data && transactions.data.map(value => {
+                    return timestampParser(value.createdAt).substring(0, 19)
+                })
             }
         },
         series: [{
             name: 'series-1',
-            data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
+            data: transactions && transactions.data && transactions.data.map(value => {
+                return value.montant
+            })
         }]
     }
 
     return (
         <div className='cards'>
 
-            <div className='card' style={{ width: 320 }}>
+            <div className='card' style={{ width: 320, padding: "0 3rem" }}>
                 <div>Solde</div>
                 <div className='cardChilds'>
                     {
@@ -80,7 +104,7 @@ function Card() {
 
                 <div className='circular'>
                     <div className='cardLastChild'>
-                        <span style={{margin:"1rem"}}>Transferts gratuits </span>
+                        <span style={{ margin: "1rem" }}>Transferts gratuits </span>
                     </div>
                     <CircularProgressbarWithChildren value={66}>
                         <div style={{ fontSize: 12, marginTop: -5 }}>
@@ -92,7 +116,7 @@ function Card() {
 
             <div className='card'>
                 <span>Vos activités</span>
-                <Chart options={state.options} series={state.series} type="bar" width={500} height={320} />
+                <Chart options={state.options} series={state.series} type="line" width={400} height={320} />
             </div>
         </div >
     )

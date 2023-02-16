@@ -16,7 +16,6 @@ const Transactions = () => {
     const { compteUser } = React.useContext(UserContext);
 
     const [valueSearch, setValueSearch] = useState('');
-    const [btnClic, setBtnClic] = useState(false);
     const [userId, setUserId] = useState("");
 
     useEffect(() => {
@@ -43,13 +42,8 @@ const Transactions = () => {
 
     const handleChange = (e) => {
         setValueSearch(e.target.value);
-        setBtnClic(false);
     };
-
-    const searchTransaction = () => {
-        setBtnClic(true);
-    };
-
+    
     return (
         <div className='compteCustom'>
             <Navbar />
