@@ -60,56 +60,6 @@ function Card() {
         }
     }, [userId]);
 
-    const state = {
-        series: [
-            {
-                name: "Activités transactionnelles",
-                data: transactions && transactions.data && transactions.data.map(value => {
-                    return value.montant
-                })
-            }
-        ],
-        options: {
-            chart: {
-                type: "area",
-                height: "auto"
-            },
-            dropShadow: {
-                enabled: false,
-                enabledOnSeries: undefined,
-                top: 0,
-                left: 3,
-                blur: 3,
-                color: "red",
-                opacity: 0.35
-            },
-            fill: {
-                color: ['#fff'],
-                type: "gradient"
-            },
-            dataLabels: {
-                enabled: false,
-            },
-            stroke: {
-                curve: "smooth",
-                colors: ["silver"]
-            },
-            tooltip: {
-                x: {
-                    format: "dd/MM/yy HH:mm"
-                }
-            },
-            grid: {
-                show: true
-            },
-            xaxis: {
-                categories: transactions && transactions.data && transactions.data.map(value => {
-                    return timestampParser(value.createdAt).substring(0, 19)
-                })
-            }
-        }
-    }
-
     const options = {
         xaxis: {
             categories: transactions && transactions.data && transactions.data.map(value => {
@@ -126,12 +76,12 @@ function Card() {
         },
         {
             name: "Prêts",
-            data: [23, 12, 54, 61, 32, 56, 81, 19]
+            data: [23, 12, 94, 81, 32, 56, 81, 19]
         },
         {
-            name: "Activités par Cartes virtuelles",
-            data: [24, 20, 5, 75, 42, 79, 72, 35]
-        }
+            name: "Cartes virtuelles",
+            data: [2, 12, 54, 61, 32, 6, 81, 109]
+        },
     ];
 
     return (

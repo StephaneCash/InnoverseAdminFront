@@ -152,19 +152,6 @@ function Navbar() {
                         ))}
                     </Box>
 
-                    <div className='depot_retrait'>
-                        <button>
-                            <Link to='/compte/depot'>
-                                Effecteur un dépôt <FaDollarSign />
-                            </Link>
-                        </button>
-                        <button className='retrait'>
-                            <Link to='/compte/retrait'>
-                                Effecteur un retrait <FaDollarSign />
-                            </Link>
-                        </button>
-                    </div>
-
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Ouvrir les paramètres">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

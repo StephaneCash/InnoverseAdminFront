@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
 import Sidebar from '../sidebar/Sidebar';
 import "./Transactions.css";
-import { FaArrowLeft, FaSearch } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
 import BasicTable from "./Table";
 import axios from 'axios';
 import { baseUrl } from '../../bases/baseUrl';
@@ -43,7 +43,7 @@ const Transactions = () => {
     const handleChange = (e) => {
         setValueSearch(e.target.value);
     };
-    
+
     return (
         <div className='compteCustom'>
             <Navbar />
@@ -61,6 +61,18 @@ const Transactions = () => {
                         <div className='alertContent'>
                             <div className='bloc1'>
                                 <h6>({transactions && transactions.taille ? transactions.taille : "0"}) Transactions</h6>
+                                <div className='depot_retrait'>
+                                    <button>
+                                        <Link to='/compte/depot'>
+                                            Effecteur un dépôt
+                                        </Link>
+                                    </button>
+                                    <button className='retrait'>
+                                        <Link to='/compte/retrait'>
+                                            Effecteur un retrait
+                                        </Link>
+                                    </button>
+                                </div>
                                 <div className='transfert'>
                                     <Link to="/compte/transactions/transfert-argent">
                                         <button className='transfertBtn' type='button'>Transférer de l'argent</button>
