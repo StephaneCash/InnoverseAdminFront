@@ -11,6 +11,7 @@ import { FaDollarSign, FaEuroSign } from 'react-icons/fa';
 import axios from 'axios';
 import { baseUrl } from '../../bases/baseUrl';
 import { UserContext } from '../../AppContext';
+import Laoder from '../loader/Loader';
 
 export default function BasicTable(props) {
 
@@ -100,7 +101,7 @@ export default function BasicTable(props) {
                             ) :
 
                                 <TableCell align="left" style={{ color: "silver", textAlign: "center" }} colSpan="6px">
-                                    <i className='fa fa-spinner fa-pulse fa-2x'></i> Chargement...
+                                    <Laoder />
                                 </TableCell>
                         }
                     </TableBody>

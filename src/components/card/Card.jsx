@@ -12,6 +12,7 @@ import { useContext } from 'react';
 import { UserContext } from '../../AppContext';
 import { FaCcMastercard, FaCcVisa, FaList } from 'react-icons/fa';
 import Chart from "react-apexcharts";
+import Laoder from '../loader/Loader';
 
 
 function Card() {
@@ -91,7 +92,7 @@ function Card() {
                 <div>Solde</div>
                 <div className='cardChilds'>
                     {
-                        compteUser && compteUser.devises.map((devise, i) => {
+                        compteUser ? compteUser.devises.map((devise, i) => {
                             return (
                                 <div className='cardMin' key={devise._id}>
                                     {
@@ -103,7 +104,7 @@ function Card() {
 
                                 </div>
                             )
-                        })
+                        }) : <Laoder />
                     }
                 </div>
 
@@ -145,7 +146,7 @@ function Card() {
 
             <div className='card'>
                 <span>Vos activités</span>
-                <Chart options={options} series={series} type="area" width={400} height={300} />
+                <Chart options={options} series={series} type="bar" width={400} height={300} />
             </div>
         </div >
     )

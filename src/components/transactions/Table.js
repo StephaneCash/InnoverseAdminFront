@@ -7,6 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { timestampParser } from "../../Utils"
+import Laoder from '../loader/Loader';
 
 export default function BasicTable(props) {
 
@@ -78,7 +79,7 @@ export default function BasicTable(props) {
                                 ) :
 
                                 <TableCell align="left" style={{ color: "silver", textAlign: "center" }} colSpan="6px">
-                                    <i className='fa fa-spinner fa-pulse fa-2x'></i> Chargement...
+                                    <Laoder />
                                 </TableCell>
                         }
                     </TableBody>

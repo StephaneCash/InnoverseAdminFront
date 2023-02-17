@@ -84,7 +84,7 @@ const SignIn = () => {
                                 {
                                     btnClic ? (
                                         <>
-                                            Connexion...<i className='fa fa-spinner fa-pulse'></i>
+                                            Connexion...
                                         </>
                                     ) :
                                         "Se connecter"

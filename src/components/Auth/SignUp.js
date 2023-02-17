@@ -15,8 +15,6 @@ const SignUp = () => {
 
     const navigate = useNavigate();
 
-    const [formSubmit, setFormSubmit] = useState(false);
-
     const handleRegister = (e) => {
         e.preventDefault();
 
@@ -31,7 +29,6 @@ const SignUp = () => {
 
                         if (resp.data.errors.pseudo === "" && resp.data.errors.email === ""
                             && resp.data.errors.password === "") {
-                            setFormSubmit(true);
                             navigate('/');
                         }
                     } else {
