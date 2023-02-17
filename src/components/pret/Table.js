@@ -90,7 +90,7 @@ export default function BasicTable(props) {
                                                     background: "#555", color: "orange",
                                                     borderRadius: "10px", padding: "5px", fontWeight: "bold"
                                                 }}>
-                                                    En attente
+                                                    En attente...
                                                 </i>
                                             }
                                             </TableCell>
