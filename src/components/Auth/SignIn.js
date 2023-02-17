@@ -33,6 +33,7 @@ const SignIn = () => {
                         if (resp.status && resp.data && resp.data.token && resp.data.token) {
                             setBtnClic(false);
                             setBtnClic(false);
+                            localStorage.setItem('tokenUser', JSON.stringify(resp.data && resp.data.token && resp.data.token));
                             window.location = "/dashboard";
                         }
                     }, 3000);

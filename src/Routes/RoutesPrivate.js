@@ -4,12 +4,10 @@ import { UserContext } from "../AppContext";
 
 const RoutesPrivate = () => {
 
-    const coockie = window.coockie;
-
-    console.log(coockie)
+    const { uid } = useContext(UserContext)
 
     return (
-       coockie !== null ? <Outlet /> : <Navigate to="/" />
+        uid !== "" ? <Outlet /> : <Navigate to="/" />
     )
 }
 

@@ -18,12 +18,14 @@ const AppContext = () => {
     const [userDataCompte, setUserDataCompte] = useState(null);
     const [pretData, setPretData] = useState({});
 
+    const [jwt, setJwt] = useState('');
+
     const [stepCurrent, setstepCurrent] = useState(0);
 
     const verifUserConnected = async () => {
-        await axios.get(`${baseUrl}/jwtid`, { withCredentials: true })
+        await axios.get(`${baseUrl}/jwtid/${jwt}`, { withCredentials: true })
             .then(resp => {
-                setUid(resp.data);
+                setUid(resp.data.id);
             })
             .catch(err => {
                 console.log(err.response)
@@ -60,7 +62,7 @@ const AppContext = () => {
                 console.log(err);
             });
     };
-
+    
     const getInfosUser = () => {
         axios
             .patch(baseUrl + "/user/infos", { userId: uid })
@@ -85,6 +87,10 @@ const AppContext = () => {
 
     useEffect(() => {
         verifUserConnected();
+    }, [jwt]);
+
+    useEffect(() => {
+        verifUserConnected();
         if (uid) {
             getUser();
             getCompteUser();
@@ -93,6 +99,11 @@ const AppContext = () => {
             getInfosPaiement();
         };
     }, [uid]);
+
+    useEffect(()=>{
+        const userConnected = JSON.parse(localStorage.getItem('tokenUser'));
+        setJwt(userConnected)
+    }, []);
 
     return (
         <UserContext.Provider

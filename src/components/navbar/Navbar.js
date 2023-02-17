@@ -46,21 +46,9 @@ function Navbar() {
         setAnchorElUser(null);
     };
 
-    const removeCookie = (key) => {
-        if (window !== undefined) {
-            cookie.remove(key, { expires: 1 });
-        }
-    };
-
     const handleLogout = async () => {
-        await axios.get(baseUrl + "/users/logout")
-            .then(() => {
-                removeCookie("jwt");
-                navigate('/');
-            })
-            .catch(err => {
-                console.log(err.response);
-            })
+       localStorage.removeItem('tokenUser');
+       navigate('/');
     };
 
     return (
